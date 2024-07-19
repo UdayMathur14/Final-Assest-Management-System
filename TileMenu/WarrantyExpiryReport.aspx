@@ -1,0 +1,103 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WarrantyExpiryReport.aspx.cs" Inherits="TileMenu.WarrantyExpiryReport" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <asp:Label ID="Label1" runat="server" Text="Choose Item Type"></asp:Label>
+                        <asp:RadioButtonList ID="typemaster" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" CssClass="form-control" OnSelectedIndexChanged="typemaster_SelectedIndexChanged">
+                            <asp:ListItem Selected="True" Text="Hardware"></asp:ListItem>
+                            <asp:ListItem Text="Software"></asp:ListItem>
+
+                        </asp:RadioButtonList>
+                    </div>
+                </div>
+
+
+            </div>
+    <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <asp:Label ID="lblproduct" runat="server" Text="Product" CssClass="form-label"></asp:Label>
+                        <asp:DropDownList ID="ddlproduct" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlproduct_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <asp:Label ID="lblmake" runat="server" Text="Make"></asp:Label>
+                        <asp:DropDownList ID="ddlmake" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlmake_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                </div>
+
+            </div>
+
+    <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                 
+                         <asp:Label ID="Label2" runat="server" Text="Expired on(Month)" CssClass="form-label"></asp:Label>
+                     <asp:DropDownList ID="ddlEmonth" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlEmonth_SelectedIndexChanged">
+                          <asp:ListItem Value="-1" Text="Any"></asp:ListItem>
+                         <asp:ListItem Value="1" Text="January"></asp:ListItem>
+                         <asp:ListItem Value="2" Text="February"></asp:ListItem>
+                         <asp:ListItem Value="3" Text="March"></asp:ListItem>
+                         <asp:ListItem Value="4" Text="April"></asp:ListItem>
+                         <asp:ListItem Value="5" Text="May"></asp:ListItem>
+                         <asp:ListItem Value="6" Text="June"></asp:ListItem>
+                         <asp:ListItem Value="7" Text="July"></asp:ListItem>
+                         <asp:ListItem Value="8" Text="August"></asp:ListItem>
+                         <asp:ListItem Value="9" Text="September"></asp:ListItem>
+                         <asp:ListItem Value="10" Text="October"></asp:ListItem>
+                         <asp:ListItem Value="11" Text="November"></asp:ListItem>
+                         <asp:ListItem Value="12" Text="December"></asp:ListItem>
+                         
+                     </asp:DropDownList>
+  
+               </div>
+                    </div>
+              <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                 
+                         <asp:Label ID="Label3" runat="server" Text="Expired on(Year)" CssClass="form-label"></asp:Label>
+                     <asp:DropDownList ID="ddlEyear" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlEyear_SelectedIndexChanged">
+                         <asp:ListItem Value="-1" Text="Any"></asp:ListItem>
+                         <asp:ListItem Value="-2" Text="Not Filled"></asp:ListItem>
+                         <asp:ListItem Value="2021" Text="2021"></asp:ListItem>
+                         <asp:ListItem Value="2022" Text="2022"></asp:ListItem>
+                         <asp:ListItem Value="2023" Text="2023"></asp:ListItem>
+                         <asp:ListItem Value="2024" Text="2024"></asp:ListItem>
+                         <asp:ListItem Value="2025" Text="2025"></asp:ListItem>
+                         <asp:ListItem Value="2026" Text="2026"></asp:ListItem>
+                         <asp:ListItem Value="2027" Text="2027"></asp:ListItem>
+                         <asp:ListItem Value="2028" Text="2028"></asp:ListItem>
+                         <asp:ListItem Value="2029" Text="2029"></asp:ListItem>
+                         <asp:ListItem Value="2030" Text="2030"></asp:ListItem>
+
+                     </asp:DropDownList>
+  
+               </div>
+                  </div>    
+        </div>
+     <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+                    <asp:Button ID="btnsubmit" runat="server"  
+                        Text="Search" Width="76px"  Height="26px" onclick="btnsubmit_Click"  />
+                </div></div></div>
+    <div >
+     
+     <asp:Panel id="pnlData" runat="server">
+         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" ForeColor="Black" GridLines="Both"  BackColor="White" 
+                            BorderColor="#666666" CssClass="table table-striped" BorderStyle="1" BorderWidth="1px" 
+                        Width ="100%" CellPadding="5" RowStyle-Height="45px" >
+        <FooterStyle BackColor="#E3E3E1" />
+        <RowStyle BackColor="#ffffcc" />
+        
+         <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
+        <AlternatingRowStyle BackColor="White" />
+         </asp:GridView>
+     </asp:Panel>
+    
+     </div>
+    
+</asp:Content>

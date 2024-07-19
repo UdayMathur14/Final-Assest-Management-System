@@ -1,0 +1,72 @@
+﻿<menues>
+  <menu>
+    <id>1</id>
+    <parentid>0</parentid>
+    <name>Common</name>
+    <color>red</color>
+    <url></url>
+  </menu>
+  <menu>
+    <id>2</id>
+    <parentid>0</parentid>
+    <name>Software</name>
+    <color>maroon</color>
+    <url></url>
+  </menu>
+  <menu>
+    <id>3</id>
+    <parentid>0</parentid>
+    <name>HardWare</name>
+    <color>yellow</color>
+    <url></url>
+  </menu>
+  <menu>
+    <id>4</id>
+    <parentid>0</parentid>
+    <name>Reports</name>
+    <color>green</color>
+    <url></url>
+  </menu>
+  <menu>
+    <id>5</id>
+    <parentid>1</parentid>
+    <name>Vendor Master</name>
+    <color>green</color>
+    <url>vendor.aspx</url>
+  </menu>
+  <menu>
+    <id>6</id>
+    <parentid>1</parentid>
+    <name>Employee Master</name>
+    <color>green</color>
+    <url>vendor.aspx</url>
+  </menu>
+  <menu>
+    <id>7</id>
+    <parentid>1</parentid>
+    <name> AMC Master</name>
+    <color>green</color>
+    <url>vendor.aspx</url>
+  </menu>
+  <menu>
+    <id>8</id>
+    <parentid>2</parentid>
+    <name>Vendor Master</name>
+    <color>green</color>
+    <url>vendor.aspx</url>
+  </menu>
+  <menu>
+    <id>9</id>
+    <parentid>2</parentid>
+    <name>Employee Master</name>
+    <color>green</color>
+    <url>vendor.aspx</url>
+  </menu>
+  <menu>
+    <id>10</id>
+    <parentid>2</parentid>
+    <name>AMC Master</name>
+    <color>green</color>
+    <url>vendor.aspx</url>
+  </menu>
+</menues>

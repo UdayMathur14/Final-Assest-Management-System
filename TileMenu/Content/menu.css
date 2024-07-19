@@ -1,0 +1,73 @@
+﻿.navbar-collapse {
+    position: relative;
+}
+
+.sub-menu-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 9999;
+    text-align: center;
+    background-color: #ffcc00 !important;
+}
+
+    .sub-menu-container .sub-menu-item {
+        display: none;
+    }
+
+    .sub-menu-container .div-button-close {
+        text-align: right;
+        display: none;
+    }
+
+        .sub-menu-container .div-button-close .button-close {
+            text-align: right;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 3px;
+            padding: 4px;
+            color: red;
+            background-color: #fff;
+            border: 1px solid red;
+            border-radius: 2px;
+            margin-right: 3px;
+        }
+
+.menu-item {
+    color: #fff;
+    float: right;
+    min-width: 150px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 3px 5px grey;
+    cursor: pointer;
+}
+    .menu-item a {
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+        font-size: 18px;
+
+    }
+    .div-menu-title {
+        float: left;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 20px;
+        padding: 5px;
+        text-decoration: underline;
+        color: black
+    }
+.deletebtn{
+    margin-left:100px;
+}
+
