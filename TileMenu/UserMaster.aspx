@@ -4,20 +4,55 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
+    /* Table Header Styling */
     .table thead th {
-        background-color: #343a40; /* Dark background for table header */
-        color: #ffffff; /* White text for header */
+        background-color: #007bff; /* Blue background for table header */
+        color: white; /* White text for header */
+        font-weight: bold; /* Bold text */
+        border-bottom: 2px solid #0056b3; /* Darker blue bottom border for header */
     }
+
+    /* Table Body Odd Row Styling */
     .table tbody tr:nth-child(odd) {
-        background-color: #f9f9f9; /* Light background for odd rows */
+        background-color: #f8f9fa; /* Light grey background for odd rows */
     }
+
+    /* Table Body Even Row Styling */
+    .table tbody tr:nth-child(even) {
+        background-color: #ffffff; /* White background for even rows */
+    }
+
+    /* Table Row Hover Effect */
     .table tbody tr:hover {
-        background-color: #e9ecef; /* Light grey background on hover */
+        background-color: #e2e6ea; /* Slightly darker grey background on hover */
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
     }
+
+    /* Table Cell Alignment */
     .table th, .table td {
-        text-align: center; /* Center-align text */
+        text-align: center; /* Center-align text in table header and cells */
+        padding: 10px; /* Padding for table cells */
+        border: 1px solid #dee2e6; /* Border for table cells */
+    }
+
+    /* Table Footer Styling */
+    .table tfoot th {
+        background-color: #343a40; /* Dark background for table footer */
+        color: #ffffff; /* White text for footer */
+        font-weight: bold; /* Bold text */
+    }
+
+    /* Table Responsive Styling */
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+    }
+    .applyColor{
+        background-color:darkslategrey !important;
+        color:white !important;
     }
 </style>
+
+
 
     <script type="text/javascript">
         function check() {
@@ -155,17 +190,19 @@
                     <asp:Button runat="server" Text="Update" ID="Button2" OnClick="UpdateBtn" />
                     <asp:Button class="deletebtn" runat="server" Text="Delete" ID="Button3" OnClick="DeleteBtn" OnClientClick="if (!check1()) return false;" />
                 </div>
+                <br /> 
+                <br /> 
                 <div class="row">
     <div class="col-12">
-        <div class="table-responsive">
-            <asp:GridView runat="server" ID="tbluser" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover">
-                <HeaderStyle CssClass="thead-dark text-white" />
-                <RowStyle CssClass="text-center" />
-                <AlternatingRowStyle CssClass="bg-light" />
-                <FooterStyle CssClass="text-white bg-dark" />
-            </asp:GridView>
-        </div>
+    <div class="table-responsive">
+        <asp:GridView runat="server" ID="tbluser" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover">
+            <HeaderStyle CssClass="thead-dark text-white applyColor" />
+            <RowStyle CssClass="text-center" />
+            <AlternatingRowStyle CssClass="bg-light" />
+            <FooterStyle CssClass="text-white bg-dark" />
+        </asp:GridView>
     </div>
+</div>
 </div>
             </div>
         </div>

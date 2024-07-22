@@ -52,33 +52,33 @@
                 </div>
                 <div class="navbar-collapse collapse d-flex flex-row-reverse">
 
-                    <div class="menu-item parent-menu" data-id="1" style="background: grey">
+                    <div class="menu-item parent-menu" data-id="1" style="background:  linear-gradient(230deg, #d3d3d3, #a9a9a9);">
                         Reports
                     </div>
-                    <div class="menu-item parent-menu" data-id="2" style="background: grey">
+                    <div class="menu-item parent-menu" data-id="2" style="background: linear-gradient(230deg, #d3d3d3, #a9a9a9);">
                         AMC
                     </div>
-                    <div class="menu-item parent-menu" data-id="3" style="background: grey">
+                    <div class="menu-item parent-menu" data-id="3" style="background: linear-gradient(230deg, #d3d3d3, #a9a9a9);">
                         Gate Pass
                     </div>
-                    <div class="menu-item parent-menu" data-id="4" style="background: grey">
+                    <div class="menu-item parent-menu" data-id="4" style="background: linear-gradient(230deg, #d3d3d3, #a9a9a9);">
                         Stock Out
                     </div>
-                    <div class="menu-item parent-menu" data-id="5" style="background: grey">
+                    <div class="menu-item parent-menu" data-id="5" style="background: linear-gradient(230deg, #d3d3d3, #a9a9a9);">
                         <asp:HyperLink NavigateUrl="StockIn.aspx" runat="server" Text="Stock In"></asp:HyperLink>
                     </div>
-                    <div class="menu-item parent-menu" data-id="6" style="background: grey">
+                    <div class="menu-item parent-menu" data-id="6" style="background: linear-gradient(230deg, #d3d3d3, #a9a9a9);">
                         Master
                     </div>
                     <asp:HiddenField ID="hiddenRole" runat="server" />
                     <div style="clear: both;"></div>
                 </div>
                 <div class="sub-menu-container">
-                    <div class="div-button-close">
+                    <%--<div class="div-button-close">
                         <div class="div-menu-title"></div>
                         <i class="fa fa-close button-close" style="cursor: pointer">X</i>
                         <div style="clear: both;"></div>
-                    </div>
+                    </div>--%>
                     <div class="sub-menu-item" data-parentid="1">
                         <div class="menu-item" style="background: grey" id="ProductagereReportdiv">
                             <asp:HyperLink NavigateUrl="RetrurnableReport.aspx" runat="server" Text="Returnable Item Report" ID="ProductagereReportLink"></asp:HyperLink>
@@ -138,8 +138,6 @@
                             <asp:HyperLink NavigateUrl="StockOut.aspx" runat="server" Text="For All Category" ID="StockOutReportLink"></asp:HyperLink>
                         </div>
 
-
-
                     </div>
 
                     <div class="sub-menu-item" data-parentid="6">
@@ -194,6 +192,7 @@
 
             }
         }
+        document.getElementById()
         document.getElementById('ProductagereReportdiv').addEventListener('click', function () {
             document.getElementById('<%= ProductagereReportLink.ClientID %>').click();
         });

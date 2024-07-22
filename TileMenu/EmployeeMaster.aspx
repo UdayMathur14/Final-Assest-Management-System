@@ -1,19 +1,52 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EmployeeMaster.aspx.cs" Inherits="TileMenu.EmployeeMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-    .table thead th {
-        background-color: #343a40; /* Dark background for table header */
-        color: #ffffff; /* White text for header */
+<style>
+<style>
+    .table {
+        border-radius: 0.5rem; /* Rounded corners */
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
     }
-    .table tbody tr:nth-child(odd) {
-        background-color: #f9f9f9; /* Light background for odd rows */
+
+    .thead-dark th {
+        background-color: #343a40; /* Dark header background */
+        color: white; /* White text */
+        text-align: center; /* Center align header text */
+        padding: 0.75rem; /* Padding for header cells */
     }
-    .table tbody tr:hover {
-        background-color: #e9ecef; /* Light grey background on hover */
+
+    .table td, .table th {
+        vertical-align: middle; /* Vertical alignment for cells */
+        padding: 0.75rem; /* Padding for cells */
+        text-align: center; /* Center align text */
     }
-    .table th, .table td {
-        text-align: center; /* Center-align text */
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f2f2f2; /* Alternating row colors */
+    }
+
+    .bg-light {
+        background-color: #f8f9fa; /* Light background for alternating rows */
+    }
+
+    .bg-dark {
+        background-color: #343a40; /* Dark background for footer */
+    }
+
+    .text-white {
+        color: white; /* White text color */
+    }
+
+    .text-center {
+        text-align: center; /* Center align text */
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef; /* Hover effect for rows */
     }
 </style>
     <script type="text/javascript">

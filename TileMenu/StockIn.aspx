@@ -245,7 +245,7 @@
     <div class="form-group">
         <div class="table-responsive">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover" OnRowDataBound="GridView1_RowDataBound">
-                <HeaderStyle CssClass="thead-dark text-white" />
+                <HeaderStyle CssClass="thead-dark text-white applyColor" />
                 <RowStyle CssClass="text-center" />
                 <AlternatingRowStyle CssClass="bg-light" />
                 <FooterStyle CssClass="text-white bg-dark" />
@@ -269,17 +269,21 @@
     </script>
         <style>
     .table thead th {
-        background-color: #343a40; /* Dark background for table header */
-        color: #ffffff; /* White text for header */
+        background-color: orange; /* Dark background for table header */
+        color: black; /* White text for header */
     }
     .table tbody tr:nth-child(odd) {
-        background-color: #f9f9f9; /* Light background for odd rows */
+        background-color: #e9ecef; /* Light background for odd rows */
     }
     .table tbody tr:hover {
-        background-color: #e9ecef; /* Light grey background on hover */
+       background-color: aqua; /* Very light blue-gray background on hover */
     }
     .table th, .table td {
         text-align: center; /* Center-align text */
+    }
+    .applyColor{
+        background-color:black !important;
+        color:white;
     }
 </style>
 

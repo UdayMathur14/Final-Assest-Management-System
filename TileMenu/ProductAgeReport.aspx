@@ -149,9 +149,9 @@
 <asp:BoundField HeaderText="outid" DataField="stockout_id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
  
          </Columns>
-         <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#cc3300" Font-Bold="True" ForeColor="White" Height="35px" />
-        <AlternatingRowStyle BackColor="White" />
+         <SelectedRowStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="black" Font-Bold="True" ForeColor="White" Height="35px" />
+        <AlternatingRowStyle BackColor="Pink" />
       </asp:GridView>
      
      </div>

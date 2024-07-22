@@ -1,15 +1,41 @@
 ﻿/// <reference path="jquery-3.4.1.min.js" />
 
 $(function () {
-    $(".menu-item.parent-menu").on('click', function () {
+    $(".menu-item.parent-menu").on('mouseover', function () {
         $('.sub-menu-container .sub-menu-item').hide();
-        $('.sub-menu-container .div-button-close').show();
         var id = $(this).attr('data-id');
         $('.sub-menu-container .sub-menu-item[data-parentid="' + id + '"]').show();
-        $('.div-menu-title').text($(this).text());
+
     })
-    $('.sub-menu-container .div-button-close .button-close').on('click', function () {
-        $('.sub-menu-container .sub-menu-item').hide();
-        $('.sub-menu-container .div-button-close').hide();
+    var mouseIsInsideContainer = false;
+    var mouseIsInsideItem = false;
+
+    $('.sub-menu-container').on('mouseenter', function () {
+        mouseIsInsideContainer = true;
     });
+
+    $('.sub-menu-container').on('mouseleave', function () {
+        mouseIsInsideContainer = false;
+        hideElementsIfNeeded();
+    });
+
+    $('.sub-menu-item').on('mouseenter', function () {
+        mouseIsInsideItem = true;
+    });
+
+    $('.sub-menu-item').on('mouseleave', function () {
+        mouseIsInsideItem = false;
+        hideElementsIfNeeded();
+    });
+
+    $(".menu-item.parent-menu").on('dblclick', function () {
+        $('.sub-menu-container .sub-menu-item').hide();
+        var id = $(this).attr('data-id');
+        $('.sub-menu-container .sub-menu-item[data-parentid="' + id + '"]').show();
+    })
+    function hideElementsIfNeeded() {
+        if (!mouseIsInsideContainer && !mouseIsInsideItem) {
+            $('.sub-menu-container .sub-menu-item').hide();
+        }
+    }
 });
