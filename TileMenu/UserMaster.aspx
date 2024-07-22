@@ -3,6 +3,21 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+    .table thead th {
+        background-color: #343a40; /* Dark background for table header */
+        color: #ffffff; /* White text for header */
+    }
+    .table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9; /* Light background for odd rows */
+    }
+    .table tbody tr:hover {
+        background-color: #e9ecef; /* Light grey background on hover */
+    }
+    .table th, .table td {
+        text-align: center; /* Center-align text */
+    }
+</style>
 
     <script type="text/javascript">
         function check() {
@@ -141,11 +156,17 @@
                     <asp:Button class="deletebtn" runat="server" Text="Delete" ID="Button3" OnClick="DeleteBtn" OnClientClick="if (!check1()) return false;" />
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <asp:GridView runat="server" ID="tbluser" AutoGenerateColumns="true" CssClass="table table-striped">
-                        </asp:GridView>
-                    </div>
-                </div>
+    <div class="col-12">
+        <div class="table-responsive">
+            <asp:GridView runat="server" ID="tbluser" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover">
+                <HeaderStyle CssClass="thead-dark text-white" />
+                <RowStyle CssClass="text-center" />
+                <AlternatingRowStyle CssClass="bg-light" />
+                <FooterStyle CssClass="text-white bg-dark" />
+            </asp:GridView>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </div>

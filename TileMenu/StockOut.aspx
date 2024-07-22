@@ -14,7 +14,7 @@
             var ddlsrno = document.getElementById("<%=ddlsrno.ClientID %>");
             var ddlassetcode = document.getElementById("<%=ddlassetcode.ClientID %>");
             var ddlemployee = document.getElementById("<%=ddlemployee.ClientID %>");
-            <%--var txtcostcenter = document.getElementById("<%=<%--txtcostcenter.ClientID--%> %>");--%>
+            <%--var txtcostcenter = document.getElementById("<%=<%--txtcostcenter.ClientID--%> %> ");--%>
             var ddlOAC = document.getElementById("<%=ddlOAC.ClientID %>");
 
             var txtdate = document.getElementById("<%=txtdate.ClientID %>");
@@ -195,12 +195,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                        <div class="form-group">
-        <asp:Label ID="Label2" runat="server" Text="Issue Date" CssClass="form-label"></asp:Label>
-        <asp:TextBox ID="txtdate" runat="server" CssClass="form-control datepicker" ReadOnly="false"></asp:TextBox>
-        <%-- <asp:ImageButton ID="ImageButton1" CssClass="calButton" runat="server" Style="display: none;" ImageUrl="~/Content/images/cal-image.png" Width="30px" OnClick="ImageButton1_Click" />
-<asp:Calendar ID="Calendar1" runat="server" Visible="False" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>--%>
-    </div>
+                    <div class="form-group">
+                        <asp:Label ID="Label2" runat="server" Text="Issue Date" CssClass="form-label"></asp:Label>
+                        <asp:TextBox ID="txtdate" runat="server" CssClass="form-control datepicker" ReadOnly="false"></asp:TextBox>
+                        <%-- <asp:ImageButton ID="ImageButton1" CssClass="calButton" runat="server" Style="display: none;" ImageUrl="~/Content/images/cal-image.png" Width="30px" OnClick="ImageButton1_Click" />
+                <asp:Calendar ID="Calendar1" runat="server" Visible="False" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>--%>
+                    </div>
 
                 </div>
                 <div class="col-md-6 col-sm-12">
@@ -226,7 +226,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
-                        <asp:Label ID="lblproduct" runat="server" Text="Product" CssClass="form-label"></asp:Label><asp:TextBox ID="Hidden1" runat="server" Width="0px" Height="0px" Visible="false" />
+                        <asp:Label ID="lblproduct" runat="server" Text="Product" CssClass="form-label"></asp:Label><asp:TextBox ID="Hidden1" runat="server" Width="0px" Height="0px" />
                         <asp:DropDownList ID="ddlproduct" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlproduct_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                 </div>

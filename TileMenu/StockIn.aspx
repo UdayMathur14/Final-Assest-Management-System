@@ -116,7 +116,7 @@
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
-                <asp:Label ID="Label3" runat="server" Text="Vendor" CssClass="form-label"></asp:Label>
+                <asp:Label ID="Label3" runat="server" Text="Vendor" CssClass="form-label" ></asp:Label>
                 <asp:DropDownList ID="ddlvendor" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlvendor_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
@@ -127,7 +127,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <asp:Label ID="lblproduct" runat="server" Text="Product" CssClass="form-label"></asp:Label>
-                <asp:TextBox ID="hdncap" runat="server" Width="0px" Height="0px" Visible="false"></asp:TextBox>
+                <asp:TextBox ID="hdncap" runat="server" Width="0px" Height="0px" Visible="false" ></asp:TextBox>
                 <asp:TextBox ID="hdnwarr" runat="server" Width="0px" Height="0px" Visible="false"></asp:TextBox>
 
                 <asp:DropDownList ID="ddlproduct" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlproduct_SelectedIndexChanged"></asp:DropDownList>
@@ -208,7 +208,7 @@
                 <%--<asp:Button ID="btndoc123" runat="server" Text="Upload File " CssClass="form-control" OnClick="btnUpload_Click"></asp:Button>--%>
                 <asp:Label ID ="lblmessage" runat="server" Font-Bold="false"></asp:Label>
             </div>
-        </div>ll
+        </div>
 
     </div>
     <div class="row">
@@ -242,13 +242,17 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="form-group">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" CssClass="table table-striped" OnRowDataBound="GridView1_RowDataBound">
-
-                </asp:GridView>
-
-            </div>
+    <div class="form-group">
+        <div class="table-responsive">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover" OnRowDataBound="GridView1_RowDataBound">
+                <HeaderStyle CssClass="thead-dark text-white" />
+                <RowStyle CssClass="text-center" />
+                <AlternatingRowStyle CssClass="bg-light" />
+                <FooterStyle CssClass="text-white bg-dark" />
+            </asp:GridView>
         </div>
+    </div>
+</div>
 
     </div>
     <script>
@@ -263,5 +267,20 @@
             })
         });
     </script>
+        <style>
+    .table thead th {
+        background-color: #343a40; /* Dark background for table header */
+        color: #ffffff; /* White text for header */
+    }
+    .table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9; /* Light background for odd rows */
+    }
+    .table tbody tr:hover {
+        background-color: #e9ecef; /* Light grey background on hover */
+    }
+    .table th, .table td {
+        text-align: center; /* Center-align text */
+    }
+</style>
 
 </asp:Content>
