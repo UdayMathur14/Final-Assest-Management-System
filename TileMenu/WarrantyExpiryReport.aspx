@@ -80,11 +80,11 @@
                             BorderColor="#666666" CssClass="table table-striped" BorderStyle="1" BorderWidth="1px" 
                         Width ="100%" CellPadding="5" RowStyle-Height="45px" >
         <FooterStyle BackColor="#E3E3E1" />
-        <RowStyle BackColor="#ffffcc" />
+        <RowStyle BackColor="pink" />
         
          <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
          <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
-        <AlternatingRowStyle BackColor="White" />
+        <AlternatingRowStyle BackColor="#fffccc" />
          </asp:GridView>
      </asp:Panel>
     

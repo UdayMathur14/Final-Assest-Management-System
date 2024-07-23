@@ -82,16 +82,16 @@ else if (!IsBlank(txtresolutiontime, 'Resolution Time Can Not be left blank !'))
                          <td><label><span  style="color: green">@</span>PO Number:<span class="required" style="color: red">*</span></label></td>
                          <td><asp:TextBox ID="txtpo" runat="server" Enabled="True" Height="25px" Width="200px" AutoPostBack="True" ontextchanged="txtpo_TextChanged"></asp:TextBox></td>
                          <td><label>PO Date:<span class="required" style="color: red">*</span></label></td>
-                         <td><asp:TextBox ID="txtpodate" class="datepicker" runat="server" Enabled="True" Height="25px" Width="190px"></asp:TextBox>dd/mm/yyyy</td>
+                         <td><asp:TextBox ID="txtpodate" class="datepicker" runat="server" Enabled="True" Height="25px" Width="190px"></asp:TextBox></td>
                          
                          </tr>
                 
                  
                          <tr>
                          <td><label>PO/Support Start Date:<span class="required" style="color: red">*</span></label></td>
-                         <td><asp:TextBox ID="txtpostartdate" class="datepicker" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox>dd/mm/yyyy</td>
+                         <td><asp:TextBox ID="txtpostartdate" class="datepicker" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
                          <td><label>PO/Support End Date:<span class="required" style="color: red">*</span></label></td>
-                         <td><asp:TextBox ID="txtpoenddate" class="datepicker" runat="server" Enabled="True" Height="25px" Width="190px"></asp:TextBox>dd/mm/yyyy</td>
+                         <td><asp:TextBox ID="txtpoenddate" class="datepicker" runat="server" Enabled="True" Height="25px" Width="190px"></asp:TextBox></td>
                          
                          </tr>
                  

@@ -43,7 +43,7 @@
         }
 
         .grid-view .header-row {
-            background-color: #343a40; /* Dark background */
+            background-color: #E3E3E1; /* Dark background */
             color: #ffffff; /* White text */
         }
 
@@ -54,7 +54,7 @@
         }
 
         .grid-view .data-row {
-            background-color: #f8f9fa; /* Light background */
+            background-color: #e9ecef; /* Light background */
             color: #000000; /* Black text */
         }
 
@@ -63,8 +63,13 @@
         }
 
         .grid-view .data-row:nth-child(even) {
-            background-color: #e9ecef; /* Alternate row background */
+            background-color: lightpink; /* Alternate row background */
         }
+        
+        .grid-view .data-row:nth-child(odd) {
+            background-color: #fffccc; /* Odd row background */
+        }
+        /*#e9ecef*/
 
         .grid-view .data-row:hover {
             background-color: #d1ecf1; /* Highlight color on hover */

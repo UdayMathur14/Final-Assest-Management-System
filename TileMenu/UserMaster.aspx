@@ -14,17 +14,17 @@
 
     /* Table Body Odd Row Styling */
     .table tbody tr:nth-child(odd) {
-        background-color: #f8f9fa; /* Light grey background for odd rows */
+        background-color: lightcyan; /* Light grey background for odd rows */
     }
 
     /* Table Body Even Row Styling */
     .table tbody tr:nth-child(even) {
-        background-color: #ffffff; /* White background for even rows */
+        background-color: lightpink; /* White background for even rows */
     }
 
     /* Table Row Hover Effect */
     .table tbody tr:hover {
-        background-color: #e2e6ea; /* Slightly darker grey background on hover */
+        background-color: darkgrey; /* Slightly darker grey background on hover */
         transition: background-color 0.3s; /* Smooth transition for hover effect */
     }
 

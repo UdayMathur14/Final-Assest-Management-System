@@ -26,11 +26,16 @@
     }
 
     .table-striped tbody tr:nth-of-type(odd) {
-        background-color: #f2f2f2; /* Alternating row colors */
+        background-color: Pink; /* Alternating row colors */
     }
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color: #fffccc; /* Even row background */
+    }
+    
+    
 
     .bg-light {
-        background-color: #f8f9fa; /* Light background for alternating rows */
+        background-color: lightblue !important; /* Light background for alternating rows */
     }
 
     .bg-dark {
@@ -46,7 +51,7 @@
     }
 
     .table-hover tbody tr:hover {
-        background-color: #e9ecef; /* Hover effect for rows */
+        background-color: pink; /* Hover effect for rows */
     }
 </style>
     <script type="text/javascript">
