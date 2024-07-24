@@ -203,6 +203,7 @@
         .container.active .toggle-right {
             transform: translateX(200%);
         }
+        
     </style>
 
     <meta charset="UTF-8" />
@@ -221,7 +222,11 @@
                 <asp:TextBox ID="txt_mail" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
                 <asp:TextBox ID="txt_password" runat="server" placeholder="Password" TextMode="Password" CssClass="form-control"></asp:TextBox>
                 <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="loginClickBtn" OnClientClick="if (!check()) return false;"  />
-                <p class="mb-0">Powered By <a class="btn_submit" href="https://www.ennobleip.com/" target="_blank"> Ennoble IP</a></p>
+                <br />
+<p class="mb-0" style="color: #333; font-size: 14px; text-align: center;">
+    <strong>Powered By</strong> 
+    <a class="btn_submit" href="https://www.ennobleip.com/" target="_blank" style="color: red; font-size: 17px; font-weight: bold; border-bottom: 2px solid #007BFF;">ENNOBLE IP</a>
+</p>
             </form>
         </div>
         <div class="toggle-container">

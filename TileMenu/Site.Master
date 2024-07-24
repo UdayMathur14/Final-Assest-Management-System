@@ -19,6 +19,11 @@
     <link href="Content/menu.css" rel="stylesheet" />
 </head>
 <body>
+    <style>
+       /* .navbar-inverse{
+            background-color:#ACE1AF !important;
+        }*/
+    </style>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -192,7 +197,7 @@
 
             }
         }
-        document.getElementById()
+
         document.getElementById('ProductagereReportdiv').addEventListener('click', function () {
             document.getElementById('<%= ProductagereReportLink.ClientID %>').click();
         });
@@ -214,15 +219,7 @@
         document.getElementById('ProductageReportdiv').addEventListener('click', function () {
             document.getElementById('<%= ProductageReportLink.ClientID %>').click();
         });
-        document.getElementById('AMCReportdiv').addEventListener('click', function () {
-            document.getElementById('<%= AMCReportLink.ClientID %>').click();
-        });
-        document.getElementById('AMCDetailReportdiv').addEventListener('click', function () {
-            document.getElementById('<%= AMCDetailReportLink.ClientID %>').click();
-        });
-        document.getElementById('AMCMasterReportdiv').addEventListener('click', function () {
-            document.getElementById('<%= AMCMasterReportLink.ClientID %>').click();
-        });
+
         document.getElementById('GatePassApprovalReportdiv').addEventListener('click', function () {
             document.getElementById('<%= GatePassApprovalReportLink.ClientID %>').click();
         });

@@ -158,6 +158,9 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="imagesreturn.jpg" />
     <Content Include="imagesreturn.png" />
+    <Content Include="Images\Connectivity.jpg" />
+    <Content Include="Images\Inventory.jpg" />
+    <Content Include="Images\it-asset-management-2--scaled.jpg" />
     <Content Include="InventorHomePageImage.png" />
     <Content Include="KHDLOGO.png" />
     <Content Include="Login.aspx" />
