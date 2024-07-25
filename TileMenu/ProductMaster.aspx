@@ -18,14 +18,18 @@
     <style>
         
 
-       /* .uday {
-            max-width: 130vw;
+        .uday {
+            /*max-width: 130vw;
             min-height: 100vh;
-            background-image: url('');
+            background-image: url('Inventory.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-        }*/
+            background-repeat: no-repeat;*/
+            border:2px solid black;
+            width:100%;
+            background-image:url('/Images/back1.jpg');
+            
+        }
 
         .form-group {
             margin-bottom: 20px;
@@ -92,10 +96,10 @@
     </style>
 
     <div class="uday">
-        <div class="container">
+        <div class="container" style="padding-top:90px">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
+                    <div class="form-group" >
                         <asp:Label ID="Label1" runat="server" Text="Choose Master" CssClass="form-label"></asp:Label>
                         <div class="radio-buttons">
                             <asp:RadioButtonList ID="rblMaster" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="rblMaster_SelectedIndexChanged" CssClass="form-control">

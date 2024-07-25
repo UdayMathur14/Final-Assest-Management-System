@@ -1,6 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RetrurnableReport.aspx.cs" Inherits="TileMenu.RetrurnableReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <asp:Panel id="pnlData" runat="server">
+<style>
+         .uday {
+    padding-top: 70px;
+    min-height: 100vh;
+    border: 2px solid black;
+    width: 100%;
+    background-image: url('/Images/back1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow:auto;
+}
+</style>
+ 
+<div class="uday">
+
+
+<div style="width: 70%; margin-inline: auto" >
+
+
  <fieldset><legend><b>Returnable Item Report(Inventory) :</b></legend>
 <br>
          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both"  BackColor="White" 
@@ -16,6 +35,8 @@
 </fieldset>
      </asp:Panel>
 <asp:Panel id="pnlmanual" runat="server">
+    <br />
+    <br />
  <fieldset><legend><b>Returnable Item Report(Non Inventory) :</b></legend>
 <br>
          <asp:GridView ID="GridViewNI" runat="server" AutoGenerateColumns="false" ForeColor="Black" GridLines="Both"  BackColor="White" 
@@ -45,5 +66,7 @@
 
          </asp:GridView>
 </fieldset>
+    </div>
+    </div>
      </asp:Panel>
 </asp:Content>

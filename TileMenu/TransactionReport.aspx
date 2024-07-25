@@ -1,5 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TransactionReport.aspx.cs" Inherits="TileMenu.TransactionReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+        <style>
+         .uday {
+     padding-top: 70px;
+     min-height: 100vh;
+     border: 2px solid black;
+     width: 100%;
+     background-image: url('/Images/back1.jpg');
+     background-image: url('/Images/back1.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+    </style>
+    <div class="uday">
+    <div style="width: 70%; margin-inline: auto">
          <div class="row">
                
                <div class="col-md-6 col-sm-12">
@@ -43,7 +58,7 @@
           <div class="col-12">
             <div class="form-group">
                     <asp:Button ID="btnsubmit" runat="server"  
-                        Text="Search" Width="76px"  Height="26px" onclick="btnsubmit_Click"  />
+                        Text="Search" Width="76px"  Height="26px" onclick="btnsubmit_Click" CssClass="btn btn-primary btn-save" />
                 </div></div></div>
     <div >
      
@@ -60,6 +75,8 @@
          </asp:GridView>
      </asp:Panel>
     
+     </div>
+     </div>
      </div>
     <script>
         $(function () {

@@ -67,6 +67,20 @@ else if (!IsBlank(txtresolutiontime, 'Resolution Time Can Not be left blank !'))
          }
      </script>
 
+        <style>
+         .uday {
+     padding-top: 70px;
+     min-height: 100vh;
+     border: 2px solid black;
+     width: 100%;
+     background-image: url('/Images/back1.jpg');
+     background-image: url('/Images/back1.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+    </style>
+    <div class="uday">
+    <div style="width: 70%; margin-inline: auto">
     <div class="logine">
          <asp:Panel ID="Panel1" runat="server">
          <fieldset><legend><b>AMC Master :</b><asp:Label ID="lblid" runat="server"></asp:Label></legend>
@@ -251,6 +265,8 @@ else if (!IsBlank(txtresolutiontime, 'Resolution Time Can Not be left blank !'))
          </asp:GridView>
          
          </asp:Panel>
+     </div>
+     </div>
      </div>
     <script>
         $(function () {

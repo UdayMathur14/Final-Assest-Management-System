@@ -80,6 +80,8 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="uday">
+    <div style="width:70%; margin-inline: auto">
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
@@ -87,7 +89,6 @@
                 <asp:RadioButtonList ID="typemaster" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="typemaster_SelectedIndexChanged" CssClass="form-control">
                     <asp:ListItem Selected="True">Hardware</asp:ListItem>
                     <asp:ListItem>Software</asp:ListItem>
-
                 </asp:RadioButtonList>
             </div>
         </div>
@@ -234,7 +235,7 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click" OnClientClick="return validate();" CausesValidation="true" ValidationGroup="StockIn"></asp:Button>
+                <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click" OnClientClick="return validate();" CausesValidation="true" ValidationGroup="StockIn" CssClass="btn btn-primary btn-save"></asp:Button>
 
             </div>
         </div>
@@ -244,13 +245,17 @@
         <div class="col-12">
     <div class="form-group">
         <div class="table-responsive">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover" OnRowDataBound="GridView1_RowDataBound">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover" OnRowDataBound="GridView1_RowDataBound" >
                 <HeaderStyle CssClass="thead-dark text-white applyColor" />
                 <RowStyle CssClass="text-center" />
                 <AlternatingRowStyle CssClass="bg-light" />
                 <FooterStyle CssClass="text-white bg-dark" />
             </asp:GridView>
         </div>
+    </div>
+            
+        </div>
+
     </div>
 </div>
 
@@ -275,8 +280,11 @@
     .table tbody tr:nth-child(odd) {
         background-color: #e9ecef; /* Light background for odd rows */
     }
+     .table tbody tr:nth-child(even) {
+     background-color: #fffccc; /* Light background for odd rows */
+ }
     .table tbody tr:hover {
-       background-color: aqua; /* Very light blue-gray background on hover */
+       background-color: pink; /* Very light blue-gray background on hover */
     }
     .table th, .table td {
         text-align: center; /* Center-align text */
@@ -285,6 +293,17 @@
         background-color:black !important;
         color:white;
     }
+      .uday {
+      padding-top:70px;
+      min-height:100vh;
+      border:2px solid black;
+      width:100%;
+      background-image:url('/Images/back1.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow-y:auto;
+      
+  }
 </style>
 
 </asp:Content>

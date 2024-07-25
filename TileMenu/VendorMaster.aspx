@@ -37,6 +37,7 @@
         }
 
 
+
         function validateSM() {
             var smname = document.getElementById("<%=txtsmname.ClientID %>").value.trim();
             var smmobile = document.getElementById("<%=txtsmmobile.ClientID %>").value.trim();
@@ -83,7 +84,23 @@
         }
 
     </script>
-    <div class="logine">
+    <style>
+            .uday {
+    padding-top:70px;
+    min-height:100vh;
+    border:2px solid black;
+    width:100%;
+    background-image:url('/Images/back1.jpg');
+    background-image:url('/Images/back1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+    </style>
+    <div class="uday">
+
+ 
+    <div class="logine" style="width:70%; margin-inline: auto">
         <asp:Panel ID="Panel1" runat="server">
             <fieldset>
                 <legend><b>Vendor/Supplier Master :</b><asp:Label ID="lblid" runat="server"></asp:Label></legend>
@@ -185,10 +202,11 @@
                     <td><br></td>
 
                     <tr>
-                        <td colspan="4" align="center">
-                            <asp:Button ID="btnsubmit" runat="server"
-                                Text="Save" Width="76px" Height="26px" OnClick="btnsubmit_Click" OnClientClick="return validate();" />
-                            <asp:Button ID="btncancel" runat="server" Text="Cancle" Width="76px" Height="26px" OnClick="btncancel_Click" />
+                        <td colspan="4" align="center" style="display:flex;gap:2em;margin-inline:auto">
+                            <asp:Button  ID="btnsubmit" runat="server" CssClass="btn btn-primary" 
+                                Text="Save"  OnClick="btnsubmit_Click" OnClientClick="return validate(); " />
+
+                            <asp:Button ID="btncancel" runat="server" Text="Cancle"  style="text-align:center;" OnClick="btncancel_Click" CssClass="btn btn-primary btn-save" />
                         </td>
                     </tr>
                 </table>
@@ -365,4 +383,5 @@
 
       </asp:Panel>
     </div>
+           </div>
 </asp:Content>

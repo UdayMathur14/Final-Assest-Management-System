@@ -53,6 +53,21 @@
                  return true;
          }
      </script>
+
+        <style>
+         .uday {
+     padding-top: 70px;
+     min-height: 100vh;
+     border: 2px solid black;
+     width: 100%;
+     background-image: url('/Images/back1.jpg');
+     background-image: url('/Images/back1.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+    </style>
+    <div class="uday">
+    <div style="width: 70%; margin-inline: auto">
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
@@ -166,6 +181,8 @@
             </div>
         </div>
 
+    </div>
+    </div>
     </div>
      <script>
          $(function () {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StockOut.aspx.cs" EnableEventValidation = false Inherits="TileMenu.StockOut" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StockOut.aspx.cs" EnableEventValidation="false" Inherits="TileMenu.StockOut" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -28,8 +28,7 @@
             var ddlissuedhw = document.getElementById("<%=ddlissuedhw.ClientID %>");
 
 
-            if (txtdate.value == "")
-            {
+            if (txtdate.value == "") {
                 alert("Issue Date can not be left blank !");
                 txtdate.focus();
                 return false;
@@ -146,10 +145,10 @@
             }
 
                 div.divOAC .opOAC label {
-                    padding: 10px; 
-                    background-color:lightgray;
+                    padding: 10px;
+                    background-color: lightgray;
                     border-radius: 10px;
-                    color:black;
+                    color: black;
                     text-align: left;
                     width: 95px;
                 }
@@ -161,24 +160,38 @@
                     div.divOAC .opOAC input[type=radio]:checked ~ label {
                         background-color: red;
                     }
+
+        .uday {
+            padding-top: 70px;
+            min-height: 100vh;
+            border: 2px solid black;
+            width: 100%;
+            background-image: url('/Images/back1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow:auto;
+        }
     </style>
     <%--<asp:UpdatePanel runat="server" ID="updMain">
         <ContentTemplate>--%>
 
-            <div class="divOAC">
-                <asp:RadioButtonList ID="optOAC" runat="server" AutoPostBack="True" RepeatDirection="Vertical" CssClass="opOAC" OnSelectedIndexChanged="optOAC_SelectedIndexChanged">
-                    <asp:ListItem Text="Employee"></asp:ListItem>
-                    <asp:ListItem Text="Internal"></asp:ListItem>
-                    <asp:ListItem Text="Site"></asp:ListItem>
-                    <asp:ListItem Text="Repair"></asp:ListItem>
-                    <asp:ListItem Text="Standby"></asp:ListItem>
-                    <asp:ListItem Text="User Res" Value="Reserved for user"></asp:ListItem>
-                    <asp:ListItem Text="Tobe scrap" Value="To be scrap"></asp:ListItem>
-                    <asp:ListItem Text="Scrapped"></asp:ListItem>
-                    <asp:ListItem Text="Sold"></asp:ListItem>
-                    <asp:ListItem Text="Vendor Ret" Value="Return to Vendor"></asp:ListItem>
-                </asp:RadioButtonList>
-            </div>
+    <div class="divOAC">
+        <asp:RadioButtonList ID="optOAC" runat="server" AutoPostBack="True" RepeatDirection="Vertical" CssClass="opOAC" OnSelectedIndexChanged="optOAC_SelectedIndexChanged">
+            <asp:ListItem Text="Employee"></asp:ListItem>
+            <asp:ListItem Text="Internal"></asp:ListItem>
+            <asp:ListItem Text="Site"></asp:ListItem>
+            <asp:ListItem Text="Repair"></asp:ListItem>
+            <asp:ListItem Text="Standby"></asp:ListItem>
+            <asp:ListItem Text="User Res" Value="Reserved for user"></asp:ListItem>
+            <asp:ListItem Text="Tobe scrap" Value="To be scrap"></asp:ListItem>
+            <asp:ListItem Text="Scrapped"></asp:ListItem>
+            <asp:ListItem Text="Sold"></asp:ListItem>
+            <asp:ListItem Text="Vendor Ret" Value="Return to Vendor"></asp:ListItem>
+        </asp:RadioButtonList>
+    </div>
+
+    <div class="uday">
+        <div style="width: 70%; margin-inline: auto">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
@@ -266,12 +279,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
-                        <asp:Label ID="Label6" runat="server" Text="Issued To"></asp:Label><asp:RadioButtonList ID="optcat" runat="server" AutoPostBack="true" RepeatDirection="Horizontal"  OnSelectedIndexChanged="optcat_SelectedIndexChanged">
-                             <asp:ListItem Selected="True" >Employee</asp:ListItem>
+                        <asp:Label ID="Label6" runat="server" Text="Issued To"></asp:Label><asp:RadioButtonList ID="optcat" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="optcat_SelectedIndexChanged">
+                            <asp:ListItem Selected="True">Employee</asp:ListItem>
                             <asp:ListItem>Common</asp:ListItem>
                         </asp:RadioButtonList>
                         <asp:DropDownList ID="ddlemployee" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlemployee_SelectedIndexChanged"></asp:DropDownList>
@@ -351,25 +364,25 @@
                     </div>
                 </div>
             </div>
-           <div class="row">
-        <div class="col-12">
-            <div class="form-group">
-                <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click" ></asp:Button>
-
-            </div>
-        </div>
-
-    </div>  
-
-       <%-- </ContentTemplate>
-    </asp:UpdatePanel>--%>
-   <%-- <asp:UpdatePanel runat="server" ID="updGrid" UpdateMode="Conditional">
-       
-        <ContentTemplate>--%>
-    <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <asp:GridView ID="GridView1" runat="server"  onrowdatabound="GridView1_RowDataBound" onrowdeleting="GridView1_RowDeleting"  DataKeyNames="StockOut_Id" CssClass="table table-striped">
+                        <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click" CssClass="btn btn-primary btn-save"></asp:Button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <%-- </ContentTemplate>
+    </asp:UpdatePanel>--%>
+            <%-- <asp:UpdatePanel runat="server" ID="updGrid" UpdateMode="Conditional">
+       
+        <ContentTemplate>--%>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <asp:GridView ID="GridView1" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="StockOut_Id" CssClass="table table-striped">
                             <Columns>
                                 <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="70px">
                                     <ItemTemplate>
@@ -381,7 +394,7 @@
                                         <asp:ImageButton OnClientClick='showReturnPopup(event,this,2)' ImageUrl="~/Content/images/scrap.png" Width="30px" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                               <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Move To Permanent"  HeaderText="Move To Permanent" />
+                                <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Move To Permanent" HeaderText="Move To Permanent" />
                             </Columns>
                         </asp:GridView>
 
@@ -389,102 +402,103 @@
                 </div>
 
             </div>
-            
-<%--        </ContentTemplate>
+
+            <%--        </ContentTemplate>
     </asp:UpdatePanel>--%>
-   
 
 
-    <div class="modal" tabindex="-1" role="dialog" id="divModalReturn">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Stock Return</h3>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <asp:HiddenField runat="server" ID="hdStockId" />
-                    <asp:HiddenField runat="server" ID="hdRetunType" />
-                    <h2>Asset Detail</h2>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <asp:Label ID="lblemp" runat="server"></asp:Label>
+            <div class="modal" tabindex="-1" role="dialog" id="divModalReturn">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Stock Return</h3>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="col-md-4">
-                            <asp:Label ID="lblproductname" runat="server"></asp:Label>
-                        </div>
-                        <div class="col-md-4">
-                            <asp:Label ID="lblserial" runat="server"></asp:Label>
-                        </div>
-                       <div class="col-md-4 hd">
-                             <asp:RadioButtonList ID="rdlscrap" runat="server" AutoPostBack="false" RepeatDirection="Horizontal">
-                                    <asp:ListItem Selected="True">To be scrap</asp:ListItem>
-                                    <asp:ListItem>Scrapped</asp:ListItem>
-                                 <asp:ListItem>Sold</asp:ListItem>
-                                </asp:RadioButtonList>
-                        </div>
-                         <div class="row hd">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label21" runat="server" Text="Remarks" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="Txtscrapremarks" runat="server" CssClass="form-control"></asp:TextBox>
+                        <div class="modal-body">
+                            <asp:HiddenField runat="server" ID="hdStockId" />
+                            <asp:HiddenField runat="server" ID="hdRetunType" />
+                            <h2>Asset Detail</h2>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblemp" runat="server"></asp:Label>
+                                </div>
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblproductname" runat="server"></asp:Label>
+                                </div>
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblserial" runat="server"></asp:Label>
+                                </div>
+                                <div class="col-md-4 hd">
+                                    <asp:RadioButtonList ID="rdlscrap" runat="server" AutoPostBack="false" RepeatDirection="Horizontal">
+                                        <asp:ListItem Selected="True">To be scrap</asp:ListItem>
+                                        <asp:ListItem>Scrapped</asp:ListItem>
+                                        <asp:ListItem>Sold</asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </div>
+                                <div class="row hd">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <asp:Label ID="Label21" runat="server" Text="Remarks" CssClass="form-label"></asp:Label>
+                                            <asp:TextBox ID="Txtscrapremarks" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="sh" style="border-top: 2px solid black" />
+                            <h2 class="sh">Return Detail</h2>
+                            <div class="row sh">
+
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <asp:Label ID="Label14" runat="server" Text="Return Type" CssClass="form-label"></asp:Label>
+                                        <asp:RadioButtonList ID="rdlsrno" runat="server" AutoPostBack="false" RepeatDirection="Horizontal">
+                                            <asp:ListItem Selected="True">Same</asp:ListItem>
+                                            <asp:ListItem>Replaced</asp:ListItem>
+                                        </asp:RadioButtonList>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <asp:Label ID="Label17" runat="server" Text="New Serial No." CssClass="form-label"></asp:Label>
+                                        <asp:TextBox ID="txtnewsrno" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                             </div>
+                        <div class="row sh">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <asp:Label ID="Label18" runat="server" Text="Repaire Cost" CssClass="form-label"></asp:Label>
+                                    <asp:TextBox ID="txtcost" runat="server" CssClass="form-control" Text="0"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <asp:Label ID="Label19" runat="server" Text="Bill No." CssClass="form-label"></asp:Label>
+                                    <asp:TextBox ID="txtbillno" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row sh">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <asp:Label ID="Label20" runat="server" Text="Repaire Remarks" CssClass="form-label"></asp:Label>
+                                    <asp:TextBox ID="txtrepaireRemarks" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-                    <hr class="sh" style="border-top: 2px solid black" />
-                    <h2 class="sh">Return Detail</h2>
-                    <div class="row sh">
-                         
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label14" runat="server" Text="Return Type" CssClass="form-label"></asp:Label>
-                                <asp:RadioButtonList ID="rdlsrno" runat="server" AutoPostBack="false" RepeatDirection="Horizontal">
-                                    <asp:ListItem Selected="True">Same</asp:ListItem>
-                                    <asp:ListItem>Replaced</asp:ListItem>
-                                </asp:RadioButtonList>
-                            </div>
-                        </div>
-                       
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label17" runat="server" Text="New Serial No." CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtnewsrno" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                            </div>
+                    <div class="modal-footer">
+                        <asp:Button Text="Return" runat="server" CssClass="btn btn-primary" ID="btnReturn" OnClick="btnReturn_Click" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                    <div class="row sh">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label18" runat="server" Text="Repaire Cost" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtcost" runat="server" CssClass="form-control" Text="0"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label19" runat="server" Text="Bill No." CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtbillno" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row sh">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label20" runat="server" Text="Repaire Remarks" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="txtrepaireRemarks" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <asp:Button Text="Return" runat="server" CssClass="btn btn-primary" ID="btnReturn" OnClick="btnReturn_Click" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -515,8 +529,7 @@
                 $('.sh').show();
                 $('.hd').hide();
             }
-            else
-            {
+            else {
                 $('.sh').hide();
                 $('.hd').show();
             }

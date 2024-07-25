@@ -318,7 +318,7 @@ namespace TileMenu
 
                 //decimal total = Ds.AsEnumerable().Sum(row => row.Field<decimal>("TotalInQty"));
 
-                GridView1.FooterRow.Cells[2].Text = "Total";
+                GridView1.FooterRow.Cells[2].Text = "";
 
                 GridView1.FooterRow.Cells[2].HorizontalAlign = HorizontalAlign.Right;
 

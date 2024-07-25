@@ -158,6 +158,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="imagesreturn.jpg" />
     <Content Include="imagesreturn.png" />
+    <Content Include="Images\back1.jpg" />
     <Content Include="Images\Connectivity.jpg" />
     <Content Include="Images\Inventory.jpg" />
     <Content Include="Images\it-asset-management-2--scaled.jpg" />

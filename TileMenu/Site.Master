@@ -167,7 +167,7 @@
             </div>
             <div style="clear: both;"></div>
         </div>
-        <div class="container body-content" style="margin-top: 70px;">
+        <div class="container body-content" style="width:100%">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

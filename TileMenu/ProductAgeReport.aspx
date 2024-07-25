@@ -1,6 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" EnableEventValidation = "false" CodeBehind="ProductAgeReport.aspx.cs" Inherits="TileMenu.ProductAgeReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+        
+        .uday {
+            padding-top: 70px;
+            min-height: 100vh;
+            border: 2px solid black;
+            width: 100%;
+            background-image: url('/Images/back1.jpg');
+            background-image: url('/Images/back1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <div class="uday">
+        <div style="width: 70%; margin-inline: auto">
+
+    
     <div class="row">
                 <div class="col-12">
                     <div class="form-group">
@@ -97,8 +114,8 @@
           <div class="row">
           <div class="col-12">
             <div class="form-group">
-                <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click"></asp:Button>
-                <asp:Button ID="btnexport" runat="server" Text="Export To Excel" OnClick="btnexport_Click"></asp:Button>
+                <asp:Button ID="btnsubmit" runat="server" CssClass="btn btn-primary btn-save" Text="Submit" OnClick="btnsubmit_Click"></asp:Button>
+                <asp:Button ID="btnexport" runat="server" Text="Export To Excel" OnClick="btnexport_Click" CssClass="btn btn-primary btn-save"></asp:Button>
             </div>
               
           </div>
@@ -155,6 +172,8 @@
       </asp:GridView>
      
      </div>
+</div>
+            </div>
 </div>
         </div>
 </asp:Content>

@@ -89,6 +89,21 @@
             return true;
         }
     </script>
+        <style>
+         .uday {
+     padding-top: 70px;
+     min-height: 100vh;
+     border: 2px solid black;
+     width: 100%;
+     background-image: url('/Images/back1.jpg');
+     background-image: url('/Images/back1.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+     overflow-y:auto;
+ }
+    </style>
+    <div class="uday">
+    <div style="width: 70%; margin-inline: auto">
     <div class="col-sm-12">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true">Create</a> </li>
@@ -206,6 +221,8 @@
 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 
