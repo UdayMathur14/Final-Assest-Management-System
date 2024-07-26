@@ -26,10 +26,10 @@ namespace TileMenu
         {
             if (!IsPostBack)
             {
-               
+
                 GetData();
                 GetDataNI();
-               
+
 
 
             }
@@ -104,7 +104,7 @@ namespace TileMenu
                             ",Product_Name,[ProductDetail_SerialNo] as SerialNo,ProductDetail_AssetCode as AssetCode" +
                             " from  [dbo].[Inv_StockOut] inner join Inv_ProductDetail_Master " +
                             " on Inv_ProductDetail_Master.ProductDetail_Id=[Inv_StockOut] .StockOut_ProdDetail_Id " +
-                            " inner join Inv_Product_Master on Inv_Product_Master.Product_Id=[Inv_ProductDetail_Master].ProductDetail_Product_Id "+  
+                            " inner join Inv_Product_Master on Inv_Product_Master.Product_Id=[Inv_ProductDetail_Master].ProductDetail_Product_Id " +
                             " where StockOut_Id not in (select [StockReturn_StockOut_Id] from Inv_StockReturn ) and  StockOut_ERDate " +
                             " not in('1900-01-01 00:00:00.000')and StockOut_OAC='Employee'and StockOut_ProdDetail_Id<>0 order by StockOut_ERDate";
 
@@ -140,7 +140,7 @@ namespace TileMenu
                     e.Row.Font.Bold = true;
                     e.Row.ForeColor = Color.White;
 
-                    e.Row.BackColor = Color.IndianRed;
+                    e.Row.BackColor = Color.Red;
                 }
 
 

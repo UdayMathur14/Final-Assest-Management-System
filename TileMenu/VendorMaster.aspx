@@ -85,189 +85,190 @@
 
     </script>
     <style>
-            .uday {
-    padding-top:70px;
-    min-height:100vh;
-    border:2px solid black;
-    width:100%;
-    background-image:url('/Images/back1.jpg');
-    background-image:url('/Images/back1.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
+        .uday {
+            padding-top: 70px;
+            min-height: 100vh;
+            border: 2px solid black;
+            width: 100%;
+            background-image: url('/Images/back1.jpg');
+            background-image: url('/Images/back1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
     <div class="uday">
 
- 
-    <div class="logine" style="width:70%; margin-inline: auto">
-        <asp:Panel ID="Panel1" runat="server">
-            <fieldset>
-                <legend><b>Vendor/Supplier Master :</b><asp:Label ID="lblid" runat="server"></asp:Label></legend>
-                <table style="height: 200px">
-                    <tr>
+
+        <div class="logine" style="width: 70%; margin-inline: auto">
+            <asp:Panel ID="Panel1" runat="server">
+                <fieldset>
+                    <legend><b>Vendor/Supplier Master :</b><asp:Label ID="lblid" runat="server"></asp:Label></legend>
+                    <table style="height: 200px">
+                        <tr>
+                            <td>
+                                <table border="1">
+                                    <caption>
+                                        <tr>
+                                            <td>
+                                                <label>Vendor/Supplier Name:<span class="required" style="color: red">*</span></label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtvendor" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                            <td>
+                                                <label>Vendor Code(SAP):</label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtvendorcode" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+
+                                        </tr>
+                                    </caption>
+
+
+
+                                    <caption>
+                                        <tr>
+                                            <td>
+                                                <label>Business Phone:</label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtbusinessphone" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                            <td>
+                                                <label>Toll Free No.:</label></td>
+                                            <td>
+                                                <asp:TextBox ID="txttollfree" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                    </caption>
+                                    <caption>
+                                        <tr>
+                                            <td>
+                                                <label>Address:<span class="required" style="color: red">*</span></label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtaddress" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                            <td>
+                                                <label>City:<span class="required" style="color: red">*</span></label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtcity" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                    </caption>
+                                    <caption>
+                                        <tr>
+                                            <td>
+                                                <label>Region:<span class="required" style="color: red">*</span></label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtregion" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                            <td>
+                                                <label>Zip:<span class="required" style="color: red">*</span></label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtzip" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                    </caption>
+                                    <caption>
+                                        <tr>
+                                            <td>
+                                                <label>Support Page:</label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtsupportpage" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                            <td>
+                                                <label>Notes:</label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtnotes" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                    </caption>
+                                    <caption>
+                                        <tr>
+                                            <td>
+                                                <label>Customer Id:</label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtCustomerId" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
+                                            <td>
+                                                <label>
+                                                    Status:<span class="required" style="color: red">*</span></label></td>
+                                            <td>
+                                                <asp:DropDownList ID="ddltype" runat="server" AutoPostBack="false" Height="25px"
+                                                    Width="150px">
+                                                    <asp:ListItem Text="ACTIVE" Value="ACTIVE" Selected="True"></asp:ListItem>
+                                                    <asp:ListItem Text="INACTIVE" Value="INACTIVE"></asp:ListItem>
+
+                                                </asp:DropDownList>
+
+                                            </td>
+                                        </tr>
+
+                                    </caption>
+                                </table>
+                            </td>
+
+
+                        </tr>
+
                         <td>
-                            <table border="1">
-                                <caption>
-                                    <tr>
-                                        <td>
-                                            <label>Vendor/Supplier Name:<span class="required" style="color: red">*</span></label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtvendor" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                        <td>
-                                            <label>Vendor Code(SAP):</label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtvendorcode" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-
-                                    </tr>
-                                </caption>
-
-
-
-                                <caption>
-                                    <tr>
-                                        <td>
-                                            <label>Business Phone:</label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtbusinessphone" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                        <td>
-                                            <label>Toll Free No.:</label></td>
-                                        <td>
-                                            <asp:TextBox ID="txttollfree" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                    </tr>
-                                </caption>
-                                <caption>
-                                    <tr>
-                                        <td>
-                                            <label>Address:<span class="required" style="color: red">*</span></label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtaddress" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                        <td>
-                                            <label>City:<span class="required" style="color: red">*</span></label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtcity" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                    </tr>
-                                </caption>
-                                <caption>
-                                    <tr>
-                                        <td>
-                                            <label>Region:<span class="required" style="color: red">*</span></label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtregion" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                        <td>
-                                            <label>Zip:<span class="required" style="color: red">*</span></label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtzip" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                    </tr>
-                                </caption>
-                                <caption>
-                                    <tr>
-                                        <td>
-                                            <label>Support Page:</label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtsupportpage" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                        <td>
-                                            <label>Notes:</label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtnotes" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                    </tr>
-                                </caption>
-                                <caption>
-                                    <tr>
-                                        <td>
-                                            <label>Customer Id:</label></td>
-                                        <td>
-                                            <asp:TextBox ID="txtCustomerId" runat="server" Enabled="True" Height="25px" Width="200px"></asp:TextBox></td>
-                                        <td>
-                                            <label>
-                                                Status:<span class="required" style="color: red">*</span></label></td>
-                                        <td>
-                                            <asp:DropDownList ID="ddltype" runat="server" AutoPostBack="false" Height="25px"
-                                                Width="150px">
-                                                <asp:ListItem Text="ACTIVE" Value="ACTIVE" Selected="True"></asp:ListItem>
-                                                <asp:ListItem Text="INACTIVE" Value="INACTIVE"></asp:ListItem>
-
-                                            </asp:DropDownList>
-
-                                        </td>
-                                    </tr>
-
-                                </caption>
-                            </table>
+                            <br>
                         </td>
 
+                        <tr>
+                            <td colspan="4" align="center" style="display: flex; gap: 2em; margin-inline: auto">
+                                <asp:Button ID="btnsubmit" runat="server" CssClass="btn btn-primary"
+                                    Text="Save" OnClick="btnsubmit_Click" OnClientClick="return validate(); " />
 
-                    </tr>
-                    
-                    <td><br></td>
+                                <asp:Button ID="btncancel" runat="server" Text="Cancle" Style="text-align: center;" OnClick="btncancel_Click" CssClass="btn btn-primary btn-save" />
+                            </td>
+                        </tr>
+                    </table>
 
-                    <tr>
-                        <td colspan="4" align="center" style="display:flex;gap:2em;margin-inline:auto">
-                            <asp:Button  ID="btnsubmit" runat="server" CssClass="btn btn-primary" 
-                                Text="Save"  OnClick="btnsubmit_Click" OnClientClick="return validate(); " />
+                    <br />
 
-                            <asp:Button ID="btncancel" runat="server" Text="Cancle"  style="text-align:center;" OnClick="btncancel_Click" CssClass="btn btn-primary btn-save" />
-                        </td>
-                    </tr>
-                </table>
 
-                <br />
 
+
+
+                </fieldset>
+            </asp:Panel>
+            <asp:Panel ID="pnlSM" runat="server" Visible="true">
+                <fieldset>
+                    <legend><b>Sales Manager:</b></legend>
+                    <table border="1" width="100%">
+                        <tr style="background-color: #D72B37; color: White; height: 20px; font-weight: bold">
+                            <td>Name</td>
+                            <td>Mobile</td>
+                            <td>Email</td>
+                            <td>ADD</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="txtsmname" runat="server" Width="150px" Height="20px"></asp:TextBox></td>
+                            <td>
+                                <asp:TextBox ID="txtsmmobile" runat="server" Width="150px" Height="20px"></asp:TextBox></td>
+                            <td>
+                                <asp:TextBox ID="txtsmemail" runat="server" Width="150px" Height="20px"></asp:TextBox></td>
+                            <td>
+                                <asp:Button ID="btnaddSM" runat="server" Text="ADD" OnClick="btnaddSM_Click"
+                                    OnClientClick="return validateSM();" Width="67px"></asp:Button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <asp:GridView ID="gvSMnew" runat="server" AutoGenerateColumns="False" ForeColor="Black" GridLines="Both" BackColor="White"
+                                    BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px"
+                                    CellPadding="5" RowStyle-Height="30px" Width="100%" DataKeyNames="id">
+
+                                    <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+
+                                    <Columns>
+                                        <asp:BoundField DataField="SMName" HeaderText="SM Name" />
+                                        <asp:BoundField DataField="SMMobile" HeaderText="Mobile" />
+                                        <asp:BoundField DataField="SMemail" HeaderText="SM Email" />
+
+
+
+                                    </Columns>
+                                </asp:GridView>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </asp:Panel>
+            <div class="clearH10"></div>
 
 
 
 
             </fieldset>
-        </asp:Panel>
-        <asp:Panel ID="pnlSM" runat="server" Visible="true">
-            <fieldset>
-                <legend><b>Sales Manager:</b></legend>
-                <table border="1" width="100%">
-                    <tr style="background-color: #D72B37; color: White; height: 20px; font-weight: bold">
-                        <td>Name</td>
-                        <td>Mobile</td>
-                        <td>Email</td>
-                        <td>ADD</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="txtsmname" runat="server" Width="150px" Height="20px"></asp:TextBox></td>
-                        <td>
-                            <asp:TextBox ID="txtsmmobile" runat="server" Width="150px" Height="20px"></asp:TextBox></td>
-                        <td>
-                            <asp:TextBox ID="txtsmemail" runat="server" Width="150px" Height="20px"></asp:TextBox></td>
-                        <td>
-                            <asp:Button ID="btnaddSM" runat="server" Text="ADD" OnClick="btnaddSM_Click"
-                                OnClientClick="return validateSM();" Width="67px"></asp:Button></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <asp:GridView ID="gvSMnew" runat="server" AutoGenerateColumns="False" ForeColor="Black" GridLines="Both" BackColor="White"
-                                BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px"
-                                CellPadding="5" RowStyle-Height="30px" Width="100%" DataKeyNames="id">
-
-                                <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
-
-                                <Columns>
-                                    <asp:BoundField DataField="SMName" HeaderText="SM Name" />
-                                    <asp:BoundField DataField="SMMobile" HeaderText="Mobile" />
-                                    <asp:BoundField DataField="SMemail" HeaderText="SM Email" />
-
-
-
-                                </Columns>
-                            </asp:GridView>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </asp:Panel>
-        <div class="clearH10"></div>
-
-
-
-
-        </fieldset>
       
       </asp:Panel>
      <asp:Panel ID="pnlAM" runat="server" Visible="true">
@@ -313,12 +314,12 @@
              </table>
          </fieldset>
      </asp:Panel>
-        <div class="clearH10"></div>
+            <div class="clearH10"></div>
 
 
 
 
-        </fieldset>
+            </fieldset>
       
       </asp:Panel>
       <asp:Panel ID="panel2" runat="server">
@@ -382,6 +383,6 @@
           </asp:GridView>
 
       </asp:Panel>
+        </div>
     </div>
-           </div>
 </asp:Content>
