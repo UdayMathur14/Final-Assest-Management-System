@@ -11,7 +11,7 @@
 
     <style>
         .uday{
-            background-color:rgb(200, 233, 233);
+            background-color:#B0E0E6;
             overflow:auto;
             /*height:auto;
             width:100%;*/

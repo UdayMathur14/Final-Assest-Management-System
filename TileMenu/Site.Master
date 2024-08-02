@@ -20,9 +20,12 @@
 </head>
 <body>
     <style>
-       /* .navbar-inverse{
-            background-color:#ACE1AF !important;
-        }*/
+        .navbar-inverse{
+            background-color:rgb(246, 144, 144) !important;
+        }
+        .sub-menu-container{
+            background-color:rgb(248, 220,190 ) !important;
+        }
     </style>
     <form runat="server">
         <asp:ScriptManager runat="server">
