@@ -9,9 +9,9 @@
             border: 2px solid black;
             width: 100%;
             background-image: url('/Images/back1.jpg');
-            background-image: url('/Images/back1.jpg');
             background-repeat: no-repeat;
             background-size: cover;
+            overflow:auto;
         }
     </style>
     <div class="uday">

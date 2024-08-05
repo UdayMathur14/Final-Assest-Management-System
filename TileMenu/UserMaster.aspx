@@ -24,8 +24,8 @@
 
         /* Table Row Hover Effect */
         .table tbody tr:hover {
-            background-color: darkgrey; /* Slightly darker grey background on hover */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            background-color: rgb(255, 156, 61); /* Slightly darker grey background on hover */
+            transition: background-color ; /* Smooth transition for hover effect */
         }
 
         /* Table Cell Alignment */

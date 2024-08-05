@@ -10,9 +10,9 @@
      border: 2px solid black;
      width: 100%;
      background-image: url('/Images/back1.jpg');
-     background-image: url('/Images/back1.jpg');
      background-repeat: no-repeat;
      background-size: cover;
+     overflow:auto;
  }
     </style>
     <div class="uday">
@@ -113,7 +113,7 @@
 
 
     <fieldset><legend runat="server" id="noncons" visible="false"><b>Item Out-Non Cosumable</b></legend></fieldset>
-    <div class="row">
+    <div class="row" style="width: 90%; margin-right:50px; text-align: center;">
         <div class="col-12">
             <div class="form-group">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both" BackColor="White"
@@ -171,8 +171,8 @@
         <div class="col-12">
             <div class="form-group">
                 <asp:GridView ID="grvItemIn" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both" BackColor="White"
-                    BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px"
-                    Width="95%" CellPadding="5" Visible="true">
+                    BorderColor="#666666" BorderWidth="1px" SortedDescendingHeaderStyle-BorderStyle="Dotted"
+                    Width="100%" CellPadding="7" Visible="true">
                     <FooterStyle BackColor="#E3E3E1" />
                     <RowStyle BackColor="#ffffcc" />
                     <Columns>

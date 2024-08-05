@@ -70,7 +70,7 @@
 
         .table tbody tr:hover {
             background-color: pink; /* Slightly darker grey background on hover */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            transition: background-color; /* Smooth transition for hover effect */
         }
     </style>
     <script type="text/javascript">

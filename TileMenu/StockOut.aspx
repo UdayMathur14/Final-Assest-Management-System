@@ -158,7 +158,7 @@
                 }
 
                     div.divOAC .opOAC input[type=radio]:checked ~ label {
-                        background-color: red;
+                        background-color: lightcoral;
                     }
 
         .uday {

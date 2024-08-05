@@ -138,7 +138,7 @@ namespace TileMenu
                 if (overdue > 0)
                 {
                     e.Row.Font.Bold = true;
-                    e.Row.ForeColor = Color.White;
+                    e.Row.ForeColor = Color.Black;
 
                     e.Row.BackColor = Color.LightPink;
                 }

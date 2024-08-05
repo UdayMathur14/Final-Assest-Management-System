@@ -20,19 +20,20 @@
 <div class="uday">
 
 
-<div style="width: 70%; margin-inline: auto" style="text-align:center" >
+<div style="width: 80%; margin-inline: auto; text-align: center;">
+
 
 
  <fieldset><legend><b>Returnable Item Report(Inventory) :</b></legend>
 <br>
          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both"  BackColor="White" 
                             BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" 
-                        Width ="100%" CellPadding="5" RowStyle-Height="30px" onrowdatabound="GridView1_RowDataBound">
+                        Width ="100%" CellPadding="12" RowStyle-Height="30px" onrowdatabound="GridView1_RowDataBound">
         <FooterStyle BackColor="#E3E3E1" />
         <RowStyle BackColor="#ffffcc" />
          
-         <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
+         <SelectedRowStyle Width="100%" BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="45px" Width="100%" />
         <AlternatingRowStyle BackColor="White" />
          </asp:GridView>
 </fieldset>
@@ -48,8 +49,8 @@
         <FooterStyle BackColor="#E3E3E1" />
         <RowStyle   BackColor="#ffffcc" />
          
-         <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
+         <SelectedRowStyle Width ="100%" BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+         <HeaderStyle Width ="100%" BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
         <AlternatingRowStyle BackColor="White" />
 <Columns>
           <asp:BoundField  DataField="GatePassNo" HeaderText="GatePassNO." />

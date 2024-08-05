@@ -500,7 +500,7 @@ namespace TileMenu
                 if (type == "Available")
                 {
                     //e.Row.ForeColor = Color.Gray;
-                    e.Row.BackColor = Color.LightBlue;
+                    e.Row.BackColor = Color.LightGreen;
                 }
 
                 //Label lblActive = e.Row.FindControl("lbl_assetcode") as Label;
