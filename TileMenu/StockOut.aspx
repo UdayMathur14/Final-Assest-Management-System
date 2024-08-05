@@ -166,10 +166,12 @@
             min-height: 100vh;
             border: 2px solid black;
             width: 100%;
-            background-image: url('/Images/back1.jpg');
+             background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), /* This overlay will lighten the image */
+        url('/Images/Inventory.jpg');
             background-repeat: no-repeat;
             background-size: cover;
-            overflow:auto;
+            overflow: auto;
         }
     </style>
     <%--<asp:UpdatePanel runat="server" ID="updMain">
@@ -239,7 +241,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
-                        <asp:Label ID="lblproduct" runat="server" Text="Product" CssClass="form-label"></asp:Label><asp:TextBox ID="Hidden1" runat="server" Width="0px" Height="0px" />
+                        <asp:Label ID="lblproduct" runat="server" Text="Product" CssClass="form-label"></asp:Label><asp:TextBox ID="Hidden1" runat="server" Width="0" Height="0" />
                         <asp:DropDownList ID="ddlproduct" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlproduct_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                 </div>
@@ -382,9 +384,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <asp:GridView ID="GridView1" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="StockOut_Id" CssClass="table table-striped">
+                        <asp:GridView ID="GridView1" runat="server" ForeColor="Black" GridLines="Both"  BackColor="White" BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" 
+Width ="90%" CellPadding="5" Visible="true" OnRowDataBound="GridView1_RowDataBound" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="StockOut_Id" CssClass="table table-striped">
                             <Columns>
-                                <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="70px">
+                                <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="80px" ItemStyle-Font-Bold="true">
                                     <ItemTemplate>
                                         <asp:HiddenField ID="hdStockOutId" runat="server" Value='<%# Eval("StockOut_Id") %>' ClientIDMode="Static" />
                                         <asp:HiddenField ID="hdemp" runat="server" Value='<%# Eval("EmpName") %>' ClientIDMode="Static" />

@@ -4,7 +4,7 @@
     <div class="uday">
     <div class="row">
         <div class="col-12" style="text-align:center; width:100vw; height:100vh; padding-top:80px">
-            <img src="Images/Inventory.jpg" style="width:80vw;height:80vh" />
+            <img src="Images/try1.jpg" style="width:70vw;height:70vh" />
         </div>       
     </div>
         </div>

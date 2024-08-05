@@ -162,6 +162,8 @@
     <Content Include="Images\Connectivity.jpg" />
     <Content Include="Images\Inventory.jpg" />
     <Content Include="Images\it-asset-management-2--scaled.jpg" />
+    <Content Include="Images\try1.jpg" />
+    <Content Include="Images\try2.jpg" />
     <Content Include="InventorHomePageImage.png" />
     <Content Include="KHDLOGO.png" />
     <Content Include="Login.aspx" />

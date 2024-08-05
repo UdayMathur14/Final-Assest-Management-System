@@ -8,7 +8,7 @@
             min-height: 100vh;
             border: 2px solid black;
             width: 100%;
-            background-image: url('/Images/back1.jpg');
+            background-image: url('/Images/try2.jpg');
             background-repeat: no-repeat;
             background-size: cover;
         }

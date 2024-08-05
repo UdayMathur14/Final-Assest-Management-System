@@ -490,9 +490,6 @@ namespace TileMenu
 
             strqry = "select Emp_code,emp_name+'('+emp_code+')' as EMP from tblempmaster order by emp_name ";
 
-
-
-
             SqlConnection Con = new SqlConnection();
             Con.ConnectionString = strCon;
             SqlDataAdapter Da = new SqlDataAdapter(strqry, Con);

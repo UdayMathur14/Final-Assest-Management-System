@@ -7,8 +7,7 @@
      min-height: 100vh;
      border: 2px solid black;
      width: 100%;
-     background-image: url('/Images/back1.jpg');
-     background-image: url('/Images/back1.jpg');
+     background-image: url('/Images/try2.jpg');
      background-repeat: no-repeat;
      background-size: cover;
  }
@@ -40,7 +39,7 @@
           <div class="row">
            <div class="col-md-6 col-sm-12">
             <div class="form-group">
-                <asp:Label ID="Label1" runat="server" Text="Available Qty Less Then or Eqal:"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Available Qty Less Then or Equal:"></asp:Label>
                 <asp:TextBox ID="txtqty"  runat ="server" Width ="150px" AutoPostBack="True" ontextchanged="txtqty_TextChanged" CssClass="form-control" ></asp:TextBox>
 
             </div>

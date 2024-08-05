@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-
-using System.Globalization;
-using System.IO;
 using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace TileMenu
 {
@@ -29,8 +17,6 @@ namespace TileMenu
 
                 GetData();
                 GetDataNI();
-
-
 
             }
 
@@ -139,7 +125,6 @@ namespace TileMenu
                 {
                     e.Row.Font.Bold = true;
                     e.Row.ForeColor = Color.Black;
-
                     e.Row.BackColor = Color.LightPink;
                 }
 

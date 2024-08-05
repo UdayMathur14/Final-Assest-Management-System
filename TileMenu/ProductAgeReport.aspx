@@ -8,7 +8,7 @@
             min-height: 100vh;
             border: 2px solid black;
             width: 100%;
-            background-image: url('/Images/back1.jpg');
+            background-image: url('/Images/try2.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             overflow:auto;
@@ -140,7 +140,7 @@
 <asp:CommandField ShowEditButton="true" HeaderText="Modify" />  
          <asp:BoundField HeaderText="Product Name" DataField="Product_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
              
-                <asp:BoundField HeaderText="Make" DataField="Make_Name" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+                <asp:BoundField HeaderText="Make" DataField="Make_Name" ItemStyle-Font-Bold="true" ReadOnly="true" />
              <asp:BoundField HeaderText="Type" DataField="ProdType_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
              <asp:BoundField HeaderText="Model" DataField="ProdModel_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
            <asp:BoundField HeaderText="Asset Code" DataField="ProductDetail_AssetCode" ItemStyle-Font-Bold="true"/>
