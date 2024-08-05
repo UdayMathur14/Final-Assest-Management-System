@@ -140,7 +140,7 @@ namespace TileMenu
                     e.Row.Font.Bold = true;
                     e.Row.ForeColor = Color.White;
 
-                    e.Row.BackColor = Color.Red;
+                    e.Row.BackColor = Color.LightPink;
                 }
 
 

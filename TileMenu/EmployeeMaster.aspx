@@ -10,16 +10,20 @@
             background-image: url('/Images/back1.jpg');
             background-repeat: no-repeat;
             background-size: cover;
-            overflow:auto;
+            overflow: auto;
+        }
+
+        .applyColor {
+            background-color: darkslategrey !important;
+            color: white !important;
         }
 
         .table {
-            border-radius: 0.5rem; /* Rounded corners */
+            border-radius: 2.5%; /* Rounded corners */
             border-collapse: separate;
             border-spacing: 0;
             margin-bottom: 1rem;
             width: 100%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
         }
 
         .thead-dark th {
@@ -35,18 +39,21 @@
             text-align: center; /* Center align text */
         }
 
-        .table-striped tbody tr:nth-of-type(odd) {
+        .table tbody tr:nth-child(odd) {
             background-color: Pink; /* Alternating row colors */
         }
 
-        .table-striped tbody tr:nth-of-type(even) {
+        .table tbody tr:nth-child(even) {
             background-color: #fffccc; /* Even row background */
         }
 
+        .table-responsive {
+            overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+        }
 
 
         .bg-light {
-            background-color: lightblue !important; /* Light background for alternating rows */
+            background-color: lightgrey !important; /* Light background for alternating rows */
         }
 
         .bg-dark {
@@ -61,8 +68,9 @@
             text-align: center; /* Center align text */
         }
 
-        .table-hover tbody tr:hover {
-            background-color: pink; /* Hover effect for rows */
+        .table tbody tr:hover {
+            background-color: pink; /* Slightly darker grey background on hover */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
         }
     </style>
     <script type="text/javascript">
@@ -107,8 +115,8 @@
     <div class="uday">
         <div class="col-sm-12" style="height:100%" >
             <ul class="nav nav-tabs" style="width:70%; margin-inline: auto";>
-                <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true">Create</a> </li>
-                <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false">Update</a> </li>
+                <li class="active" style="color:black;font-weight:bold; font-size:16px"><a href="#tab1" data-toggle="tab" aria-expanded="true">Create</a> </li>
+                <li class="" style="color:black;font-weight:bold; font-size:16px"><a href="#tab2" data-toggle="tab" aria-expanded="false">Update</a> </li>
             </ul>
             <div class="tab-content" style="width:70%; margin-inline: auto";>
                 <div class="tab-pane fade active in" id="tab1">
@@ -241,7 +249,7 @@
                         <div class="col-12">
                             <div class="table-responsive">
                                 <asp:GridView runat="server" ID="tblemp" AutoGenerateColumns="true" CssClass="table table-striped table-bordered table-hover">
-                                    <HeaderStyle CssClass="thead-dark text-white" />
+                                    <HeaderStyle CssClass="thead-dark text-white applyColor" />
                                     <RowStyle CssClass="text-center" />
                                     <AlternatingRowStyle CssClass="bg-light" />
                                     <FooterStyle CssClass="text-white bg-dark" />

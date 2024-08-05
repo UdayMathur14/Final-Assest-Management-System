@@ -12,12 +12,15 @@
     background-size: cover;
     overflow:auto;
 }
+         .table td, .table th {
+    text-align: center;
+}
 </style>
  
 <div class="uday">
 
 
-<div style="width: 70%; margin-inline: auto" >
+<div style="width: 70%; margin-inline: auto" style="text-align:center" >
 
 
  <fieldset><legend><b>Returnable Item Report(Inventory) :</b></legend>
@@ -40,10 +43,10 @@
  <fieldset><legend><b>Returnable Item Report(Non Inventory) :</b></legend>
 <br>
          <asp:GridView ID="GridViewNI" runat="server" AutoGenerateColumns="false" ForeColor="Black" GridLines="Both"  BackColor="White" 
-                            BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" 
+                            BorderColor="#666666" style="text-align:center" BorderStyle="Solid" BorderWidth="1px" 
                         Width ="100%" CellPadding="5" RowStyle-Height="30px" OnRowDeleting="GridViewNI_RowDeleting" DataKeyNames="Id">
         <FooterStyle BackColor="#E3E3E1" />
-        <RowStyle BackColor="#ffffcc" />
+        <RowStyle   BackColor="#ffffcc" />
          
          <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
          <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
@@ -61,7 +64,7 @@
 
           <asp:BoundField  DataField="id" HeaderText="ID" />
           
-          <asp:CommandField HeaderText="Return" ShowDeleteButton="true" ButtonType="Image" DeleteImageUrl="~/imagesreturn.png" />  
+          <asp:CommandField  HeaderText="Return" ShowDeleteButton="true" ButtonType="Image" DeleteImageUrl="~/imagesreturn.png" />  
          </Columns>
 
          </asp:GridView>

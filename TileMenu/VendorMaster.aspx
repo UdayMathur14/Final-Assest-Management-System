@@ -181,10 +181,10 @@
                                                 <label>
                                                     Status:<span class="required" style="color: red">*</span></label></td>
                                             <td>
-                                                <asp:DropDownList ID="ddltype" runat="server" AutoPostBack="false" Height="25px"
+                                                <asp:DropDownList ID="ddltype" style="color:black;font-weight:bold;" runat="server" AutoPostBack="false" Height="25px"
                                                     Width="150px">
-                                                    <asp:ListItem Text="ACTIVE" Value="ACTIVE" Selected="True"></asp:ListItem>
-                                                    <asp:ListItem Text="INACTIVE" Value="INACTIVE"></asp:ListItem>
+                                                    <asp:ListItem Text="ACTIVE" Value="ACTIVE" Selected="True" style="color:black;"></asp:ListItem>
+                                                    <asp:ListItem Text="INACTIVE" Value="INACTIVE" style="color:black"></asp:ListItem>
 
                                                 </asp:DropDownList>
 
@@ -207,7 +207,7 @@
                                 <asp:Button ID="btnsubmit" runat="server" CssClass="btn btn-primary"
                                     Text="Save" OnClick="btnsubmit_Click" OnClientClick="return validate(); " />
 
-                                <asp:Button ID="btncancel" runat="server" Text="Cancle" Style="text-align: center;" OnClick="btncancel_Click" CssClass="btn btn-primary btn-save" />
+                                <asp:Button ID="btncancel" runat="server" Text="Cancel" Style="text-align: center;" OnClick="btncancel_Click" CssClass="btn btn-primary btn-save" />
                             </td>
                         </tr>
                     </table>
