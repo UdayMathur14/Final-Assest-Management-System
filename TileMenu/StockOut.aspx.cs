@@ -1522,25 +1522,53 @@ namespace TileMenu
                 Data1.Fill(Dasa1);
 
                 string ProductDetailIdForSubitem = Dasa1.Tables[0].Rows[0][0].ToString();
-
                 string StockOutIdForSubItemquery = "select [StockOut_Id] from [Inv_StockOut] where [Stockout_SOHID] = " + ProductDetailIdForSubitem + "";
 
                 SqlDataAdapter Data2 = new SqlDataAdapter(StockOutIdForSubItemquery, Con);
                 DataSet Dasa2 = new DataSet();
                 Data2.Fill(Dasa2);
+                string StockOutIdForSubItem="";
+                if (Dasa2.Tables.Count > 0 && Dasa2.Tables[0].Rows.Count > 0)
+                {
+                    StockOutIdForSubItem = Dasa2.Tables[0].Rows[0][0].ToString();
 
-                string StockOutIdForSubItem = Dasa2.Tables[0].Rows[0][0].ToString();
+                    string subitemReturn = "INSERT INTO Inv_StockReturn (StockReturn_StockOut_Id, " +
+                               "StockReturn_ReturnDate, " +
+                               "StockReturn_CreatedBy, StockReturn_CreatedDate, stockreturn_LostByUser) " +
+                               "VALUES (" + StockOutIdForSubItem + ", " +
+                               "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', " +
+                               "'" + Session["login"].ToString() + "', " +
+                               "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', 'NO')";
+
+                    subitemReturn += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + StockOutIdForSubItem + "";
+
+                    SqlDataAdapter Data3 = new SqlDataAdapter(subitemReturn, Con);
+                    DataSet Dasa3 = new DataSet();
+                    Data3.Fill(Dasa3);
+                }
+                
+
+                //if (StockOutIdForSubItem != null && StockOutIdForSubItem != "0")
+                //{
+
+                //    string subitemReturn = "INSERT INTO Inv_StockReturn (StockReturn_StockOut_Id, " +
+                //               "StockReturn_ReturnDate, " +
+                //               "StockReturn_CreatedBy, StockReturn_CreatedDate, stockreturn_LostByUser) " +
+                //               "VALUES (" + StockOutIdForSubItem + ", " +
+                //               "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', " +
+                //               "'" + Session["login"].ToString() + "', " +
+                //               "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', 'NO')";
+
+                //    subitemReturn += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + StockOutIdForSubItem + "";
+
+                //    SqlDataAdapter Data3 = new SqlDataAdapter(subitemReturn, Con);
+                //    DataSet Dasa3 = new DataSet();
+                //    Data3.Fill(Dasa3);
 
 
-                string subitemReturn = "INSERT INTO Inv_StockReturn (StockReturn_StockOut_Id, " +
-                           "StockReturn_ReturnDate, " +
-                           "StockReturn_CreatedBy, StockReturn_CreatedDate, stockreturn_LostByUser) " +
-                           "VALUES (" + StockOutIdForSubItem + ", " +
-                           "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', " +
-                           "'" + Session["login"].ToString() + "', " +
-                           "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', 'NO')";
+                //}
 
-                subitemReturn += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + StockOutIdForSubItem + "";
+               
 
 
 
@@ -1548,9 +1576,9 @@ namespace TileMenu
                 DataSet Ds = new DataSet();
                 Da.Fill(Ds);
 
-                SqlDataAdapter Data3 = new SqlDataAdapter(subitemReturn, Con);
-                DataSet Dasa3 = new DataSet();
-                Data3.Fill(Dasa3);
+                
+
+
 
                 if (rdlsrno.SelectedIndex == 1 && txtnewsrno.Text != "")
                 {
