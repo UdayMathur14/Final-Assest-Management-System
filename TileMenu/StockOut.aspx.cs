@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Net.Mail;
+using System.Security.Cryptography;
 namespace TileMenu
 {
     public partial class StockOut : System.Web.UI.Page
@@ -1028,7 +1029,7 @@ namespace TileMenu
 
 
             MailMessage mail = new MailMessage();
-            mail.To.Add(EmpEmail);
+            //mail.To.Add(EmpEmail);
             mail.Bcc.Add("Rajnish.singh@khd.com,helpdesk.administrator@khd.com");
             //mail.From = new MailAddress("jainanuj009@gmail.com", "HR ADMIN");
             mail.From = new MailAddress("Hwil.ITAdmin@khd.com", "IT ADMIN");
@@ -1500,6 +1501,7 @@ namespace TileMenu
             DataSet Dsupdategatepass = new DataSet();
             Daupdategatepass.Fill(Dsupdategatepass);
 
+           
 
 
             if (returnType == "1")
@@ -1514,11 +1516,41 @@ namespace TileMenu
 
                 strqry += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + stockOutId + "";
 
+                string ProductDetailIdForSubitemQuery = "select [StockOut_ProdDetail_Id] from [Inv_StockOut] where StockOut_Id = "+ stockOutId+"";
+                SqlDataAdapter Data1 = new SqlDataAdapter(ProductDetailIdForSubitemQuery, Con);
+                DataSet Dasa1 = new DataSet();
+                Data1.Fill(Dasa1);
+
+                string ProductDetailIdForSubitem = Dasa1.Tables[0].Rows[0][0].ToString();
+
+                string StockOutIdForSubItemquery = "select [StockOut_Id] from [Inv_StockOut] where [Stockout_SOHID] = " + ProductDetailIdForSubitem + "";
+
+                SqlDataAdapter Data2 = new SqlDataAdapter(StockOutIdForSubItemquery, Con);
+                DataSet Dasa2 = new DataSet();
+                Data2.Fill(Dasa2);
+
+                string StockOutIdForSubItem = Dasa2.Tables[0].Rows[0][0].ToString();
+
+
+                string subitemReturn = "INSERT INTO Inv_StockReturn (StockReturn_StockOut_Id, " +
+                           "StockReturn_ReturnDate, " +
+                           "StockReturn_CreatedBy, StockReturn_CreatedDate, stockreturn_LostByUser) " +
+                           "VALUES (" + StockOutIdForSubItem + ", " +
+                           "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', " +
+                           "'" + Session["login"].ToString() + "', " +
+                           "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', 'NO')";
+
+                subitemReturn += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + StockOutIdForSubItem + "";
+
 
 
                 SqlDataAdapter Da = new SqlDataAdapter(strqry, Con);
                 DataSet Ds = new DataSet();
                 Da.Fill(Ds);
+
+                SqlDataAdapter Data3 = new SqlDataAdapter(subitemReturn, Con);
+                DataSet Dasa3 = new DataSet();
+                Data3.Fill(Dasa3);
 
                 if (rdlsrno.SelectedIndex == 1 && txtnewsrno.Text != "")
                 {
