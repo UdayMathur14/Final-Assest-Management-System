@@ -489,7 +489,7 @@ namespace TileMenu
         {
             string strqry = "";
 
-            strqry = "select Emp_code,emp_name+'('+emp_code+')' as EMP from tblempmaster order by emp_name ";
+            strqry = "select Emp_code,emp_name+'('+emp_code+')' as EMP from TblEmpMaster order by Emp_Code ";
 
             SqlConnection Con = new SqlConnection();
             Con.ConnectionString = strCon;

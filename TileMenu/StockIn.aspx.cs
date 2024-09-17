@@ -21,7 +21,7 @@ namespace TileMenu
         {
             if (!IsPostBack)
             {
-
+                txtdate.Text = System.DateTime.Now.Date.ToString("dd/MMM/yyyy");
                 FillProductAll();
                 FillMakeAll();
                 FillProductTypeAll();

@@ -90,7 +90,7 @@ namespace TileMenu
         protected void FillEmployeeAll()
         {
 
-            string strqry = "select *  from TblEmpMaster order by Emp_Name";
+            string strqry = "select *  from TblEmpMaster order by Emp_Code";
 
 
             SqlConnection Con = new SqlConnection();

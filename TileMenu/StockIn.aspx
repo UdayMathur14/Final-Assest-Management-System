@@ -109,7 +109,7 @@
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
                         <asp:Label ID="Label2" runat="server" Text="Date" CssClass="form-label"></asp:Label>
-                        <asp:TextBox ID="txtdate" runat="server" CssClass="form-control datepicker"></asp:TextBox>
+                        <asp:TextBox ID="txtdate" runat="server" CssClass="form-control datepicker" Enabled="true"></asp:TextBox>
                         <%-- <asp:ImageButton ID="imgcaldate" CssClass="calButton" runat="server" Style="display: none;" ImageUrl="~/Content/images/cal-image.png" Width="30px" OnClick="imgcaldate_Click" />
             <asp:Calendar ID="caldate" runat="server"  Visible="False" OnSelectionChanged="caldate_SelectionChanged"></asp:Calendar>--%>
                     </div>

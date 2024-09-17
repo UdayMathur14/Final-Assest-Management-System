@@ -104,7 +104,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <asp:Label ID="Label4" runat="server" Text="Issue Date" CssClass="form-label"></asp:Label>
-               <asp:TextBox ID="txtIssuedate" runat="server" CssClass="form-control datepicker" Enabled="false" ></asp:TextBox>
+               <asp:TextBox ID="txtIssuedate" runat="server" CssClass="form-control datepicker" Enabled="true" ></asp:TextBox>
             </div>
         </div>
 
