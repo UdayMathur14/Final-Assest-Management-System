@@ -165,6 +165,7 @@
     <Content Include="Images\try1.jpg" />
     <Content Include="Images\try2.jpg" />
     <Content Include="InventorHomePageImage.png" />
+    <Content Include="InventoryReport.aspx" />
     <Content Include="KHDLOGO.png" />
     <Content Include="Login.aspx" />
     <Content Include="PMTMMapping.aspx" />
@@ -391,6 +392,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryReport.aspx.cs">
+      <DependentUpon>InventoryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InventoryReport.aspx.designer.cs">
+      <DependentUpon>InventoryReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -88,6 +88,9 @@
                         <div style="clear: both;"></div>
                     </div>--%>
                     <div class="sub-menu-item" data-parentid="1">
+                         <div class="menu-item" style="background: grey" id="InventoryReportdiv">
+                            <asp:HyperLink NavigateUrl="InventoryReport.aspx" runat="server" Text="Inventory Report" ID="InventoryReportLink"></asp:HyperLink>
+                         </div>
                         <div class="menu-item" style="background: grey" id="ProductagereReportdiv">
                             <asp:HyperLink NavigateUrl="RetrurnableReport.aspx" runat="server" Text="Returnable Item Report" ID="ProductagereReportLink"></asp:HyperLink>
                         </div>
@@ -110,7 +113,7 @@
                         <div class="menu-item" style="background: grey" id="ProductageReportdiv">
                             <asp:HyperLink NavigateUrl="Productagereport.aspx" runat="server" Text="Age Wise" ID="ProductageReportLink"></asp:HyperLink>
                         </div>
-
+                        
                     </div>
                     <div class="sub-menu-item" data-parentid="2">
                         <div class="menu-item" style="background: grey" id="AMCReportdiv">
@@ -206,6 +209,9 @@
         });
         document.getElementById('TransactionReportdiv').addEventListener('click', function () {
             document.getElementById('<%= TransactionReportLink.ClientID %>').click();
+        });
+        document.getElementById('InventoryReportdiv').addEventListener('click', function () {
+            document.getElementById('<%= InventoryReportLink.ClientID %>').click();
         });
         document.getElementById('RepairReportdiv').addEventListener('click', function () {
             document.getElementById('<%= RepairReportLink.ClientID %>').click();

@@ -50,7 +50,7 @@ namespace TileMenu
                             " inner join Inv_Product_Master on [Inv_ProductDetail_Master].ProductDetail_Product_Id=Inv_Product_Master.Product_Id " +
                             ") " +
     " select Transtype as [Transaction Type],Product_name as [Product Name],StockOut_EmpCode as [Employee Code],StockOut_EmpName as [Employee Name]," +
-    " StockOut_CostCenter as [Cost Center],convert(varchar(50),tdate,106) as [Transcation Date],StockOut_IssueType as [Issue Type],StockOut_OAC as [OAC],"+
+    " convert(varchar(50),tdate,106) as [Transcation Date],StockOut_IssueType as [Issue Type],StockOut_OAC as [OAC],"+
     " ProductDetail_SerialNo as [Serial Number],ProductDetail_AssetCode as [Asset Code] from StockLedger "+
     " where 1=1";
 
