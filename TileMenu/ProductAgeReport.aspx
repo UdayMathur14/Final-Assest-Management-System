@@ -9,9 +9,12 @@
             border: 2px solid black;
             width: 100%;
             background-image: url('/Images/try2.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            overflow:auto;
+            background-repeat: repeat-y;
+            background-size: 100%;
+            overflow-y: auto;
+        }
+        .gridview-hover tbody tr:hover {
+             background-color: lightgrey !important;
         }
     </style>
     <div class="uday">
@@ -127,54 +130,67 @@
                      
          
                 
-    <div class="row">
+        <div class="row">
                 <div class="col-12">
-                    <div style="overflow-x:scroll"  class="form-group">
-     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ForeColor="Black" GridLines="Both"  BackColor="White" 
-                            BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped"
-                        Width ="90%" CellPadding="5" Visible="true" RowStyle-Height="15px" onrowdatabound="GridView1_RowDataBound" DataKeyNames="ProductDetail_Id" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
-        <FooterStyle BackColor="#E3E3E1" />
-         <RowStyle BackColor="#ffffcc" />
-         <Columns>
-         <asp:BoundField HeaderText="S.No." DataField="sno" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-<asp:CommandField ShowEditButton="true" HeaderText="Modify" />  
-         <asp:BoundField HeaderText="Product Name" DataField="Product_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-             
-                <asp:BoundField HeaderText="Make" DataField="Make_Name" ItemStyle-Font-Bold="true" ReadOnly="true" />
-             <asp:BoundField HeaderText="Type" DataField="ProdType_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-             <asp:BoundField HeaderText="Model" DataField="ProdModel_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-           <asp:BoundField HeaderText="Asset Code" DataField="ProductDetail_AssetCode" ItemStyle-Font-Bold="true"/>
-           <asp:BoundField HeaderText="Serial No." DataField="ProductDetail_SerialNo" ItemStyle-Font-Bold="true" />
-            <asp:BoundField HeaderText="Configuration" DataField="ProductDetail_Config" ItemStyle-Font-Bold="true" />
-         <asp:BoundField HeaderText="Received On" DataField="InDate" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-         <asp:BoundField HeaderText="Challan No." DataField="StockIn_ChallanNo" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-             <asp:BoundField HeaderText="Captilized On" DataField="CapDate" ItemStyle-Font-Bold="true" ItemStyle-Wrap="false"/>
+                    <div style="overflow-x:scroll; width: 100%; margin-bottom: 10px;"  class="form-group">
+     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ForeColor="Black" GridLines="Both" BackColor="White" 
+    BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped gridview-hover"
+    Width="90%" CellPadding="5" Visible="true" RowStyle-Height="15px" 
+    onrowdatabound="GridView1_RowDataBound" DataKeyNames="ProductDetail_Id" 
+    OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" 
+    OnRowUpdating="GridView1_RowUpdating">
+    <FooterStyle BackColor="#E3E3E1" />
+    <RowStyle BackColor="#ffffcc" />
+    <Columns>
+        <asp:BoundField HeaderText="S.No." DataField="sno" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:TemplateField HeaderText="Modify">
+            <ItemTemplate>
+                <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" 
+                    CssClass="btn btn-danger btn-sm"></asp:LinkButton>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Update" Text="Update" 
+                    CssClass="btn btn-success btn-sm"></asp:LinkButton>
+                <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel" Text="Cancel" 
+                    CssClass="btn btn-secondary btn-sm"></asp:LinkButton>
+            </EditItemTemplate>
+        </asp:TemplateField>
+        <asp:BoundField HeaderText="Product Name" DataField="Product_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
+        <asp:BoundField HeaderText="Make" DataField="Make_Name" ItemStyle-Font-Bold="true" ReadOnly="true" />
+        <asp:BoundField HeaderText="Type" DataField="ProdType_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
+        <asp:BoundField HeaderText="Model" DataField="ProdModel_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
+        <asp:BoundField HeaderText="Asset Code" DataField="ProductDetail_AssetCode" ItemStyle-Font-Bold="true"/>
+        <asp:BoundField HeaderText="Serial No." DataField="ProductDetail_SerialNo" ItemStyle-Font-Bold="true" />
+        <asp:BoundField HeaderText="Configuration" DataField="ProductDetail_Config" ItemStyle-Font-Bold="true" />
+        <asp:BoundField HeaderText="Received On" DataField="InDate" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
+        <asp:BoundField HeaderText="Challan No." DataField="StockIn_ChallanNo" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="Captilized On" DataField="CapDate" ItemStyle-Font-Bold="true" ItemStyle-Wrap="false"/>
         <asp:BoundField HeaderText="Warranty Expiry" DataField="WED" ItemStyle-Font-Bold="true" ItemStyle-Wrap="false"/>
-             <asp:BoundField HeaderText="Age(Year)" DataField="Age" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="Age(Year)" DataField="Age" ItemStyle-Font-Bold="true" ReadOnly="true"/>
         <asp:BoundField HeaderText="Age(Days)" DataField="days" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-       <asp:BoundField HeaderText="Employee Code" DataField="StockOut_EmpCode" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-       <asp:BoundField HeaderText="Employee Name" DataField="Stockout_empname" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-       <asp:BoundField HeaderText="CostCenter" DataField="StockOut_CostCenter" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-             <asp:BoundField HeaderText="CostCenter Name" DataField="Description" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-       <asp:BoundField HeaderText="Stock Issued On" DataField="IssueDate" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-      <asp:BoundField HeaderText="Issue Type" DataField="StockOut_IssueType" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-     <asp:BoundField HeaderText="OAC" DataField="StockOut_OAC" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-     <asp:BoundField HeaderText="Remarks" DataField="StockOut_Remarks" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-     <asp:BoundField HeaderText="Asset Type" DataField="StockIn_AssetType" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-    <asp:BoundField HeaderText="in_Id" DataField="StockIn_id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-  <asp:BoundField HeaderText="prodId" DataField="product_Id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
-<asp:BoundField HeaderText="outid" DataField="stockout_id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
- 
-         </Columns>
-         <SelectedRowStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="black" Font-Bold="True" ForeColor="White" Height="35px" />
-        <AlternatingRowStyle BackColor="Pink" />
-      </asp:GridView>
-     
+        <asp:BoundField HeaderText="Employee Code" DataField="StockOut_EmpCode" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="Employee Name" DataField="Stockout_empname" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="CostCenter" DataField="StockOut_CostCenter" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="CostCenter Name" DataField="Description" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="Stock Issued On" DataField="IssueDate" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
+        <asp:BoundField HeaderText="Issue Type" DataField="StockOut_IssueType" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="OAC" DataField="StockOut_OAC" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="Remarks" DataField="StockOut_Remarks" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="Asset Type" DataField="StockIn_AssetType" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="in_Id" DataField="StockIn_id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="prodId" DataField="product_Id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+        <asp:BoundField HeaderText="outid" DataField="stockout_id" ItemStyle-Font-Bold="true" ReadOnly="true"/>
+    </Columns>
+    <SelectedRowStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+    <HeaderStyle BackColor="black" Font-Bold="True" ForeColor="White" Height="35px" />
+    <AlternatingRowStyle BackColor="Pink" />
+</asp:GridView>
+
      </div>
 </div>
             </div>
-</div>
+            </div>
         </div>
+
 </asp:Content>
 

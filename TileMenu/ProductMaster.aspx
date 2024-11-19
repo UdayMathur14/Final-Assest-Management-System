@@ -84,16 +84,16 @@
             }
 
             .grid-view .data-row:nth-child(even) {
-                background-color: blanchedalmond; /* Alternate row background */
+                background-color: bisque; /* Alternate row background */
             }
 
             .grid-view .data-row:nth-child(odd) {
-                background-color: #fffccc; /* Odd row background */
+                background-color: lightgray; /* Odd row background */
             }
             /*#e9ecef*/
 
             .grid-view .data-row:hover {
-                background-color: lightgrey; /* Highlight color on hover */
+                background-color: burlywood; /* Highlight color on hover */
             }
 
         .applyColor {

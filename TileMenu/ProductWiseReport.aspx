@@ -9,8 +9,9 @@
             border: 2px solid black;
             width: 100%;
             background-image: url('/Images/try2.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-repeat: repeat-y;
+            background-size: 100%;
+            overflow-y: auto;
         }
     </style>
     <div class="uday">
@@ -133,11 +134,11 @@
                     </table>
                 </asp:Panel>
             </div>
-            <div>
+            <div style="overflow-x:scroll;">
 
                 <asp:Panel ID="pnlData" runat="server">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ForeColor="Black" GridLines="Both" BackColor="White"
-                        BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped"
+                        BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px" CssClass="table table-striped"
                         Width="100%" CellPadding="5" RowStyle-Height="30px" OnRowDataBound="GridView1_RowDataBound" ShowFooter="true">
                         <FooterStyle BackColor="#E3E3E1" Font-Bold="True" Height="30px" />
                         <RowStyle BackColor="#ffffcc" />
