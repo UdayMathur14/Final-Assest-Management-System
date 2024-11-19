@@ -304,10 +304,11 @@
             min-height: 100vh;
             border: 2px solid black;
             width: 100%;
-            background-image: url('/Images/inventory.jpg'),url('/Images/try1.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-image: url('/Images/inventory.jpg');
+            background-repeat: repeat-y;
+            background-size: 100%;
             overflow-y: auto;
+
         }
 
     </style>

@@ -383,7 +383,7 @@
         <ContentTemplate>--%>
             <div class="row">
                 <div class="col-12">
-                    <div class="form-group">
+                    <div style="overflow-x:scroll" class="form-group">
                         <asp:GridView ID="GridView1" runat="server" ForeColor="Black" GridLines="Both"  BackColor="White" BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" 
 Width ="90%" CellPadding="5" Visible="true" OnRowDataBound="GridView1_RowDataBound" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="StockOut_Id" CssClass="table table-striped">
                             <Columns>

@@ -129,7 +129,7 @@
                 
     <div class="row">
                 <div class="col-12">
-                    <div class="form-group">
+                    <div style="overflow-x:scroll"  class="form-group">
      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ForeColor="Black" GridLines="Both"  BackColor="White" 
                             BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped"
                         Width ="90%" CellPadding="5" Visible="true" RowStyle-Height="15px" onrowdatabound="GridView1_RowDataBound" DataKeyNames="ProductDetail_Id" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">

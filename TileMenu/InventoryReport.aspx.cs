@@ -35,54 +35,66 @@ namespace TileMenu
 
         protected void GetData()
         {
-            string selectedProductId = ddlproduct.SelectedValue;
-
-            // Base query with an INNER JOIN
+            // Base query with INNER JOIN
             string strqry = "SELECT Product_Name, [ProductDetail_AssetCode], [ProductDetail_SerialNo], [Status], [ProductDetail_CapDate] " +
                             "FROM [Inv_ProductDetail_Master] " +
-                            "INNER JOIN [Inv_Product_Master] ON Inv_Product_Master.Product_Id = Inv_ProductDetail_Master.ProductDetail_Product_Id " +
-                            "WHERE Inv_Product_Master.Product_Id = @ProductId";
+                            "INNER JOIN [Inv_Product_Master] ON Inv_Product_Master.Product_Id = Inv_ProductDetail_Master.ProductDetail_Product_Id";
 
-            // Create the SQL connection
+            // Start building the WHERE clause dynamically
+            List<string> conditions = new List<string>();
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            // Add condition for Product
+            if (!string.IsNullOrEmpty(ddlproduct.SelectedValue))
+            {
+                conditions.Add("Inv_Product_Master.Product_Id = @ProductId");
+                parameters.Add(new SqlParameter("@ProductId", ddlproduct.SelectedValue));
+            }
+
+            // Add condition for Serial Number
+            if (!string.IsNullOrEmpty(txtserial.Text))
+            {
+                conditions.Add("[ProductDetail_SerialNo] LIKE @SerialNo");
+                parameters.Add(new SqlParameter("@SerialNo", "%" + txtserial.Text.Trim() + "%"));
+            }
+
+            // Add condition for Date From
+            if (!string.IsNullOrEmpty(txtFdate.Text))
+            {
+                conditions.Add("[ProductDetail_CapDate] >= @FromDate");
+                parameters.Add(new SqlParameter("@FromDate", txtFdate.Text.Trim()));
+            }
+
+            // Add condition for Date To
+            if (!string.IsNullOrEmpty(txtTdate.Text))
+            {
+                conditions.Add("[ProductDetail_CapDate] <= @ToDate");
+                parameters.Add(new SqlParameter("@ToDate", txtTdate.Text.Trim()));
+            }
+
+            // Combine conditions with "AND" and append to the query
+            if (conditions.Count > 0)
+            {
+                strqry += " WHERE " + string.Join(" AND ", conditions);
+            }
+
+            // Add order by clause
+            strqry += " ORDER BY [ProductDetail_CapDate] DESC, Product_Name";
+
+            // Execute the query
             using (SqlConnection Con = new SqlConnection(strCon))
             {
-                // Add additional filtering conditions if necessary
-                if (!string.IsNullOrEmpty(txtserial.Text))
-                {
-                    strqry += " AND [ProductDetail_SerialNo] LIKE @SerialNo";
-                }
-
-                if (!string.IsNullOrEmpty(txtFdate.Text) && !string.IsNullOrEmpty(txtTdate.Text))
-                {
-                    strqry += " AND [ProductDetail_CapDate] BETWEEN @FromDate AND @ToDate";
-                }
-
-                // Add order by clause
-                strqry += " ORDER BY [ProductDetail_CapDate] desc, Product_Name ";
-
-                // Set up the SQL command with the parameterized query
                 using (SqlCommand cmd = new SqlCommand(strqry, Con))
                 {
-                    // Define parameters to prevent SQL injection
-                    cmd.Parameters.AddWithValue("@ProductId", selectedProductId);
+                    // Add parameters to the command
+                    cmd.Parameters.AddRange(parameters.ToArray());
 
-                    if (!string.IsNullOrEmpty(txtserial.Text))
-                    {
-                        cmd.Parameters.AddWithValue("@SerialNo", "%" + txtserial.Text + "%");
-                    }
-
-                    if (!string.IsNullOrEmpty(txtFdate.Text) && !string.IsNullOrEmpty(txtTdate.Text))
-                    {
-                        cmd.Parameters.AddWithValue("@FromDate", txtFdate.Text);
-                        cmd.Parameters.AddWithValue("@ToDate", txtTdate.Text);
-                    }
-
-                    // Execute the command and bind the results to the GridView
                     SqlDataAdapter Da = new SqlDataAdapter(cmd);
                     DataSet Ds = new DataSet();
                     Da.Fill(Ds);
 
-                    if (Ds.Tables[0].Rows.Count > 0)
+                    // Bind results to the GridView
+                    if (Ds.Tables.Count > 0 && Ds.Tables[0].Rows.Count > 0)
                     {
                         GridView1.DataSource = Ds;
                         GridView1.DataBind();
@@ -95,6 +107,9 @@ namespace TileMenu
                 }
             }
         }
+
+
+
 
 
         protected void btnsubmit_Click(object sender, EventArgs e)

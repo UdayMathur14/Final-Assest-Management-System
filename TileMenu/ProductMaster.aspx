@@ -84,7 +84,7 @@
             }
 
             .grid-view .data-row:nth-child(even) {
-                background-color: lightpink; /* Alternate row background */
+                background-color: blanchedalmond; /* Alternate row background */
             }
 
             .grid-view .data-row:nth-child(odd) {

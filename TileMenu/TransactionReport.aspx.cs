@@ -69,7 +69,7 @@ namespace TileMenu
                 StrCondition += " and tdate between '" + txtFdate.Text + "' and '" + txtTdate.Text + "'";
             }
 
-            StrCondition += " order by ProductDetail_SerialNo,tdate";
+            StrCondition += " order by tdate DESC, ProductDetail_SerialNo";
 
 
             //Response.Write(strqry+StrCondition);
