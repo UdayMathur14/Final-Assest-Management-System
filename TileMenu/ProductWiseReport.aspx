@@ -134,68 +134,71 @@
                     </table>
                 </asp:Panel>
             </div>
-            <div style="overflow-x:scroll;">
+            <div style="overflow-x:scroll">
 
-                <asp:Panel ID="pnlData" runat="server">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ForeColor="Black" GridLines="Both" BackColor="White"
-                        BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px" CssClass="table table-striped"
-                        Width="100%" CellPadding="5" RowStyle-Height="30px" OnRowDataBound="GridView1_RowDataBound" ShowFooter="true">
-                        <FooterStyle BackColor="#E3E3E1" Font-Bold="True" Height="30px" />
-                        <RowStyle BackColor="#ffffcc" />
-                        <Columns>
-                            <asp:BoundField HeaderText="Product Name" DataField="Product_Name" ItemStyle-Font-Bold="true" />
+           
+            <div style="width: 100%; overflow-x: scroll; margin-bottom: 10px;">
+    <asp:Panel ID="pnlData" runat="server">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ForeColor="Black" GridLines="Both" BackColor="White"
+            BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px" CssClass="table table-striped"
+            Width="100%" CellPadding="5" RowStyle-Height="30px" OnRowDataBound="GridView1_RowDataBound" ShowFooter="true">
+            <FooterStyle BackColor="#E3E3E1" Font-Bold="True" Height="30px" />
+            <RowStyle BackColor="#ffffcc" />
+            <Columns>
+                <asp:BoundField HeaderText="Product Name" DataField="Product_Name" ItemStyle-Font-Bold="true" />
+                <asp:TemplateField HeaderText="Total In" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="inid" runat="server" Target="_blank" Text='<%# Bind("TotalInQty") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=I") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Employee /Internal /Site" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="outid" runat="server" Target="_blank" Text='<%# Bind("TotalOut") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=O") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Unique" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="outid" runat="server" Target="_blank" Text='<%# Bind("uniqueout") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=O") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Repair /StandBy /UserReserve" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="repairid" runat="server" Target="_blank" Text='<%# Bind("TotalOutRepair") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=R") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="To Be Scrap" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="scrapid" runat="server" Target="_blank" Text='<%# Bind("TotalOutScrap") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=T") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Sold /Scrapped /VendorReturn" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="soldid" runat="server" Target="_blank" Text='<%# Bind("TotalOutSold") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=S") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Available" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="Avlid" runat="server" Target="_blank" Text='<%# Bind("Available") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=A") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:BoundField HeaderText="Product Id" DataField="Product_id" ItemStyle-Font-Bold="true" />
+            </Columns>
+            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
+            <AlternatingRowStyle BackColor="White" />
+        </asp:GridView>
+    </asp:Panel>
+</div>
+                 </div>
 
 
-                            <asp:TemplateField HeaderText="Total In" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="inid" runat="server" Target="_blank" Text='<%# Bind("TotalInQty") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=I") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Employee /Internal /Site" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black" HeaderStyle-Width="10px" HeaderStyle-Wrap="true">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="outid" runat="server" Target="_blank" Text='<%# Bind("TotalOut") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=O") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Unique" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black" HeaderStyle-Width="10px" HeaderStyle-Wrap="true">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="outid" runat="server" Target="_blank" Text='<%# Bind("uniqueout") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=O") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Repair /StandBy /UserReserve" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black" HeaderStyle-Width="10px" HeaderStyle-Wrap="true">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="repairid" runat="server" Target="_blank" Text='<%# Bind("TotalOutRepair") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=R") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="To Be Scrap" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="scrapid" runat="server" Target="_blank" Text='<%# Bind("TotalOutScrap") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=T") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Sold /Scrapped /VendorReturn" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black" HeaderStyle-Width="10px" HeaderStyle-Wrap="true">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="soldid" runat="server" Target="_blank" Text='<%# Bind("TotalOutSold") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=S") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Available" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="Avlid" runat="server" Target="_blank" Text='<%# Bind("Available") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=A") %>'></asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField HeaderText="Product Id" DataField="Product_id" ItemStyle-Font-Bold="true" />
-                        </Columns>
-                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
-                        <AlternatingRowStyle BackColor="White" />
-                    </asp:GridView>
-                </asp:Panel>
-
-            </div>
         </div>
     </div>
 </asp:Content>

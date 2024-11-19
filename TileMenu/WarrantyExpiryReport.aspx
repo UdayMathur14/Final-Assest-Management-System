@@ -9,9 +9,14 @@
             border: 2px solid black;
             width: 100%;
             background-image: url('/Images/try2.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-repeat: repeat-y;
+            background-size: 100%;
+            overflow:auto;
         }
+        .table-striped tbody tr:hover {
+            background-color: #f0f8ff !important; /* Light blue background on hover */
+        }
+
     </style>
     <div class="uday">
         <div style="width: 70%; margin-inline: auto">
@@ -92,18 +97,18 @@
             </div>
             <div>
 
-                <asp:Panel ID="pnlData" runat="server">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" ForeColor="Black" GridLines="Both" BackColor="White"
-                        BorderColor="#666666" CssClass="table table-striped" BorderStyle="1" BorderWidth="1px"
-                        Width="100%" CellPadding="5" RowStyle-Height="45px">
-                        <FooterStyle BackColor="#E3E3E1" />
-                        <RowStyle BackColor="pink" />
+               <asp:Panel ID="pnlData" runat="server">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" ForeColor="Black" GridLines="Both" BackColor="White"
+        BorderColor="#666666" CssClass="table table-striped" BorderStyle="1" BorderWidth="1px"
+        Width="100%" CellPadding="5" RowStyle-Height="45px">
+        <FooterStyle BackColor="#E3E3E1" />
+        <RowStyle BackColor="pink" />
 
-                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
-                        <AlternatingRowStyle BackColor="#fffccc" />
-                    </asp:GridView>
-                </asp:Panel>
+        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
+        <AlternatingRowStyle BackColor="#fffccc" />
+    </asp:GridView>
+</asp:Panel>
 
             </div>
         </div>
