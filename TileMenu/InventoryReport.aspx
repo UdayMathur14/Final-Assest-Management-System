@@ -22,6 +22,7 @@
                             <asp:DropDownList ID="ddlproduct" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="product_changed" ></asp:DropDownList>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
                         <asp:Label ID="lblserial" runat="server" Text="Serial No." CssClass="form-label"></asp:Label>

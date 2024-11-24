@@ -48,16 +48,34 @@ namespace TileMenu
                         string userRole = Ds.Tables[0].Rows[0]["Role"].ToString();
                         Session["login"] = UserADID;
                         Session["role"] = userRole;
-                        menuDs.ReadXml($"{Server.MapPath("~")}/Configuration/menu.xml");
+
+                        // Log user login time
+                        LogUserLogin(UserADID);
+
                         Response.Redirect("Default.aspx");
                     }
                     else
                     {
-                        var scriptstring = "alert('Invalid Users');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", "alert('Invalid Users');", true);
                     }
                 }
             }
         }
+
+        private void LogUserLogin(string userEmail)
+        {
+            using (SqlConnection Con = new SqlConnection(strCon))
+            {
+                string query = "INSERT INTO UserSessionLog (UserEmail, LoginTime) VALUES (@UserEmail, @LoginTime)";
+                SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.Parameters.AddWithValue("@UserEmail", userEmail);
+                cmd.Parameters.AddWithValue("@LoginTime", DateTime.Now);
+
+                Con.Open();
+                cmd.ExecuteNonQuery();
+                Con.Close();
+            }
+        }
+
     }
 }

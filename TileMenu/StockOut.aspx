@@ -174,6 +174,12 @@
             overflow: auto;
         }
     </style>
+    <style>
+    .grid-row:hover {
+        background-color: mistyrose !important; /* Light blue on hover */
+        cursor: pointer !important; /* Changes cursor to pointer */
+    }
+</style>
     <%--<asp:UpdatePanel runat="server" ID="updMain">
         <ContentTemplate>--%>
 
@@ -382,29 +388,47 @@
        
         <ContentTemplate>--%>
             <div class="row">
-                <div class="col-12">
-                    <div style="overflow-x:scroll" class="form-group">
-                        <asp:GridView ID="GridView1" runat="server" ForeColor="Black" GridLines="Both"  BackColor="White" BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" 
-Width ="90%" CellPadding="5" Visible="true" OnRowDataBound="GridView1_RowDataBound" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="StockOut_Id" CssClass="table table-striped">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="80px" ItemStyle-Font-Bold="true">
-                                    <ItemTemplate>
-                                        <asp:HiddenField ID="hdStockOutId" runat="server" Value='<%# Eval("StockOut_Id") %>' ClientIDMode="Static" />
-                                        <asp:HiddenField ID="hdemp" runat="server" Value='<%# Eval("EmpName") %>' ClientIDMode="Static" />
-                                        <asp:HiddenField ID="hdproduct" runat="server" Value='<%# Eval("Product") %>' ClientIDMode="Static" />
-                                        <asp:HiddenField ID="hdserial" runat="server" Value='<%# Eval("SerialNo") %>' ClientIDMode="Static" />
-                                        <asp:ImageButton OnClientClick='showReturnPopup(event,this,1)' ImageUrl="~/Content/images/return.png" Width="30px" runat="server" />
-                                        <asp:ImageButton OnClientClick='showReturnPopup(event,this,2)' ImageUrl="~/Content/images/scrap.png" Width="30px" runat="server" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Move To Permanent" HeaderText="Move To Permanent" />
-                            </Columns>
-                        </asp:GridView>
+    <div class="col-12">
+        <div style="overflow-x:scroll" class="form-group">
+            <asp:GridView 
+                ID="GridView1" 
+                runat="server" 
+                ForeColor="Black" 
+                GridLines="Both"  
+                BackColor="White" 
+                BorderColor="#666666" 
+                BorderStyle="Solid" 
+                BorderWidth="1px" 
+                Width="90%" 
+                CellPadding="5" 
+                Visible="true" 
+                OnRowDataBound="GridView1_RowDataBound" 
+                OnRowDeleting="GridView1_RowDeleting" 
+                DataKeyNames="StockOut_Id" 
+                CssClass="table table-striped">
+                
+                <HeaderStyle BackColor="black" ForeColor="White" Font-Bold="True" />
+                <RowStyle BackColor="lightblue" CssClass="grid-row" />
+                <AlternatingRowStyle BackColor="#e7e7e7" CssClass="grid-row" />
+                
+                <Columns>
+                    <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="80px" ItemStyle-Font-Bold="true">
+                        <ItemTemplate>
+                            <asp:HiddenField ID="hdStockOutId" runat="server" Value='<%# Eval("StockOut_Id") %>' ClientIDMode="Static" />
+                            <asp:HiddenField ID="hdemp" runat="server" Value='<%# Eval("EmpName") %>' ClientIDMode="Static" />
+                            <asp:HiddenField ID="hdproduct" runat="server" Value='<%# Eval("Product") %>' ClientIDMode="Static" />
+                            <asp:HiddenField ID="hdserial" runat="server" Value='<%# Eval("SerialNo") %>' ClientIDMode="Static" />
+                            <asp:ImageButton OnClientClick='showReturnPopup(event,this,1)' ImageUrl="~/Content/images/return.png" Width="30px" runat="server" />
+                            <asp:ImageButton OnClientClick='showReturnPopup(event,this,2)' ImageUrl="~/Content/images/scrap.png" Width="30px" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Move To Permanent" HeaderText="Move To Permanent" />
+                </Columns>
+            </asp:GridView>
+        </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
-
-            </div>
 
             <%--        </ContentTemplate>
     </asp:UpdatePanel>--%>
