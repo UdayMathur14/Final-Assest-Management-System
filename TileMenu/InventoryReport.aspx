@@ -9,8 +9,8 @@
             border: 2px solid black;
             width: 100%;
             background-image: url('/Images/try2.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-repeat: repeat-y;
+            background-size: 100%;
         }
     </style>
     <div class="uday">
@@ -25,7 +25,7 @@
 
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
-                        <asp:Label ID="lblserial" runat="server" Text="Serial No." CssClass="form-label"></asp:Label>
+                        <asp:Label ID="lblserial" runat="server" Text="Assest Code" CssClass="form-label"></asp:Label>
                         <asp:TextBox ID="txtserial" runat="server" Width="150px"
                             AutoPostBack="True" OnTextChanged="txtserial_TextChanged" CssClass="form-control"></asp:TextBox>
                     </div>

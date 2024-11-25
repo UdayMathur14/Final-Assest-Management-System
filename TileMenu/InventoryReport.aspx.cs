@@ -44,28 +44,28 @@ namespace TileMenu
             List<string> conditions = new List<string>();
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            // Add condition for Product
-            if (!string.IsNullOrEmpty(ddlproduct.SelectedValue))
+            // Add condition for Product (optional)
+            if (!string.IsNullOrEmpty(ddlproduct.SelectedValue) && ddlproduct.SelectedValue != "-1")
             {
                 conditions.Add("Inv_Product_Master.Product_Id = @ProductId");
                 parameters.Add(new SqlParameter("@ProductId", ddlproduct.SelectedValue));
             }
 
-            // Add condition for Serial Number
+            // Add condition for Asset Code
             if (!string.IsNullOrEmpty(txtserial.Text))
             {
-                conditions.Add("[ProductDetail_SerialNo] LIKE @SerialNo");
-                parameters.Add(new SqlParameter("@SerialNo", "%" + txtserial.Text.Trim() + "%"));
+                conditions.Add("[ProductDetail_AssetCode] LIKE @AssetCode");
+                parameters.Add(new SqlParameter("@AssetCode", "" + txtserial.Text.Trim() + "%"));
             }
 
-            // Add condition for Date From
+            // Add condition for Date From (optional)
             if (!string.IsNullOrEmpty(txtFdate.Text))
             {
                 conditions.Add("[ProductDetail_CapDate] >= @FromDate");
                 parameters.Add(new SqlParameter("@FromDate", txtFdate.Text.Trim()));
             }
 
-            // Add condition for Date To
+            // Add condition for Date To (optional)
             if (!string.IsNullOrEmpty(txtTdate.Text))
             {
                 conditions.Add("[ProductDetail_CapDate] <= @ToDate");
@@ -79,7 +79,7 @@ namespace TileMenu
             }
 
             // Add order by clause
-            strqry += " ORDER BY [ProductDetail_CapDate] DESC, Product_Name";
+            strqry += " ORDER BY ProductDetail_AssetCode desc,  [ProductDetail_CapDate] DESC, Product_Name";
 
             // Execute the query
             using (SqlConnection Con = new SqlConnection(strCon))
@@ -101,12 +101,14 @@ namespace TileMenu
                     }
                     else
                     {
-                        Ds.Clear();
+                        GridView1.DataSource = null;
                         GridView1.DataBind();
                     }
                 }
             }
         }
+
+
 
 
 
