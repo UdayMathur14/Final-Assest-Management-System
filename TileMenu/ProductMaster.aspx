@@ -13,11 +13,12 @@
             }
             return true;
         }
+        .radio - buttons table td {
+            padding - right: 20px; /* Adds spacing between each radio button */
+        }
     </script>
 
     <style>
-        
-
         .uday {
             /*max-width: 130vw;
             min-height: 100vh;
@@ -25,11 +26,10 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;*/
-            border:2px solid black;
-            width:100%;
-            background-image:url('/Images/back1.jpg');
-            overflow:auto;
-            
+            border: 2px solid black;
+            width: 100%;
+            background-image: url('/Images/back1.jpg');
+            overflow: auto;
         }
 
         .form-group {
@@ -46,9 +46,9 @@
             justify-content: space-around;
         }
 
-        .radio-buttons .form-control {
-              margin: 0;
-         }
+            .radio-buttons .form-control {
+                margin: 0;
+            }
 
         .btn-save {
             margin-top: 20px;
@@ -56,9 +56,9 @@
 
         .table-container {
             margin-top: 30px;
-            width:80%;
-            text-align:center;
-            margin-left:60px;
+            width: 80%;
+            text-align: center;
+            margin-left: 60px;
         }
 
         .grid-view .header-row {
@@ -66,17 +66,16 @@
             color: #ffffff; /* White text */
         }
 
-        .grid-view .header-row th {
+            .grid-view .header-row th {
                 padding: 10px;
                 text-align: center;
                 color: white;
-        }
+            }
 
         .grid-view .data-row {
             background-color: #e9ecef; /* Light background */
             color: #000000; /* Black text */
-            width:80%;
-
+            width: 80%;
         }
 
             .grid-view .data-row td {
@@ -98,25 +97,34 @@
 
         .applyColor {
             background-color: darkslategrey !important;
-            width:80%;
+            width: 80%;
         }
     </style>
 
     <div class="uday">
-        <div class="container" style="padding-top:90px">
+        <div class="container" style="padding-top: 90px">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <div class="form-group" >
-                        <asp:Label ID="Label1" runat="server" Text="Choose Master" style="font-weight: bold;color:black" CssClass="form-label"></asp:Label>
-                        <div class="radio-buttons">
-                            <asp:RadioButtonList ID="rblMaster" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="rblMaster_SelectedIndexChanged" CssClass="form-control">
-                                <asp:ListItem Selected="True" style="font-weight: bold;">Make</asp:ListItem>
-                                <asp:ListItem>Product</asp:ListItem>
-                                <asp:ListItem>Product Type</asp:ListItem>
-                                <asp:ListItem>Product Model</asp:ListItem>
-                            </asp:RadioButtonList>
-                        </div>
-                    </div>
+                    <div class="form-group">
+    <asp:Label ID="Label1" runat="server" Text="Choose Master" style="font-weight: bold; color: black;" CssClass="form-label"></asp:Label>
+    <div class="radio-buttons">
+        <asp:RadioButtonList 
+            ID="rblMaster" 
+            runat="server" 
+            AutoPostBack="true" 
+            RepeatDirection="Horizontal" 
+            RepeatLayout="Table" 
+            OnSelectedIndexChanged="rblMaster_SelectedIndexChanged"
+            CssClass="form-control">
+            <asp:ListItem Selected="True">Make</asp:ListItem>
+            <asp:ListItem>Product</asp:ListItem>
+            <asp:ListItem>Product Type</asp:ListItem>
+            <asp:ListItem>Product Model</asp:ListItem>
+        </asp:RadioButtonList>
+    </div>
+</div>
+
+
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
@@ -126,9 +134,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row table-container" style="border-radius:20px" >
+            <div class="row table-container" style="border-radius: 20px">
                 <div class="col-12">
-                    <asp:GridView runat="server" ID="grvdetail" AutoGenerateColumns="true" CssClass="table table-striped table-bordered grid-view" style="border-radius:20px">
+                    <asp:GridView runat="server" ID="grvdetail" AutoGenerateColumns="true" CssClass="table table-striped table-bordered grid-view" Style="border-radius: 20px">
                         <HeaderStyle CssClass="header-row applyColor" />
                         <RowStyle CssClass="data-row" />
                     </asp:GridView>

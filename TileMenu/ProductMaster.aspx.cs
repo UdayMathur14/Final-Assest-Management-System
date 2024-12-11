@@ -23,7 +23,7 @@ namespace TileMenu
         protected void FillGridMake()
         {
 
-            string strqry = "select * from inv_make_master";
+            string strqry = "select Make_id as Id , Make_Name as Name from inv_make_master";
 
 
             SqlConnection Con = new SqlConnection();
@@ -47,7 +47,7 @@ namespace TileMenu
         protected void FillGridProduct()
         {
 
-            string strqry = "select * from inv_Product_master";
+            string strqry = "select Product_Id as Id , Product_Name as ProductName ,Product_InvType as InverntoryType, Product_ItemType as ItemType from inv_Product_master";
 
 
             SqlConnection Con = new SqlConnection();
@@ -71,7 +71,7 @@ namespace TileMenu
         protected void FillGridProductType()
         {
 
-            string strqry = "select * from Inv_ProdType";
+            string strqry = "select ProdType_Id as Id , ProdType_Name as Name from Inv_ProdType";
 
 
             SqlConnection Con = new SqlConnection();
@@ -96,7 +96,7 @@ namespace TileMenu
         protected void FillGridProductModel()
         {
 
-            string strqry = "select * from Inv_ProdModel";
+            string strqry = "select ProdModel_Id as Id , ProdModel_Name as Name from Inv_ProdModel";
 
 
             SqlConnection Con = new SqlConnection();

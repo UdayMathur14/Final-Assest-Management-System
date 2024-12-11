@@ -72,7 +72,58 @@
             background-color: pink; /* Slightly darker grey background on hover */
             transition: background-color; /* Smooth transition for hover effect */
         }
+
     </style>
+    <style>
+/* Add border and rounded corners to the tab container */
+.custom-tabs {
+    border: 2px solid #007BFF; /* Primary color for border */
+    border-radius: 8px; /* Rounded corners for the container */
+    padding: 5px; /* Padding inside the container */
+    background-color: black; /* Light gray background */
+}
+
+/* Individual tab styling */
+.custom-tabs > li {
+    margin-right: 5px; /* Space between tabs */
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Styling for tab links */
+.custom-tabs > li > a {
+    font-size: 16px;
+    font-weight: bold;
+    color: black; /* Primary color for text */
+    text-decoration: none;
+    padding: 10px 15px; /* Padding for tab links */
+    border: 1px solid double black; /* Add border around tabs */
+    border-radius: 5px; /* Rounded corners for tabs */
+    background-color: red; /* White background for tabs */
+    display: inline-block;
+}
+
+/* Active tab styling */
+.custom-tabs > li.active > a {
+    background-color: greenyellow; /* Highlight active tab */
+    color: green !important; /* White text */
+    border-color: #0056B3; /* Darker blue border */
+    border-radius:5px;
+}
+
+/* Hover effect for tabs */
+.custom-tabs > li > a:hover {
+    background-color: greenyellow; /* Light blue hover effect */
+    color: black; /* Darker blue text on hover */
+    border-color: white; /* Keep the border consistent */
+    border-radius:5px;
+}
+
+/* Last tab margin cleanup */
+.custom-tabs > li:last-child {
+    margin-right: 0;
+}
+</style>
+
     <script type="text/javascript">
         function check() {
             var txtName = document.getElementById("<%=txt_name.ClientID %>");
@@ -114,10 +165,14 @@
     </script>
     <div class="uday">
         <div class="col-sm-12" style="height:100%" >
-            <ul class="nav nav-tabs" style="width:70%; margin-inline: auto";>
-                <li class="active" style="color:black;font-weight:bold; font-size:16px"><a href="#tab1" data-toggle="tab" aria-expanded="true">Create</a> </li>
-                <li class="" style="color:black;font-weight:bold; font-size:16px"><a href="#tab2" data-toggle="tab" aria-expanded="false">Update</a> </li>
-            </ul>
+        <ul class="nav nav-tabs custom-tabs" style="width: 15%; margin-inline: auto;">
+    <li class="active">
+        <a href="#tab1" data-toggle="tab" aria-expanded="true">Create</a>
+    </li>
+    <li>
+        <a href="#tab2" data-toggle="tab" aria-expanded="false">Update</a>
+    </li>
+</ul>
             <div class="tab-content" style="width:70%; margin-inline: auto";>
                 <div class="tab-pane fade active in" id="tab1">
                     <br />
