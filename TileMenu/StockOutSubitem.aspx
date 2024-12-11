@@ -96,10 +96,10 @@
             min-height: 100vh;
             border: 2px solid black;
             width: 100%;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), /* This overlay will lighten the image */
-            url('/Images/Inventory.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-image: url('/Images/inventory.jpg');
+            background-repeat: repeat-y;
+            background-size: 100%;
+            overflow-y: auto;
         }
     </style>
     <div class="uday">

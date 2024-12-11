@@ -146,7 +146,7 @@
 
                 div.divOAC .opOAC label {
                     padding: 10px;
-                    background-color: lightgray;
+                    background-color: pink khaki;
                     border-radius: 10px;
                     color: black;
                     text-align: left;
@@ -158,7 +158,7 @@
                 }
 
                     div.divOAC .opOAC input[type=radio]:checked ~ label {
-                        background-color: lightcoral;
+                        background-color: khaki;
                     }
 
         .uday {
@@ -166,20 +166,18 @@
             min-height: 100vh;
             border: 2px solid black;
             width: 100%;
-             background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), /* This overlay will lighten the image */
-        url('/Images/Inventory.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            overflow: auto;
+            background-image: url('/Images/inventory.jpg');
+            background-repeat: repeat-y;
+            background-size: 100%;
+            overflow-y: auto;
         }
     </style>
     <style>
-    .grid-row:hover {
-        background-color: mistyrose !important; /* Light blue on hover */
-        cursor: pointer !important; /* Changes cursor to pointer */
-    }
-</style>
+        .grid-row:hover {
+            background-color: lemonchiffon !important; /* Light blue on hover */
+            cursor: pointer !important; /* Changes cursor to pointer */
+        }
+    </style>
     <%--<asp:UpdatePanel runat="server" ID="updMain">
         <ContentTemplate>--%>
 
@@ -388,46 +386,46 @@
        
         <ContentTemplate>--%>
             <div class="row">
-    <div class="col-12">
-        <div style="overflow-x:scroll" class="form-group">
-            <asp:GridView 
-                ID="GridView1" 
-                runat="server" 
-                ForeColor="Black" 
-                GridLines="Both"  
-                BackColor="White" 
-                BorderColor="#666666" 
-                BorderStyle="Solid" 
-                BorderWidth="1px" 
-                Width="90%" 
-                CellPadding="5" 
-                Visible="true" 
-                OnRowDataBound="GridView1_RowDataBound" 
-                OnRowDeleting="GridView1_RowDeleting" 
-                DataKeyNames="StockOut_Id" 
-                CssClass="table table-striped">
-                
-                <HeaderStyle BackColor="black" ForeColor="White" Font-Bold="True" />
-                <RowStyle BackColor="lightblue" CssClass="grid-row" />
-                <AlternatingRowStyle BackColor="#e7e7e7" CssClass="grid-row" />
-                
-                <Columns>
-                    <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="80px" ItemStyle-Font-Bold="true">
-                        <ItemTemplate>
-                            <asp:HiddenField ID="hdStockOutId" runat="server" Value='<%# Eval("StockOut_Id") %>' ClientIDMode="Static" />
-                            <asp:HiddenField ID="hdemp" runat="server" Value='<%# Eval("EmpName") %>' ClientIDMode="Static" />
-                            <asp:HiddenField ID="hdproduct" runat="server" Value='<%# Eval("Product") %>' ClientIDMode="Static" />
-                            <asp:HiddenField ID="hdserial" runat="server" Value='<%# Eval("SerialNo") %>' ClientIDMode="Static" />
-                            <asp:ImageButton OnClientClick='showReturnPopup(event,this,1)' ImageUrl="~/Content/images/return.png" Width="30px" runat="server" />
-                            <asp:ImageButton OnClientClick='showReturnPopup(event,this,2)' ImageUrl="~/Content/images/scrap.png" Width="30px" runat="server" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Move To Permanent" HeaderText="Move To Permanent" />
-                </Columns>
-            </asp:GridView>
-        </div>
-    </div>
-</div>
+                <div class="col-12">
+                    <div style="overflow-x: scroll" class="form-group">
+                        <asp:GridView
+                            ID="GridView1"
+                            runat="server"
+                            ForeColor="Black"
+                            GridLines="Both"
+                            BackColor="White"
+                            BorderColor="#666666"
+                            BorderStyle="Solid"
+                            BorderWidth="1px"
+                            Width="90%"
+                            CellPadding="5"
+                            Visible="true"
+                            OnRowDataBound="GridView1_RowDataBound"
+                            OnRowDeleting="GridView1_RowDeleting"
+                            DataKeyNames="StockOut_Id"
+                            CssClass="table table-striped">
+
+                            <HeaderStyle BackColor="black" ForeColor="White" Font-Bold="True" />
+                            <RowStyle BackColor="antiquewhite" CssClass="grid-row" />
+                            <AlternatingRowStyle BackColor="#e7e7e7" CssClass="grid-row" />
+
+                            <Columns>
+                                <asp:TemplateField HeaderText="Return/Scrap" HeaderStyle-Width="80px" ItemStyle-Font-Bold="true">
+                                    <ItemTemplate>
+                                        <asp:HiddenField ID="hdStockOutId" runat="server" Value='<%# Eval("StockOut_Id") %>' ClientIDMode="Static" />
+                                        <asp:HiddenField ID="hdemp" runat="server" Value='<%# Eval("EmpName") %>' ClientIDMode="Static" />
+                                        <asp:HiddenField ID="hdproduct" runat="server" Value='<%# Eval("Product") %>' ClientIDMode="Static" />
+                                        <asp:HiddenField ID="hdserial" runat="server" Value='<%# Eval("SerialNo") %>' ClientIDMode="Static" />
+                                        <asp:ImageButton OnClientClick='showReturnPopup(event,this,1)' ImageUrl="~/Content/images/return.png" Width="30px" runat="server" />
+                                        <asp:ImageButton OnClientClick='showReturnPopup(event,this,2)' ImageUrl="~/Content/images/scrap.png" Width="30px" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Move To Permanent" HeaderText="Move To Permanent" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
 
 
             <%--        </ContentTemplate>

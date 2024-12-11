@@ -279,15 +279,15 @@
         }
 
         .table tbody tr:nth-child(odd) {
-            background-color: #e9ecef; /* Light background for odd rows */
+            background-color: antiquewhite; /* Light background for odd rows */
         }
 
         .table tbody tr:nth-child(even) {
-            background-color: #fffccc; /* Light background for odd rows */
+            background-color: floralwhite; /* Light background for odd rows */
         }
 
         .table tbody tr:hover {
-            background-color: pink; /* Very light blue-gray background on hover */
+            background-color: lemonchiffon; /* Very light blue-gray background on hover */
         }
 
         .table th, .table td {
