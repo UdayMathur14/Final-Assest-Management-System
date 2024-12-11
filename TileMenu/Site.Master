@@ -96,6 +96,9 @@
                         <div style="clear: both;"></div>
                     </div>--%>
                     <div class="sub-menu-item" data-parentid="1">
+                        <div class="menu-item" style="background: grey" id="UserLogsTransactionReportdiv">
+                            <asp:HyperLink NavigateUrl="UserLogsTransactionReport.aspx" runat="server" Text="User Logs" ID="UserLogsTransactionReportLink"></asp:HyperLink>
+                        </div>
                         <div class="menu-item" style="background: grey" id="InventoryReportdiv">
                             <asp:HyperLink NavigateUrl="InventoryReport.aspx" runat="server" Text="Inventory Report" ID="InventoryReportLink"></asp:HyperLink>
                         </div>
@@ -208,8 +211,8 @@
                 $(".menu-item[data-id='2']").css("display", "none");
                 $(".menu-item[data-id='5']").css("display", "none");
                 $(".menu-item[data-id='3']").css("display", "none");
-                
-                
+
+
 
             }
         }
@@ -268,6 +271,9 @@
         });
         document.getElementById('ProductMasterReportdiv').addEventListener('click', function () {
             document.getElementById('<%= ProductMasterReportLink.ClientID %>').click();
+        });
+        document.getElementById('UserLogsTransactionReportdiv').addEventListener('click', function () {
+            document.getElementById('<%= UserLogsTransactionReportLink.ClientID %>').click();
         });
 
         // Call the function when the page is ready

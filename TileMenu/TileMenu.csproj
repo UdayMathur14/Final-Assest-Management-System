@@ -295,6 +295,7 @@
     <Content Include="StockOutSubitem.aspx" />
     <Content Include="TransactionReport.aspx" />
     <Content Include="Update.png" />
+    <Content Include="UserLogsTransactionReport.aspx" />
     <Content Include="UserMaster.aspx" />
     <Content Include="VendorMaster.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -499,6 +500,13 @@
     </Compile>
     <Compile Include="TransactionReport.aspx.designer.cs">
       <DependentUpon>TransactionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogsTransactionReport.aspx.cs">
+      <DependentUpon>UserLogsTransactionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLogsTransactionReport.aspx.designer.cs">
+      <DependentUpon>UserLogsTransactionReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserMaster.aspx.cs">
       <DependentUpon>UserMaster.aspx</DependentUpon>
