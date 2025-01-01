@@ -706,6 +706,8 @@ namespace TileMenu
 
                 dtSerial.Rows.Add(dr);
             }
+            GridView1.HeaderStyle.BackColor = System.Drawing.Color.Black;
+            GridView1.HeaderStyle.ForeColor = System.Drawing.Color.White;
             return dtSerial;
         }
 

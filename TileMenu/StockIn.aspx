@@ -279,11 +279,11 @@
         }
 
         .table tbody tr:nth-child(odd) {
-            background-color: antiquewhite; /* Light background for odd rows */
+            background-color: gainsboro; /* Light background for odd rows */
         }
 
         .table tbody tr:nth-child(even) {
-            background-color: floralwhite; /* Light background for odd rows */
+            background-color: peachpuff; /* Light background for odd rows */
         }
 
         .table tbody tr:hover {
@@ -312,5 +312,10 @@
         }
 
     </style>
-
+    <style>
+    .custom-header {
+        background-color: black;
+        color: white;
+    }
+</style>
 </asp:Content>
