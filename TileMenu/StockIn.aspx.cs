@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
-using System.IO;
-using System.Web.Services;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace TileMenu
 {
@@ -490,9 +483,6 @@ namespace TileMenu
 
             }
 
-
-
-
             if (SrNoAvailabilty() == true)
             {
                 for (int i = 0; i < Convert.ToInt32(txtqty.Text); i++)
@@ -511,11 +501,36 @@ namespace TileMenu
                 }
                 for (int i = 0; i < Convert.ToInt32(txtqty.Text); i++)
                 {
+                    var seriala = ((TextBox)gvSerial.Rows[i].Cells[1].FindControl("txtAssetCode")).Text;
+                    for (int j = i + 1; j < Convert.ToInt32(txtqty.Text); j++)
+                    {
+                        var tempSerial = ((TextBox)gvSerial.Rows[j].Cells[1].FindControl("txtAssetCode")).Text;
+                        if (!string.IsNullOrWhiteSpace(tempSerial) && seriala.Equals(tempSerial, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            scriptstring = $"alert('Assest Code {tempSerial} duplicate in form');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                            return;
+                        }
+                    }
+                }
+                for (int i = 0; i < Convert.ToInt32(txtqty.Text); i++)
+                {
                     var seriala = ((TextBox)gvSerial.Rows[i].Cells[2].FindControl("txtSerial")).Text;
 
                     if (Checkduplicateserial(seriala) == true)
                     {
                         scriptstring = $"alert('Serial No. {seriala} already exist in stock');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                        return;
+                    }
+                }
+                for (int i = 0; i < Convert.ToInt32(txtqty.Text); i++)
+                {
+                    var seriala = ((TextBox)gvSerial.Rows[i].Cells[1].FindControl("txtAssetCode")).Text;
+
+                    if (Checkduplicateassetcode(seriala) == true)
+                    {
+                        scriptstring = $"alert('Assest Code {seriala} already exist in stock');";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
                         return;
                     }

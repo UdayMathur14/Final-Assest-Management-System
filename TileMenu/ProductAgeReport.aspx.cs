@@ -23,9 +23,6 @@ namespace TileMenu
                 FillProductModelAll();
                 FillGrid();
                 FillEmployeeCode();
-
-
-
             }
         }
 
@@ -522,10 +519,7 @@ namespace TileMenu
         }
         protected void GridView1_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-
-
-
-
+            string scriptstring = "";
 
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
 
@@ -540,6 +534,21 @@ namespace TileMenu
             TextBox txtcapdate = (TextBox)row.Cells[11].Controls[0];
             TextBox txtwedate = (TextBox)row.Cells[12].Controls[0];
 
+            string assetCode = txtassetcode.Text.Trim();
+            string serialNo = txtserial.Text.Trim();
+
+            if (Checkduplicateserial(serialNo) == true)
+            {
+                scriptstring = $"alert('Serial No. {serialNo} already exist in stock');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                return;
+            }
+            if (Checkduplicateassetcode(assetCode) == true)
+            {
+                scriptstring = $"alert('Serial No. {assetCode} already exist in stock');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                return;
+            }
 
 
 
@@ -591,6 +600,47 @@ namespace TileMenu
         protected void btnexport_Click(object sender, EventArgs e)
         {
             ExportGridToExcel();
+        }
+
+        protected bool Checkduplicateserial(string Serial)
+        {
+            string strqry = "select ProductDetail_SerialNo from  Inv_ProductDetail_Master where " +
+                            " ProductDetail_SerialNo='" + Serial + "'";
+
+
+            SqlConnection Con = new SqlConnection();
+            Con.ConnectionString = strCon;
+            SqlDataAdapter Da = new SqlDataAdapter(strqry, Con);
+            DataSet Ds = new DataSet();
+            Da.Fill(Ds);
+            if (Ds.Tables[0].Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        protected bool Checkduplicateassetcode(string assetcode)
+        {
+            string strqry = "select ProductDetail_Assetcode from  Inv_ProductDetail_Master where " +
+                            " ProductDetail_Assetcode='" + assetcode + "'";
+
+
+            SqlConnection Con = new SqlConnection();
+            Con.ConnectionString = strCon;
+            SqlDataAdapter Da = new SqlDataAdapter(strqry, Con);
+            DataSet Ds = new DataSet();
+            Da.Fill(Ds);
+            if (Ds.Tables[0].Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
