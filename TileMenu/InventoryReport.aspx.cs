@@ -79,7 +79,7 @@ namespace TileMenu
             }
 
             // Add order by clause
-            strqry += " ORDER BY ProductDetail_AssetCode desc,  [ProductDetail_CapDate] DESC, Product_Name";
+            strqry += " ORDER BY [ProductDetail_CapDate] desc, ProductDetail_AssetCode desc";
 
             // Execute the query
             using (SqlConnection Con = new SqlConnection(strCon))
@@ -117,8 +117,6 @@ namespace TileMenu
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
             GetData();
-
-
         }
 
         protected void txtserial_TextChanged(object sender, EventArgs e)
