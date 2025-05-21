@@ -16,7 +16,7 @@
         }
     </style>
     <div class="uday">
-        <div style="width: 70%; margin-inline: auto">
+        <div style="margin-left:150px">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
