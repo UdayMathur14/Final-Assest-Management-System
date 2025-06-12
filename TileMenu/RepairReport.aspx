@@ -11,18 +11,21 @@
             background-repeat: repeat-y;
             background-size: 100%;
             overflow-y: auto;
+            text-align:center;
         }
     </style>
-    <div class="uday">
+    <div class="uday"  style="overflow-x:scroll; width: 100%"; >
 
 
-        <asp:Panel ID="pnlData" runat="server">
+        <asp:Panel ID="pnlData" runat="server" >
+
             <fieldset>
                 <legend><b>Repair Report :</b></legend>
                 <br>
+                <div style="overflow-x:scroll; width: 70%; text-align:center; margin:auto" >
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" ForeColor="Black" GridLines="Both" BackColor="White"
                     BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px"
-                    Width="100%" CellPadding="5" RowStyle-Height="30px">
+                    Width="100%" CellPadding="5" RowStyle-Height="30px" >
                     <FooterStyle BackColor="#E3E3E1" />
                     <RowStyle BackColor="#ffffcc" />
 
@@ -30,7 +33,9 @@
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
                     <AlternatingRowStyle BackColor="White" />
                 </asp:GridView>
+                    </div>
             </fieldset>
         </asp:Panel>
-    </div>
+            </div>
+
 </asp:Content>

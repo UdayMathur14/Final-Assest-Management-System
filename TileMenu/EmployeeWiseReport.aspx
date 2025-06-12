@@ -113,9 +113,9 @@
 
 
             <fieldset><legend runat="server" id="noncons" visible="false"><b>Item Out-Non Cosumable</b></legend></fieldset>
-            <div class="row" style="width: 90%; margin-right: 50px; text-align: center; overflow-x: scroll;">
-                <div  style="over" class="col-12">
-                    <div  class="form-group">
+            <div class="row" style=" text-align:center; margin:auto" >
+                <div  class="col-12" >
+                    <div  class="form-group" style="overflow-x:scroll; width: 90%; text-align:center; margin:auto" >
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both" BackColor="White"
                             BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped"
                             Width="100%" CellPadding="5" Visible="true" RowStyle-Height="45px" OnRowDataBound="GridView1_RowDataBound">
@@ -133,7 +133,7 @@
             <fieldset><legend runat="server" id="cons" visible="false"><b>Item Out-Cosumable</b></legend></fieldset>
             <div class="row">
                 <div class="col-12">
-                    <div class="form-group">
+                    <div class="form-group" style=" width: 90%; text-align:center; margin:auto"  >
                         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both" BackColor="White"
                             BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped"
                             Width="100%" CellPadding="5" Visible="true" RowStyle-Height="45px" OnRowDataBound="GridView2_RowDataBound">
@@ -150,9 +150,9 @@
                 </div>
             </div>
             <fieldset><legend runat="server" id="ret" visible="false"><b>Returned Item</b></legend></fieldset>
-            <div class="row">
+            <div class="row" >
                 <div class="col-12">
-                    <div class="form-group">
+                    <div class="form-group" style=" width: 90%; text-align:center; margin:auto" >
                         <asp:GridView ID="grvItemOut" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Vertical" BackColor="White"
                             BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px" CssClass="table table-striped"
                             Width="100%" CellPadding="5" Visible="true" RowStyle-Height="45px">
@@ -168,8 +168,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="form-group">
+                <div class="col-12" >
+                    <div class="form-group" style=" width: 90%; text-align:center; margin:auto"  >
                         <asp:GridView ID="grvItemIn" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Both" BackColor="White"
                             BorderColor="#666666" BorderWidth="1px" SortedDescendingHeaderStyle-BorderStyle="Dotted"
                             Width="100%" CellPadding="7" Visible="true">
@@ -186,7 +186,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="form-group">
+                    <div class="form-group" style=" width: 90%; text-align:center; margin:auto"   >
                         <asp:GridView ID="grvItemReturn" runat="server" AutoGenerateColumns="true" ForeColor="Black" GridLines="Vertical" BackColor="White"
                             BorderColor="#666666" BorderStyle="Solid" BorderWidth="1px"
                             Width="100%" CellPadding="5" Visible="true" RowStyle-Height="45px">
