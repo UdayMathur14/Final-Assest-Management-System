@@ -1,21 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-
-using System.Globalization;
-using System.IO;
-using System.Drawing;
 
 namespace TileMenu
 {
@@ -37,7 +22,8 @@ namespace TileMenu
             string StrCondition = "";
 
             string strqry = @"
-WITH StockLedger AS (
+                WITH StockLedger AS (
+    -- Out transaction
     SELECT 
         'Out' AS TransType, 
         stockout_id AS id,
@@ -51,18 +37,21 @@ WITH StockLedger AS (
         StockOut_OAC,
         ProductDetail_SerialNo,
         ProductDetail_AssetCode,
-        StockOut_CreatedBy -- Include StockOut_CreatedBy
+        StockOut_CreatedBy AS CreatedBy
     FROM  
         [dbo].[Inv_StockOut]
     LEFT OUTER JOIN 
         Inv_ProductDetail_Master 
     ON 
-        [Inv_StockOut].StockOut_ProdDetail_Id = Inv_ProductDetail_Master.ProductDetail_Id
+        Inv_StockOut.StockOut_ProdDetail_Id = Inv_ProductDetail_Master.ProductDetail_Id
     INNER JOIN 
         Inv_Product_Master 
     ON  
-        [Inv_ProductDetail_Master].ProductDetail_Product_Id = Inv_Product_Master.Product_Id
+        Inv_ProductDetail_Master.ProductDetail_Product_Id = Inv_Product_Master.Product_Id
+
     UNION 
+
+    -- Return transaction
     SELECT 
         'Return' AS TransType,
         StockReturn_StockOut_Id AS id,
@@ -76,25 +65,53 @@ WITH StockLedger AS (
         '' AS StockOut_OAC,
         ProductDetail_SerialNo,
         ProductDetail_AssetCode,
-        StockOut_CreatedBy -- Include StockOut_CreatedBy
+        StockOut_CreatedBy AS CreatedBy
     FROM 
         [dbo].[Inv_StockReturn]
     INNER JOIN 
-        [Inv_StockOut] 
+        Inv_StockOut 
     ON 
-        [Inv_StockReturn].StockReturn_StockOut_Id = [Inv_StockOut].StockOut_Id
+        Inv_StockReturn.StockReturn_StockOut_Id = Inv_StockOut.StockOut_Id
     LEFT OUTER JOIN 
         Inv_ProductDetail_Master 
     ON 
-        [Inv_StockOut].StockOut_ProdDetail_Id = Inv_ProductDetail_Master.ProductDetail_Id
+        Inv_StockOut.StockOut_ProdDetail_Id = Inv_ProductDetail_Master.ProductDetail_Id
     INNER JOIN 
         Inv_Product_Master 
     ON 
-        [Inv_ProductDetail_Master].ProductDetail_Product_Id = Inv_Product_Master.Product_Id
-) 
+        Inv_ProductDetail_Master.ProductDetail_Product_Id = Inv_Product_Master.Product_Id
+
+    UNION
+
+    -- In transaction
+    SELECT 
+        'In' AS TransType,
+        StockIn_Id AS id,
+        Product_Id AS [ProductId],
+        Product_Name,
+        '' AS StockOut_EmpCode,
+        '' AS StockOut_EmpName,
+        '' AS StockOut_CostCenter,
+        StockIn_InDate AS tdate,
+        '' AS StockOut_IssueType,
+        '' AS StockOut_OAC,
+        ProductDetail_SerialNo,
+        ProductDetail_AssetCode,
+        StockIn_CreatedBy AS CreatedBy
+    FROM 
+        [dbo].[Inv_StockIn]
+    INNER JOIN 
+        Inv_ProductDetail_Master 
+    ON 
+        Inv_StockIn.StockIn_Id = Inv_ProductDetail_Master.ProductDetail_StockIn_Id
+    INNER JOIN 
+        Inv_Product_Master 
+    ON 
+        Inv_ProductDetail_Master.ProductDetail_Product_Id = Inv_Product_Master.Product_Id
+)
 SELECT 
-    Transtype AS [Transaction Type],
-    Product_name AS [Product Name],
+    TransType AS [Transaction Type],
+    Product_Name AS [Product Name],
     StockOut_EmpCode AS [Employee Code],
     StockOut_EmpName AS [Employee Name],
     CONVERT(VARCHAR(50), tdate, 106) AS [Transaction Date],
@@ -102,11 +119,12 @@ SELECT
     StockOut_OAC AS [OAC],
     ProductDetail_SerialNo AS [Serial Number],
     ProductDetail_AssetCode AS [Asset Code],
-    StockOut_CreatedBy AS [Assigned By] -- Alias it as Assigned By
+    CreatedBy AS [Assigned By]
 FROM 
     StockLedger
 WHERE 
     1 = 1";
+
 
 
 
