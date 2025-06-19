@@ -535,20 +535,26 @@ namespace TileMenu
             TextBox txtwedate = (TextBox)row.Cells[12].Controls[0];
 
             string assetCode = txtassetcode.Text.Trim();
-            string serialNo = txtserial.Text.Trim();
+            string serialNo = txtserial.Text.Trim();  
 
-            if (Checkduplicateserial(serialNo) == true)
+            bool isSerialDuplicate = Checkduplicateserial(serialNo);
+            bool isAssetDuplicate = Checkduplicateassetcode(assetCode);
+
+            if (isSerialDuplicate && isAssetDuplicate)
             {
-                scriptstring = $"alert('Serial No. {serialNo} already exist in stock');";
+                string message = "";
+
+                if (isSerialDuplicate)
+                    message += $"Serial No. {serialNo} already exists in stock.\\n";
+
+                if (isAssetDuplicate)
+                    message += $"Asset Code {assetCode} already exists in stock.";
+
+                scriptstring = $"alert('{message}');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
                 return;
             }
-            if (Checkduplicateassetcode(assetCode) == true)
-            {
-                scriptstring = $"alert('Serial No. {assetCode} already exist in stock');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
-                return;
-            }
+
 
 
 
