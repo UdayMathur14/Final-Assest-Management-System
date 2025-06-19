@@ -517,66 +517,64 @@ namespace TileMenu
             GridView1.EditIndex = e.NewEditIndex;
             FillGrid();
         }
-        protected void GridView1_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            GridViewRow row = GridView1.Rows[e.RowIndex];
             string scriptstring = "";
 
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
 
-            GridViewRow row = (GridViewRow)GridView1.Rows[e.RowIndex];
+            // Get new values
+            TextBox txtAssetCode = (TextBox)row.FindControl("txtAssetCode");
+            TextBox txtSerialNo = (TextBox)row.FindControl("txtSerialNo");
 
+            string newAssetCode = txtAssetCode.Text.Trim();
+            string newSerialNo = txtSerialNo.Text.Trim();
 
-            TextBox txtassetcode = (TextBox)row.Cells[6].Controls[0];
-            TextBox txtserial = (TextBox)row.Cells[7].Controls[0];
-            TextBox txtconfig = (TextBox)row.Cells[8].Controls[0];
+            // Get original values
+            HiddenField hdnOldAssetCode = (HiddenField)row.FindControl("hdnOldAssetCode");
+            HiddenField hdnOldSerialNo = (HiddenField)row.FindControl("hdnOldSerialNo");
 
+            string oldAssetCode = hdnOldAssetCode.Value.Trim();
+            string oldSerialNo = hdnOldSerialNo.Value.Trim();
 
-            TextBox txtcapdate = (TextBox)row.Cells[11].Controls[0];
-            TextBox txtwedate = (TextBox)row.Cells[12].Controls[0];
-
-            string assetCode = txtassetcode.Text.Trim();
-            string serialNo = txtserial.Text.Trim();  
-
-            bool isSerialDuplicate = Checkduplicateserial(serialNo);
-            bool isAssetDuplicate = Checkduplicateassetcode(assetCode);
-
-            if (isSerialDuplicate && isAssetDuplicate)
+            // Only check if changed
+            if (newAssetCode != oldAssetCode)
             {
-                string message = "";
-
-                if (isSerialDuplicate)
-                    message += $"Serial No. {serialNo} already exists in stock.\\n";
-
-                if (isAssetDuplicate)
-                    message += $"Asset Code {assetCode} already exists in stock.";
-
-                scriptstring = $"alert('{message}');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
-                return;
+                if (Checkduplicateassetcode(newAssetCode))
+                {
+                    scriptstring = $"alert('Asset Code {newAssetCode} already exists in stock.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                    return;
+                }
             }
 
+            if (newSerialNo != oldSerialNo)
+            {
+                if (Checkduplicateserial(newSerialNo))
+                {
+                    scriptstring = $"alert('Serial No. {newSerialNo} already exists in stock.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", scriptstring, true);
+                    return;
+                }
+            }
 
-
-
+            // Continue update logic
             GridView1.EditIndex = -1;
 
-            string strqry = "update Inv_ProductDetail_Master set   " +
-                            " ProductDetail_AssetCode='" + txtassetcode.Text + "'," +
-                            " ProductDetail_SerialNo='" + txtserial.Text + "'," +
-                            " ProductDetail_Config='" + txtconfig.Text + "'," +
-                            " ProductDetail_CapDate ='" + txtcapdate.Text + "' ," +
-                            " ProductDetail_ExpiryDate='" + txtwedate.Text + "' where ProductDetail_Id='" + id + "'";
-            //Response.Write(strqry);
-            //Response.End();
+            string strqry = "UPDATE Inv_ProductDetail_Master SET " +
+                            "ProductDetail_AssetCode = '" + newAssetCode + "', " +
+                            "ProductDetail_SerialNo = '" + newSerialNo + "' " +
+                            "WHERE ProductDetail_Id = '" + id + "'";
 
-            SqlConnection Con = new SqlConnection();
-            Con.ConnectionString = strCon;
+            SqlConnection Con = new SqlConnection(strCon);
             SqlDataAdapter Da = new SqlDataAdapter(strqry, Con);
             DataSet Ds = new DataSet();
             Da.Fill(Ds);
 
             FillGrid();
         }
+
         protected void GridView1_RowCancelingEdit(object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
         {
             //Setting the EditIndex property to -1 to cancel the Edit mode in Gridview   

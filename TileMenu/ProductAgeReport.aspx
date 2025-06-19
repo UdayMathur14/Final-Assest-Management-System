@@ -159,8 +159,25 @@
         <asp:BoundField HeaderText="Make" DataField="Make_Name" ItemStyle-Font-Bold="true" ReadOnly="true" />
         <asp:BoundField HeaderText="Type" DataField="ProdType_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
         <asp:BoundField HeaderText="Model" DataField="ProdModel_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-        <asp:BoundField HeaderText="Asset Code" DataField="ProductDetail_AssetCode" ItemStyle-Font-Bold="true"/>
-        <asp:BoundField HeaderText="Serial No." DataField="ProductDetail_SerialNo" ItemStyle-Font-Bold="true" />
+       <asp:TemplateField HeaderText="Asset Code">
+    <ItemTemplate>
+        <%# Eval("ProductDetail_AssetCode") %>
+    </ItemTemplate>
+    <EditItemTemplate>
+        <asp:TextBox ID="txtAssetCode" runat="server" Text='<%# Bind("ProductDetail_AssetCode") %>' CssClass="form-control" />
+        <asp:HiddenField ID="hdnOldAssetCode" runat="server" Value='<%# Eval("ProductDetail_AssetCode") %>' />
+    </EditItemTemplate>
+</asp:TemplateField>
+
+<asp:TemplateField HeaderText="Serial No.">
+    <ItemTemplate>
+        <%# Eval("ProductDetail_SerialNo") %>
+    </ItemTemplate>
+    <EditItemTemplate>
+        <asp:TextBox ID="txtSerialNo" runat="server" Text='<%# Bind("ProductDetail_SerialNo") %>' CssClass="form-control" />
+        <asp:HiddenField ID="hdnOldSerialNo" runat="server" Value='<%# Eval("ProductDetail_SerialNo") %>' />
+    </EditItemTemplate>
+</asp:TemplateField>
         <asp:BoundField HeaderText="Configuration" DataField="ProductDetail_Config" ItemStyle-Font-Bold="true" />
         <asp:BoundField HeaderText="Received On" DataField="InDate" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
         <asp:BoundField HeaderText="Challan No." DataField="StockIn_ChallanNo" ItemStyle-Font-Bold="true" ReadOnly="true"/>
