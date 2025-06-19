@@ -159,25 +159,34 @@
         <asp:BoundField HeaderText="Make" DataField="Make_Name" ItemStyle-Font-Bold="true" ReadOnly="true" />
         <asp:BoundField HeaderText="Type" DataField="ProdType_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
         <asp:BoundField HeaderText="Model" DataField="ProdModel_Name" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
-       <asp:TemplateField HeaderText="Asset Code">
+       <asp:TemplateField HeaderText="Asset Code" ItemStyle-Width="200px" HeaderStyle-Width="200px">
     <ItemTemplate>
         <%# Eval("ProductDetail_AssetCode") %>
     </ItemTemplate>
     <EditItemTemplate>
-        <asp:TextBox ID="txtAssetCode" runat="server" Text='<%# Bind("ProductDetail_AssetCode") %>' CssClass="form-control" />
-        <asp:HiddenField ID="hdnOldAssetCode" runat="server" Value='<%# Eval("ProductDetail_AssetCode") %>' />
+        <asp:TextBox ID="txtAssetCode" runat="server" 
+            Text='<%# Bind("ProductDetail_AssetCode") %>' 
+            CssClass="form-control" 
+            style="width: 100%; min-width: 150px;" />
+        <asp:HiddenField ID="hdnOldAssetCode" runat="server" 
+            Value='<%# Eval("ProductDetail_AssetCode") %>' />
     </EditItemTemplate>
 </asp:TemplateField>
 
-<asp:TemplateField HeaderText="Serial No.">
+<asp:TemplateField HeaderText="Serial No." ItemStyle-Width="200px" HeaderStyle-Width="200px">
     <ItemTemplate>
         <%# Eval("ProductDetail_SerialNo") %>
     </ItemTemplate>
     <EditItemTemplate>
-        <asp:TextBox ID="txtSerialNo" runat="server" Text='<%# Bind("ProductDetail_SerialNo") %>' CssClass="form-control" />
-        <asp:HiddenField ID="hdnOldSerialNo" runat="server" Value='<%# Eval("ProductDetail_SerialNo") %>' />
+        <asp:TextBox ID="txtSerialNo" runat="server" 
+            Text='<%# Bind("ProductDetail_SerialNo") %>' 
+            CssClass="form-control" 
+            style="width: 100%; min-width: 150px;" />
+        <asp:HiddenField ID="hdnOldSerialNo" runat="server" 
+            Value='<%# Eval("ProductDetail_SerialNo") %>' />
     </EditItemTemplate>
 </asp:TemplateField>
+
         <asp:BoundField HeaderText="Configuration" DataField="ProductDetail_Config" ItemStyle-Font-Bold="true" />
         <asp:BoundField HeaderText="Received On" DataField="InDate" ItemStyle-Font-Bold="true" ReadOnly="true" ItemStyle-Wrap="false"/>
         <asp:BoundField HeaderText="Challan No." DataField="StockIn_ChallanNo" ItemStyle-Font-Bold="true" ReadOnly="true"/>
