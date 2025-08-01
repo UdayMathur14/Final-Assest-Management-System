@@ -232,7 +232,7 @@
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-right">
-                    <img src="BillLogo.png" style="width:383px"/>
+                    <img src="EnnobleNewLogo.jpg" style="width:350px; height=385px; margin-bottom:40px;border-radius:15px";/>
                 </div>
             </div>
         </div>
