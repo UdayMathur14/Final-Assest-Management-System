@@ -132,6 +132,7 @@
     <Content Include="Default.aspx" />
     <Content Include="EmployeeMaster.aspx" />
     <Content Include="EmployeeWiseReport.aspx" />
+    <Content Include="EnnobleNewLogo.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GatePass.aspx" />
