@@ -1501,7 +1501,7 @@ namespace TileMenu
             DataSet Dsupdategatepass = new DataSet();
             Daupdategatepass.Fill(Dsupdategatepass);
 
-           
+
 
 
             if (returnType == "1")
@@ -1516,7 +1516,7 @@ namespace TileMenu
 
                 strqry += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + stockOutId + "";
 
-                string ProductDetailIdForSubitemQuery = "select [StockOut_ProdDetail_Id] from [Inv_StockOut] where StockOut_Id = "+ stockOutId+"";
+                string ProductDetailIdForSubitemQuery = "select [StockOut_ProdDetail_Id] from [Inv_StockOut] where StockOut_Id = " + stockOutId + "";
                 SqlDataAdapter Data1 = new SqlDataAdapter(ProductDetailIdForSubitemQuery, Con);
                 DataSet Dasa1 = new DataSet();
                 Data1.Fill(Dasa1);
@@ -1527,7 +1527,7 @@ namespace TileMenu
                 SqlDataAdapter Data2 = new SqlDataAdapter(StockOutIdForSubItemquery, Con);
                 DataSet Dasa2 = new DataSet();
                 Data2.Fill(Dasa2);
-                string StockOutIdForSubItem="";
+                string StockOutIdForSubItem = "";
                 if (Dasa2.Tables.Count > 0 && Dasa2.Tables[0].Rows.Count > 0)
                 {
                     StockOutIdForSubItem = Dasa2.Tables[0].Rows[0][0].ToString();
@@ -1546,7 +1546,7 @@ namespace TileMenu
                     DataSet Dasa3 = new DataSet();
                     Data3.Fill(Dasa3);
                 }
-                
+
 
                 //if (StockOutIdForSubItem != null && StockOutIdForSubItem != "0")
                 //{
@@ -1568,7 +1568,7 @@ namespace TileMenu
 
                 //}
 
-               
+
 
 
 
@@ -1576,7 +1576,7 @@ namespace TileMenu
                 DataSet Ds = new DataSet();
                 Da.Fill(Ds);
 
-                
+
 
 
 
@@ -1639,8 +1639,8 @@ namespace TileMenu
                         " StockReturn_ReturnDate," +
                         " StockReturn_CreatedBy, StockReturn_CreatedDate,StockReturn_Cost,StockReturn_Remarks,StockReturn_billno,stockreturn_LostByUser) " +
                         " values(" + stockOutId + "," +
-                        " '" + System.DateTime.Now.Date + "'," +
-                        " '" + Session["login"].ToString() + "','" + System.DateTime.Now.Date + "'," + 0 + ",'" + Txtscrapremarks.Text + "','','NO')";
+                        " '" + DateTime.Today.ToString("yyyy-MM-dd") + "'," +
+                        " '" + Session["login"].ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "'," + 0 + ",'" + Txtscrapremarks.Text + "','','NO')";
 
                 strqry += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + stockOutId + "";
 
@@ -1650,9 +1650,9 @@ namespace TileMenu
                       " StockOut_ERDate,StockOut_CreatedBy, StockOut_CreatedDate,StockOut_ModifiedDate," +
                       " StockOut_OAC,Stockout_Returnable,Stockout_GatePassNo,stockout_SOHID,Stockout_Responsible,Stockout_Location) " +
                       " values(" +
-                      " '1','','','','" + System.DateTime.Now.Date + "','Permanent','" + Txtscrapremarks.Text + "','" + proddetailid + "'," +
-                      " '','" + Session["login"].ToString() + "','" + System.DateTime.Now.Date + "'," +
-                      " '" + System.DateTime.Now.Date + "','" + rdlscrap.SelectedValue + "','','0','','','')";
+                      " '1','','','','" + DateTime.Today.ToString("yyyy-MM-dd") + "','Permanent','" + Txtscrapremarks.Text + "','" + proddetailid + "'," +
+                      " '','" + Session["login"].ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "'," +
+                      " '" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + rdlscrap.SelectedValue + "','','0','','','')";
 
                 SqlDataAdapter Dascr = new SqlDataAdapter(strqry, Con);
                 DataSet Dsscr = new DataSet();
