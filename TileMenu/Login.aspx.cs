@@ -56,7 +56,7 @@ namespace TileMenu
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", "alert('Invalid Users');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", "alert('Invalid Users Details');", true);
                     }
                 }
             }
