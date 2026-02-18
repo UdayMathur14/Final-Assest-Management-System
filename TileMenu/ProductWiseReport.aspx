@@ -141,11 +141,12 @@
     <asp:Panel ID="pnlData" runat="server">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ForeColor="Black" GridLines="Both" BackColor="White"
             BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px" CssClass="table table-striped"
-            Width="100%" CellPadding="5" RowStyle-Height="30px" OnRowDataBound="GridView1_RowDataBound" ShowFooter="true">
+            Width="100%" CellPadding="5" RowStyle-Height="30px" ShowFooter="true">
             <FooterStyle BackColor="#E3E3E1" Font-Bold="True" Height="30px" />
             <RowStyle BackColor="#ffffcc" />
             <Columns>
                 <asp:BoundField HeaderText="Product Name" DataField="Product_Name" ItemStyle-Font-Bold="true" />
+                
                 <asp:TemplateField HeaderText="Total In" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
                     <ItemTemplate>
                         <asp:HyperLink ID="inid" runat="server" Target="_blank" Text='<%# Bind("TotalInQty") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=I") %>'></asp:HyperLink>
@@ -160,7 +161,7 @@
 
                 <asp:TemplateField HeaderText="Unique" ItemStyle-Font-Bold="true" ItemStyle-ForeColor="Black">
                     <ItemTemplate>
-                        <asp:HyperLink ID="outid" runat="server" Target="_blank" Text='<%# Bind("uniqueout") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=O") %>'></asp:HyperLink>
+                        <asp:HyperLink ID="uniqueid" runat="server" Target="_blank" Text='<%# Bind("uniqueout") %>' NavigateUrl='<%# Eval("Product_Id", "ProductwiseReport.aspx?ProductId={0}&Name=O") %>'></asp:HyperLink>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -190,9 +191,7 @@
 
                 <asp:BoundField HeaderText="Product Id" DataField="Product_id" ItemStyle-Font-Bold="true" />
             </Columns>
-            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" Height="35px" />
-            <AlternatingRowStyle BackColor="White" />
         </asp:GridView>
     </asp:Panel>
 </div>
