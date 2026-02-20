@@ -12,6 +12,7 @@ namespace TileMenu
         // For more information on Bundling, visit https://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
         {
+            BundleTable.EnableOptimizations = false;
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
                             "~/Scripts/WebForms/WebForms.js",
                             "~/Scripts/WebForms/WebUIValidation.js",
@@ -20,7 +21,11 @@ namespace TileMenu
                             "~/Scripts/WebForms/GridView.js",
                             "~/Scripts/WebForms/DetailsView.js",
                             "~/Scripts/WebForms/TreeView.js",
-                            "~/Scripts/WebForms/WebParts.js"));
+                            "~/Scripts/WebForms/WebParts.js")
+                             );
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                 "~/Content/bootstrap.css",
+                 "~/Content/site.css"));
 
             // Order is very important for these files to work, they have explicit dependencies
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(

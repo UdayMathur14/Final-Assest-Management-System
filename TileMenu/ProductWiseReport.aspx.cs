@@ -184,97 +184,80 @@ namespace TileMenu
 
         protected void GetData()
         {
-            // 1. Connection string setup
             using (SqlConnection Con = new SqlConnection(strCon))
             {
-                // 2. Optimized SQL Query (Logic exactly same as yours, but faster)
-                // Maine SUM(CASE WHEN...) use kiya hai jo aapke purane subqueries ka hi kaam karega
                 StringBuilder sb = new StringBuilder();
+
                 sb.Append("SELECT PM.Product_Name, PM.Product_Id, ");
-                sb.Append("SUM(ISNULL(SI.StockIn_Qty, 0)) AS TotalInQty, ");
 
-                // Logic for: Employee /Internal /Site (Same as your code)
-                sb.Append(" (SELECT ISNULL(SUM(ISNULL(SO.StockOut_Qty,0)),0) FROM Inv_StockOut SO ");
-                sb.Append("  INNER JOIN Inv_ProductDetail_Master PDM ON SO.StockOut_ProdDetail_Id = PDM.ProductDetail_Id ");
-                sb.Append("  WHERE SO.stockout_OAC IN ('employee','Internal','Site','Subitem') ");
-                sb.Append("  AND PDM.ProductDetail_Product_Id = PM.Product_Id) - ");
-                sb.Append(" (SELECT ISNULL(COUNT(ISNULL(SR.StockReturn_id, 0)), 0) FROM Inv_StockReturn SR ");
-                sb.Append("  WHERE SR.stockreturn_stockout_id IN (SELECT stockout_id FROM inv_stockout WHERE stockout_oac IN ('employee','Internal','Site','Subitem') ");
-                sb.Append("  AND stockout_proddetail_id IN (SELECT ProductDetail_Id FROM Inv_ProductDetail_Master WHERE ProductDetail_Product_Id = PM.Product_Id))) AS TotalOut, ");
+                // 1. Total In Qty
+                sb.Append(" (SELECT ISNULL(SUM(StockIn_Qty), 0) FROM Inv_StockIn WHERE StockIn_Product_Id = PM.Product_Id) AS TotalInQty, ");
 
-                // Logic for: Unique Out (Same as your code)
-                sb.Append(" (SELECT COUNT(DISTINCT StockOut_EmpCode) FROM Inv_ProductDetail_Master PDM2 ");
-                sb.Append("  LEFT JOIN inv_stockout SO2 ON SO2.stockout_proddetail_id = PDM2.Productdetail_id ");
-                sb.Append("  AND SO2.stockout_id NOT IN (SELECT stockreturn_stockout_id FROM inv_stockreturn) ");
-                sb.Append("  WHERE SO2.stockout_OAC IN ('employee', 'Internal', 'Site', 'Subitem') ");
-                sb.Append("  AND PDM2.ProductDetail_Product_Id = PM.Product_Id) AS uniqueout, ");
+                // 2. Total Out (Employee/Internal/Site) - Isme original logic 'sum - count' ka tha wahi rakha hai
+                sb.Append(" ((SELECT ISNULL(SUM(SO.StockOut_Qty), 0) FROM Inv_StockOut SO ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM ON SO.StockOut_ProdDetail_Id = PDM.ProductDetail_Id ");
+                sb.Append("   WHERE PDM.ProductDetail_Product_Id = PM.Product_Id AND SO.stockout_OAC IN ('employee','Internal','Site','Subitem')) - ");
+                sb.Append("  (SELECT ISNULL(COUNT(SR.StockReturn_id), 0) FROM Inv_StockReturn SR ");
+                sb.Append("   WHERE SR.stockreturn_stockout_id IN (SELECT SO2.stockout_id FROM Inv_StockOut SO2 ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM2 ON SO2.StockOut_ProdDetail_Id = PDM2.ProductDetail_Id ");
+                sb.Append("   WHERE PDM2.ProductDetail_Product_Id = PM.Product_Id AND SO2.stockout_OAC IN ('employee','Internal','Site','Subitem')))) AS TotalOut, ");
 
-                // Logic for: Repair /StandBy /UserReserve
-                sb.Append(" (SELECT ISNULL(SUM(ISNULL(SO3.StockOut_Qty,0)),0) FROM Inv_StockOut SO3 ");
+                // 3. Unique Out (Distinct Employee Count)
+                sb.Append(" (SELECT COUNT(DISTINCT SO3.StockOut_EmpCode) FROM Inv_StockOut SO3 ");
                 sb.Append("  INNER JOIN Inv_ProductDetail_Master PDM3 ON SO3.StockOut_ProdDetail_Id = PDM3.ProductDetail_Id ");
-                sb.Append("  WHERE SO3.stockout_OAC IN ('Repair','Standby','Reserved for user') ");
-                sb.Append("  AND PDM3.ProductDetail_Product_Id = PM.Product_Id) AS TotalOutRepair, ");
+                sb.Append("  WHERE PDM3.ProductDetail_Product_Id = PM.Product_Id ");
+                sb.Append("  AND SO3.stockout_OAC IN ('employee', 'Internal', 'Site', 'Subitem') ");
+                sb.Append("  AND SO3.stockout_id NOT IN (SELECT stockreturn_stockout_id FROM Inv_StockReturn)) AS uniqueout, ");
 
-                // Logic for: To Be Scrap
-                sb.Append(" (SELECT ISNULL(SUM(ISNULL(SO4.StockOut_Qty,0)),0) FROM Inv_StockOut SO4 ");
-                sb.Append("  INNER JOIN Inv_ProductDetail_Master PDM4 ON SO4.StockOut_ProdDetail_Id = PDM4.ProductDetail_Id ");
-                sb.Append("  WHERE SO4.stockout_OAC IN ('To be scrap') ");
-                sb.Append("  AND PDM4.ProductDetail_Product_Id = PM.Product_Id) AS TotalOutScrap, ");
+                // 4. Repair / StandBy / UserReserve - (SUM - COUNT logic as per your original)
+                sb.Append(" ((SELECT ISNULL(SUM(SO4.StockOut_Qty), 0) FROM Inv_StockOut SO4 ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM4 ON SO4.StockOut_ProdDetail_Id = PDM4.ProductDetail_Id ");
+                sb.Append("   WHERE PDM4.ProductDetail_Product_Id = PM.Product_Id AND SO4.stockout_OAC IN ('Repair','Standby','Reserved for user')) - ");
+                sb.Append("  (SELECT ISNULL(COUNT(SR3.StockReturn_id), 0) FROM Inv_StockReturn SR3 ");
+                sb.Append("   WHERE SR3.stockreturn_stockout_id IN (SELECT SO4a.stockout_id FROM Inv_StockOut SO4a ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM4a ON SO4a.StockOut_ProdDetail_Id = PDM4a.ProductDetail_Id ");
+                sb.Append("   WHERE PDM4a.ProductDetail_Product_Id = PM.Product_Id AND SO4a.stockout_OAC IN ('Repair','Standby','Reserved for user')))) AS TotalOutRepair, ");
 
-                // Logic for: Sold /Scrapped /VendorReturn
-                sb.Append(" (SELECT ISNULL(SUM(ISNULL(SO5.StockOut_Qty,0)),0) FROM Inv_StockOut SO5 ");
-                sb.Append("  INNER JOIN Inv_ProductDetail_Master PDM5 ON SO5.StockOut_ProdDetail_Id = PDM5.ProductDetail_Id ");
-                sb.Append("  WHERE SO5.stockout_OAC IN ('Sold','Scrapped','Return to Vendor') ");
-                sb.Append("  AND PDM5.ProductDetail_Product_Id = PM.Product_Id) AS TotalOutSold, ");
+                // 5. To Be Scrap
+                sb.Append(" ((SELECT ISNULL(SUM(SO5.StockOut_Qty), 0) FROM Inv_StockOut SO5 ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM5 ON SO5.StockOut_ProdDetail_Id = PDM5.ProductDetail_Id ");
+                sb.Append("   WHERE PDM5.ProductDetail_Product_Id = PM.Product_Id AND SO5.stockout_OAC IN ('To be scrap')) - ");
+                sb.Append("  (SELECT ISNULL(COUNT(SR4.StockReturn_id), 0) FROM Inv_StockReturn SR4 ");
+                sb.Append("   WHERE SR4.stockreturn_stockout_id IN (SELECT SO5a.stockout_id FROM Inv_StockOut SO5a ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM5a ON SO5a.StockOut_ProdDetail_Id = PDM5a.ProductDetail_Id ");
+                sb.Append("   WHERE PDM5a.ProductDetail_Product_Id = PM.Product_Id AND SO5a.stockout_OAC IN ('To be scrap')))) AS TotalOutScrap, ");
 
-                // Logic for: Available (StockIn - TotalStockOut + TotalReturns)
-                sb.Append(" (SUM(SI.StockIn_Qty) - ");
-                sb.Append(" (SELECT ISNULL(SUM(ISNULL(StockOut_Qty,0)),0) FROM Inv_StockOut WHERE StockOut_ProdDetail_Id IN (SELECT ProductDetail_Id FROM Inv_ProductDetail_Master WHERE ProductDetail_Product_Id = PM.Product_Id)) + ");
-                sb.Append(" (SELECT ISNULL(COUNT(ISNULL(StockReturn_id, 0)), 0) FROM Inv_StockReturn WHERE stockreturn_stockout_id IN (SELECT stockout_id FROM inv_stockout WHERE stockout_proddetail_id IN (SELECT ProductDetail_Id FROM Inv_ProductDetail_Master WHERE ProductDetail_Product_Id = PM.Product_Id)))) AS Available ");
+                // 6. Sold / Scrapped / VendorReturn
+                sb.Append(" ((SELECT ISNULL(SUM(SO6.StockOut_Qty), 0) FROM Inv_StockOut SO6 ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM6 ON SO6.StockOut_ProdDetail_Id = PDM6.ProductDetail_Id ");
+                sb.Append("   WHERE PDM6.ProductDetail_Product_Id = PM.Product_Id AND SO6.stockout_OAC IN ('Sold','Scrapped','Return to Vendor')) - ");
+                sb.Append("  (SELECT ISNULL(COUNT(SR5.StockReturn_id), 0) FROM Inv_StockReturn SR5 ");
+                sb.Append("   WHERE SR5.stockreturn_stockout_id IN (SELECT SO6a.stockout_id FROM Inv_StockOut SO6a ");
+                sb.Append("   INNER JOIN Inv_ProductDetail_Master PDM6a ON SO6a.StockOut_ProdDetail_Id = PDM6a.ProductDetail_Id ");
+                sb.Append("   WHERE PDM6a.ProductDetail_Product_Id = PM.Product_Id AND SO6a.stockout_OAC IN ('Sold','Scrapped','Return to Vendor')))) AS TotalOutSold, ");
 
-                sb.Append(" FROM Inv_StockIn SI ");
-                sb.Append(" INNER JOIN Inv_Product_Master PM ON PM.product_id = SI.StockIn_product_Id ");
-                sb.Append(" INNER JOIN Inv_Vendor_Master VM ON VM.vendor_Id = SI.StockIn_vendor_Id ");
+                // 7. Available
+                sb.Append(" ((SELECT ISNULL(SUM(StockIn_Qty), 0) FROM Inv_StockIn WHERE StockIn_Product_Id = PM.Product_Id) - ");
+                sb.Append("  (SELECT ISNULL(SUM(StockOut_Qty), 0) FROM Inv_StockOut SO7 INNER JOIN Inv_ProductDetail_Master PDM7 ON SO7.StockOut_ProdDetail_Id = PDM7.ProductDetail_Id WHERE PDM7.ProductDetail_Product_Id = PM.Product_Id) + ");
+                sb.Append("  (SELECT ISNULL(COUNT(SR2.StockReturn_id), 0) FROM Inv_StockReturn SR2 WHERE SR2.stockreturn_stockout_id IN (SELECT SO8.stockout_id FROM Inv_StockOut SO8 INNER JOIN Inv_ProductDetail_Master PDM8 ON SO8.StockOut_ProdDetail_Id = PDM8.ProductDetail_Id WHERE PDM8.ProductDetail_Product_Id = PM.Product_Id))) AS Available ");
+
+                sb.Append(" FROM Inv_Product_Master PM ");
                 sb.Append(" WHERE PM.Product_ItemType = '" + typemaster.SelectedValue + "' ");
 
                 if (ddlproduct.SelectedValue != "-1")
                 {
-                    sb.Append(" AND SI.StockIn_Product_Id = '" + ddlproduct.SelectedValue + "' ");
+                    sb.Append(" AND PM.Product_Id = '" + ddlproduct.SelectedValue + "' ");
                 }
 
-                sb.Append(" GROUP BY PM.Product_Name, PM.Product_Id ");
-
-                // Filter for Quantity
-                if (!string.IsNullOrEmpty(txtqty.Text))
-                {
-                    sb.Append(" HAVING (SUM(SI.StockIn_Qty) - (SELECT ISNULL(SUM(ISNULL(StockOut_Qty,0)),0) FROM Inv_StockOut WHERE StockOut_ProdDetail_Id IN (SELECT ProductDetail_Id FROM Inv_ProductDetail_Master WHERE ProductDetail_Product_Id = PM.Product_Id)) + (SELECT ISNULL(COUNT(ISNULL(StockReturn_id, 0)), 0) FROM Inv_StockReturn WHERE stockreturn_stockout_id IN (SELECT stockout_id FROM inv_stockout WHERE stockout_proddetail_id IN (SELECT ProductDetail_Id FROM Inv_ProductDetail_Master WHERE ProductDetail_Product_Id = PM.Product_Id)))) <= " + Convert.ToInt32(txtqty.Text));
-                }
-
-                sb.Append(" ORDER BY PM.Product_Name ");
+                sb.Append(" ORDER BY PM.Product_Name");
 
                 SqlDataAdapter Da = new SqlDataAdapter(sb.ToString(), Con);
-
-                // Timeout issue fix: 3 minute ka time diya hai loading ke liye
-                Da.SelectCommand.CommandTimeout = 180;
-
+                Da.SelectCommand.CommandTimeout = 300; // 5 minutes timeout
                 DataSet Ds = new DataSet();
                 Da.Fill(Ds);
 
-                if (Ds.Tables.Count > 0 && Ds.Tables[0].Rows.Count > 0)
-                {
-                    GridView1.DataSource = Ds;
-                    GridView1.DataBind();
-                    if (GridView1.FooterRow != null)
-                    {
-                        GridView1.FooterRow.Cells[2].Text = "";
-                        GridView1.FooterRow.Cells[2].HorizontalAlign = HorizontalAlign.Right;
-                    }
-                }
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
-                }
+                GridView1.DataSource = Ds;
+                GridView1.DataBind();
             }
         }
         protected void GetDataItemIn()
