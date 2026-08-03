@@ -638,9 +638,6 @@ namespace TileMenu
 
             strqry = "select Emp_code,emp_name+'('+emp_code+')' as EMP from tblempmaster where  status in (1) order by Emp_Code ";
 
-
-
-
             SqlConnection Con = new SqlConnection();
             Con.ConnectionString = strCon;
             SqlDataAdapter Da = new SqlDataAdapter(strqry, Con);
@@ -654,8 +651,6 @@ namespace TileMenu
                 ddlemployee.DataBind();
                 ddlemployee.Items.Insert(0, new ListItem("-----Select----", "-1"));
             }
-
-
         }
 
         protected void FillLaptopDesktop()
@@ -701,7 +696,7 @@ namespace TileMenu
         {
 
             FillLaptopDesktop();
-
+            FillGrid();
         }
         protected void FillSerialNo()
         {
