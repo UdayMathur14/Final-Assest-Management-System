@@ -464,7 +464,7 @@ namespace TileMenu
         {
             string strqry = "";
 
-            strqry = "select Emp_code,emp_name+'('+emp_code+')' as EMP from TblEmpMaster";
+            strqry = "select Emp_code,emp_name+'('+emp_code+')' as EMP from tblempmaster where  status in (1) order by Emp_Code ";
 
 
 
