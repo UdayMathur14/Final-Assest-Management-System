@@ -45,7 +45,11 @@ namespace TileMenu
         " left join Inv_ProdType on Inv_ProductDetail_Master.ProductDetail_ProdType_Id=Inv_ProdType.ProdType_Id" +
         " left join inv_ProdModel on Inv_ProductDetail_Master.ProductDetail_ProdModel_Id=inv_ProdModel.ProdModel_Id" +
                 " left join tblCostCenter on Inv_StockOut.StockOut_CostCenter=tblCostCenter.CostCenter " +
-                " where Inv_StockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn) and Product_InvType='Non Consumable'";
+                " where Inv_StockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn) and Product_InvType='Non Consumable'" +
+                " and (StockOut_OAC<>'Subitem' or exists (select 1 from Inv_StockOut parentStockOut " +
+                " where parentStockOut.StockOut_ProdDetail_Id=Inv_StockOut.Stockout_SOHID " +
+                " and parentStockOut.StockOut_OAC<>'Subitem' " +
+                " and parentStockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn)))";
 
             //string strqry = " select Product_Name,convert(varchar(50),StockOut_IssueDate,106) as IssueDate ," +
             //    " StockOut_Qty as Qty,StockOut_EmpCode as EmpCode,StockOut_EmpName as EmpName,StockOut_CostCenter as CostCenter," +
@@ -123,7 +127,11 @@ namespace TileMenu
         " left join Inv_ProdType on Inv_ProductDetail_Master.ProductDetail_ProdType_Id=Inv_ProdType.ProdType_Id" +
         " left join inv_ProdModel on Inv_ProductDetail_Master.ProductDetail_ProdModel_Id=inv_ProdModel.ProdModel_Id" +
                 " left join tblCostCenter on Inv_StockOut.StockOut_CostCenter=tblCostCenter.CostCenter " +
-                " where Inv_StockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn) and Product_InvType='Consumable'";
+                " where Inv_StockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn) and Product_InvType='Consumable'" +
+                " and (StockOut_OAC<>'Subitem' or exists (select 1 from Inv_StockOut parentStockOut " +
+                " where parentStockOut.StockOut_ProdDetail_Id=Inv_StockOut.Stockout_SOHID " +
+                " and parentStockOut.StockOut_OAC<>'Subitem' " +
+                " and parentStockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn)))";
 
             //string strqry = " select Product_Name,convert(varchar(50),StockOut_IssueDate,106) as IssueDate ," +
             //    " StockOut_Qty as Qty,StockOut_EmpCode as EmpCode,StockOut_EmpName as EmpName,StockOut_CostCenter as CostCenter," +
