@@ -965,6 +965,7 @@ namespace TileMenu
 
             if (result == 1)
             {
+                AssignAttachedSubitemsToParentEmployee(Convert.ToInt32(ddlsrno.SelectedValue), ddlemployee.SelectedValue, empName, Convert.ToDateTime(txtdate.Text));
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertscript", "alert('Successfully Added');", true);
 
             }
@@ -974,6 +975,35 @@ namespace TileMenu
             FillGrid();
             txtdate.Text = DateTime.Now.ToString("dd/MMM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
+        }
+
+        private void AssignAttachedSubitemsToParentEmployee(int parentProductDetailId, string employeeCode, string employeeName, DateTime issueDate)
+        {
+            using (SqlConnection con = new SqlConnection(strCon))
+            {
+                string query = @"UPDATE Inv_StockOut
+                                 SET StockOut_EmpCode = @EmployeeCode,
+                                     StockOut_EmpName = @EmployeeName,
+                                     StockOut_IssueDate = @IssueDate,
+                                     StockOut_ModifiedDate = @ModifiedDate,
+                                     StockOut_CreatedBy = @ModifiedBy
+                                 WHERE StockOut_OAC = 'Subitem'
+                                   AND Stockout_SOHID = @ParentProductDetailId
+                                   AND StockOut_Id NOT IN (SELECT StockReturn_StockOut_Id FROM Inv_StockReturn)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeCode", employeeCode);
+                    cmd.Parameters.AddWithValue("@EmployeeName", employeeName);
+                    cmd.Parameters.AddWithValue("@IssueDate", issueDate);
+                    cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Today);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", Session["login"].ToString());
+                    cmd.Parameters.AddWithValue("@ParentProductDetailId", parentProductDetailId);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         protected void MailItToUser(string Product, string Make, string ProdType, string ProdModel, string SerialNo, string Category, string Employee, string CostCenter, string issuetype, string remarks, string EmpEmail)
@@ -1516,36 +1546,8 @@ namespace TileMenu
 
                 strqry += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + stockOutId + "";
 
-                string ProductDetailIdForSubitemQuery = "select [StockOut_ProdDetail_Id] from [Inv_StockOut] where StockOut_Id = " + stockOutId + "";
-                SqlDataAdapter Data1 = new SqlDataAdapter(ProductDetailIdForSubitemQuery, Con);
-                DataSet Dasa1 = new DataSet();
-                Data1.Fill(Dasa1);
-
-                string ProductDetailIdForSubitem = Dasa1.Tables[0].Rows[0][0].ToString();
-                string StockOutIdForSubItemquery = "select [StockOut_Id] from [Inv_StockOut] where [Stockout_SOHID] = " + ProductDetailIdForSubitem + "";
-
-                SqlDataAdapter Data2 = new SqlDataAdapter(StockOutIdForSubItemquery, Con);
-                DataSet Dasa2 = new DataSet();
-                Data2.Fill(Dasa2);
-                string StockOutIdForSubItem = "";
-                if (Dasa2.Tables.Count > 0 && Dasa2.Tables[0].Rows.Count > 0)
-                {
-                    StockOutIdForSubItem = Dasa2.Tables[0].Rows[0][0].ToString();
-
-                    string subitemReturn = "INSERT INTO Inv_StockReturn (StockReturn_StockOut_Id, " +
-                               "StockReturn_ReturnDate, " +
-                               "StockReturn_CreatedBy, StockReturn_CreatedDate, stockreturn_LostByUser) " +
-                               "VALUES (" + StockOutIdForSubItem + ", " +
-                               "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', " +
-                               "'" + Session["login"].ToString() + "', " +
-                               "'" + DateTime.Today.ToString("yyyy-MM-dd") + "', 'NO')";
-
-                    subitemReturn += " update Inv_StockOut set stockout_SOHID=0 where StockOut_Id=" + StockOutIdForSubItem + "";
-
-                    SqlDataAdapter Data3 = new SqlDataAdapter(subitemReturn, Con);
-                    DataSet Dasa3 = new DataSet();
-                    Data3.Fill(Dasa3);
-                }
+                // Keep subitems attached to the parent asset during a parent return.
+                // They should move with this asset on the next parent stock-out instead of becoming independently available.
 
 
                 //if (StockOutIdForSubItem != null && StockOutIdForSubItem != "0")
