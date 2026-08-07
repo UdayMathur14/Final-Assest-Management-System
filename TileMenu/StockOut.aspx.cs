@@ -1006,6 +1006,31 @@ namespace TileMenu
             }
         }
 
+        private void ClearAttachedSubitemsEmployeeFromParent(int parentProductDetailId)
+        {
+            using (SqlConnection con = new SqlConnection(strCon))
+            {
+                string query = @"UPDATE Inv_StockOut
+                                 SET StockOut_EmpCode = '',
+                                     StockOut_EmpName = '',
+                                     StockOut_ModifiedDate = @ModifiedDate,
+                                     StockOut_CreatedBy = @ModifiedBy
+                                 WHERE StockOut_OAC = 'Subitem'
+                                   AND Stockout_SOHID = @ParentProductDetailId
+                                   AND StockOut_Id NOT IN (SELECT StockReturn_StockOut_Id FROM Inv_StockReturn)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Today);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", Session["login"].ToString());
+                    cmd.Parameters.AddWithValue("@ParentProductDetailId", parentProductDetailId);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         protected void MailItToUser(string Product, string Make, string ProdType, string ProdModel, string SerialNo, string Category, string Employee, string CostCenter, string issuetype, string remarks, string EmpEmail)
         {
 
@@ -1578,7 +1603,7 @@ namespace TileMenu
                 DataSet Ds = new DataSet();
                 Da.Fill(Ds);
 
-
+                ClearAttachedSubitemsEmployeeFromParent(Convert.ToInt32(proddetailid));
 
 
 
