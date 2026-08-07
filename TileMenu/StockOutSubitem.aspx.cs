@@ -40,7 +40,11 @@ namespace TileMenu
                             " left join [dbo].[Inv_ProdType] on inv_productdetail_master.ProductDetail_ProdType_Id =[Inv_ProdType].ProdType_Id " +
                             " left join [dbo].[Inv_ProdModel] on inv_productdetail_master.ProductDetail_ProdModel_Id =[Inv_ProdModel].ProdModel_id " +
                             " left join inv_productdetail_master issuedhw on issuedhw.ProductDetail_Id=inv_stockout.Stockout_SOHID " +
-                            " where StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn) and stockout_oac='" + ddlOAC.SelectedValue + "'";
+                            " where StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn) and stockout_oac='" + ddlOAC.SelectedValue + "'" +
+                            " and exists (select 1 from Inv_StockOut parentStockOut " +
+                            " where parentStockOut.StockOut_ProdDetail_Id=inv_stockout.Stockout_SOHID " +
+                            " and parentStockOut.StockOut_OAC<>'Subitem' " +
+                            " and parentStockOut.StockOut_Id not in (select StockReturn_StockOut_Id from Inv_StockReturn))";
 
             //Response.Write(strqry);
             //Response.End();
